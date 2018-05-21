@@ -3,6 +3,7 @@ Imports QLNT_DTO
 Imports Utility
 Public Class frmThemTreEm
     Private teBUS As TreEmBUS
+    Private tsBUS As ThamSoBUS
     Private peopleCheck As Boolean
     Private Sub frmThemTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         teBUS = New TreEmBUS()
@@ -23,6 +24,7 @@ Public Class frmThemTreEm
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
         teBUS = New TreEmBUS()
+        tsBUS = New ThamSoBUS()
         '1. Mapping data from GUI control
         treem.StrMaTreEm1 = txtMaSoTreEm.Text
         treem.StrHoTenTre1 = txtHoTen.Text
@@ -31,19 +33,29 @@ Public Class frmThemTreEm
         treem.StrTenONha1 = txtTenONha.Text
         treem.StrDiaChi1 = txtDiaChi.Text
         treem.StrDienThoai1 = txtDienThoai.Text
-        '2. Business .....
+        '2. Business nhap vao text box
         If (peopleCheck = False) Then
-            If (teBUS.isValidName(treem) = False) Then
+            If (teBUS.isValidName(treem.StrHoTenTre1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
             End If
         Else
-            If (teBUS.isValidName1(treem) = False) Then
+            If (teBUS.isValidName1(treem.StrHoTenTre1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
             End If
+        End If
+        If (tsBUS.ageMin(treem.DateNgaySinh1) = False) Then
+            MessageBox.Show("Học sinh chưa đủ tuổi đi học")
+            txtHoTen.Focus()
+            Return
+        End If
+        If (tsBUS.ageMax(treem.DateNgaySinh1) = False) Then
+            MessageBox.Show("Học sinh quá tuổi đi học")
+            txtHoTen.Focus()
+            Return
         End If
         '3. Insert to DB
         Dim result As Result
@@ -59,8 +71,11 @@ Public Class frmThemTreEm
                 Return
             End If
             txtMaSoTreEm.Text = nextMste
-            txtDiaChi.Text = String.Empty
             txtHoTen.Text = String.Empty
+            txtHoTenPhuHuynh.Text = String.Empty
+            txtTenONha.Text = String.Empty
+            txtDiaChi.Text = String.Empty
+            txtDienThoai.Text = String.Empty
 
         Else
             MessageBox.Show("Thêm trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -81,6 +96,30 @@ Public Class frmThemTreEm
         treem.StrTenONha1 = txtTenONha.Text
         treem.StrDiaChi1 = txtDiaChi.Text
         treem.StrDienThoai1 = txtDienThoai.Text
+        '2. Business nhap vao text box
+        If (peopleCheck = False) Then
+            If (teBUS.isValidName(treem.StrHoTenTre1) = False) Then
+                MessageBox.Show("Họ tên học sinh không đúng")
+                txtHoTen.Focus()
+                Return
+            End If
+        Else
+            If (teBUS.isValidName1(treem.StrHoTenTre1) = False) Then
+                MessageBox.Show("Họ tên học sinh không đúng")
+                txtHoTen.Focus()
+                Return
+            End If
+        End If
+        If (tsBUS.ageMin(treem.DateNgaySinh1) = False) Then
+            MessageBox.Show("Học sinh chưa đủ tuổi đi học")
+            txtHoTen.Focus()
+            Return
+        End If
+        If (tsBUS.ageMax(treem.DateNgaySinh1) = False) Then
+            MessageBox.Show("Học sinh quá tuổi đi học")
+            txtHoTen.Focus()
+            Return
+        End If
         '3. Insert to DB
         Dim result As Result
         result = teBUS.insert(treem)

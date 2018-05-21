@@ -44,7 +44,7 @@ Partial Class frmThemTreEm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(62, 26)
+        Me.Label1.Location = New System.Drawing.Point(42, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(71, 17)
         Me.Label1.TabIndex = 0
@@ -53,7 +53,7 @@ Partial Class frmThemTreEm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(61, 75)
+        Me.Label2.Location = New System.Drawing.Point(42, 70)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(71, 17)
         Me.Label2.TabIndex = 1
@@ -62,7 +62,7 @@ Partial Class frmThemTreEm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(62, 129)
+        Me.Label3.Location = New System.Drawing.Point(42, 129)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(71, 17)
         Me.Label3.TabIndex = 2
@@ -71,7 +71,7 @@ Partial Class frmThemTreEm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(62, 179)
+        Me.Label4.Location = New System.Drawing.Point(42, 179)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(121, 17)
         Me.Label4.TabIndex = 3
@@ -80,7 +80,7 @@ Partial Class frmThemTreEm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(62, 224)
+        Me.Label5.Location = New System.Drawing.Point(40, 224)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(73, 17)
         Me.Label5.TabIndex = 4
@@ -89,7 +89,7 @@ Partial Class frmThemTreEm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(62, 272)
+        Me.Label6.Location = New System.Drawing.Point(42, 272)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(51, 17)
         Me.Label6.TabIndex = 5
@@ -98,7 +98,7 @@ Partial Class frmThemTreEm
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(61, 319)
+        Me.Label7.Location = New System.Drawing.Point(42, 319)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(72, 17)
         Me.Label7.TabIndex = 6
@@ -106,21 +106,21 @@ Partial Class frmThemTreEm
         '
         'txtTenONha
         '
-        Me.txtTenONha.Location = New System.Drawing.Point(225, 224)
+        Me.txtTenONha.Location = New System.Drawing.Point(184, 224)
         Me.txtTenONha.Name = "txtTenONha"
         Me.txtTenONha.Size = New System.Drawing.Size(200, 22)
         Me.txtTenONha.TabIndex = 8
         '
         'txtDienThoai
         '
-        Me.txtDienThoai.Location = New System.Drawing.Point(225, 319)
+        Me.txtDienThoai.Location = New System.Drawing.Point(184, 319)
         Me.txtDienThoai.Name = "txtDienThoai"
         Me.txtDienThoai.Size = New System.Drawing.Size(200, 22)
         Me.txtDienThoai.TabIndex = 9
         '
         'txtMaSoTreEm
         '
-        Me.txtMaSoTreEm.Location = New System.Drawing.Point(225, 26)
+        Me.txtMaSoTreEm.Location = New System.Drawing.Point(184, 26)
         Me.txtMaSoTreEm.Name = "txtMaSoTreEm"
         Me.txtMaSoTreEm.ReadOnly = True
         Me.txtMaSoTreEm.Size = New System.Drawing.Size(200, 22)
@@ -128,35 +128,35 @@ Partial Class frmThemTreEm
         '
         'txtHoTen
         '
-        Me.txtHoTen.Location = New System.Drawing.Point(225, 70)
+        Me.txtHoTen.Location = New System.Drawing.Point(184, 70)
         Me.txtHoTen.Name = "txtHoTen"
         Me.txtHoTen.Size = New System.Drawing.Size(200, 22)
         Me.txtHoTen.TabIndex = 11
         '
         'txtHoTenPhuHuynh
         '
-        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(225, 179)
+        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(184, 179)
         Me.txtHoTenPhuHuynh.Name = "txtHoTenPhuHuynh"
         Me.txtHoTenPhuHuynh.Size = New System.Drawing.Size(200, 22)
         Me.txtHoTenPhuHuynh.TabIndex = 12
         '
         'txtDiaChi
         '
-        Me.txtDiaChi.Location = New System.Drawing.Point(225, 272)
+        Me.txtDiaChi.Location = New System.Drawing.Point(184, 272)
         Me.txtDiaChi.Name = "txtDiaChi"
         Me.txtDiaChi.Size = New System.Drawing.Size(200, 22)
         Me.txtDiaChi.TabIndex = 13
         '
         'dtpNgaySinh
         '
-        Me.dtpNgaySinh.Location = New System.Drawing.Point(225, 129)
+        Me.dtpNgaySinh.Location = New System.Drawing.Point(184, 129)
         Me.dtpNgaySinh.Name = "dtpNgaySinh"
         Me.dtpNgaySinh.Size = New System.Drawing.Size(200, 22)
         Me.dtpNgaySinh.TabIndex = 15
         '
         'btnNhapVaDong
         '
-        Me.btnNhapVaDong.Location = New System.Drawing.Point(264, 376)
+        Me.btnNhapVaDong.Location = New System.Drawing.Point(241, 376)
         Me.btnNhapVaDong.Name = "btnNhapVaDong"
         Me.btnNhapVaDong.Size = New System.Drawing.Size(129, 23)
         Me.btnNhapVaDong.TabIndex = 17
@@ -165,7 +165,7 @@ Partial Class frmThemTreEm
         '
         'btnNhap
         '
-        Me.btnNhap.Location = New System.Drawing.Point(91, 376)
+        Me.btnNhap.Location = New System.Drawing.Point(75, 376)
         Me.btnNhap.Name = "btnNhap"
         Me.btnNhap.Size = New System.Drawing.Size(75, 23)
         Me.btnNhap.TabIndex = 16
@@ -175,7 +175,7 @@ Partial Class frmThemTreEm
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(225, 98)
+        Me.CheckBox1.Location = New System.Drawing.Point(184, 102)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(136, 21)
         Me.CheckBox1.TabIndex = 18
@@ -186,7 +186,7 @@ Partial Class frmThemTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(495, 441)
+        Me.ClientSize = New System.Drawing.Size(453, 441)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.btnNhapVaDong)
         Me.Controls.Add(Me.btnNhap)

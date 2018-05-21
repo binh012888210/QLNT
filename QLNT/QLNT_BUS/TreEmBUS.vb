@@ -16,22 +16,22 @@ Public Class TreEmBUS
     Public Function insert(te As TreEmDTO) As Result
         Return teDAL.insert(te)
     End Function
-    Public Function isValidName(hs As TreEmDTO) As Boolean
+    Public Function isValidName(HoTenTre As String) As Boolean
         Dim check As Integer
         Dim i As Integer
-        Dim words() As String = hs.StrHoTenTre1.Split(" ")
+        Dim words() As String = HoTenTre.Split(" ")
         For Each word As String In words
             check = check + 1
         Next
-        If (hs.StrHoTenTre1.Length < 1) Then 'text box khong dc rong
+        If (HoTenTre.Length < 1) Then 'text box khong dc rong
             Return False
         End If
         If (check < 1 Or check > 5) Then 'tu 2 den 5 tu
             Return False
         End If
-        While (i < hs.StrHoTenTre1.Length)
-            If (hs.StrHoTenTre1(i) <> " ") Then
-                check = Asc(hs.StrHoTenTre1(i))
+        While (i < HoTenTre.Length)
+            If (HoTenTre(i) <> " ") Then
+                check = Asc(HoTenTre(i))
                 If (check < 65) Then
                     Return False
                 End If
@@ -48,22 +48,22 @@ Public Class TreEmBUS
         End While
         Return True
     End Function
-    Public Function isValidName1(hs As TreEmDTO) As Boolean 'danh cho dan toc thieu so
+    Public Function isValidName1(HoTenTre As String) As Boolean 'danh cho dan toc thieu so
         Dim check As Integer
         Dim i As Integer
-        Dim words() As String = hs.StrHoTenTre1.Split(" ")
+        Dim words() As String = HoTenTre.Split(" ")
         For Each word As String In words
             check = check + 1
         Next
-        If (hs.StrHoTenTre1.Length < 1) Then 'text box khong dc rong
+        If (HoTenTre.Length < 1) Then 'text box khong dc rong
             Return False
         End If
         If (check > 2) Then 'tu 2 den 5 tu
             Return False
         End If
-        While (i < hs.StrHoTenTre1.Length)
-            If (hs.StrHoTenTre1(i) <> " " And hs.StrHoTenTre1(i) <> "'") Then
-                check = Asc(hs.StrHoTenTre1(i))
+        While (i < HoTenTre.Length)
+            If (HoTenTre(i) <> " " And HoTenTre(i) <> "'") Then
+                check = Asc(HoTenTre(i))
                 If (check < 65) Then
                     Return False
                 End If
