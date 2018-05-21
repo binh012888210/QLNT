@@ -1,0 +1,1 @@
+SQLCMD -S DESKTOP-L8RPD4M -E -i CreateDB.sql
