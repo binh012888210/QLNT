@@ -105,7 +105,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\Project QLHS - 3 Layers 27.0\Project QLHS - 3 Layers 27.0\Utility\Utility.vbproj">
+    <ProjectReference Include="..\..\..\..\..\Downloads\QLNT-master\QLNT-master\QLNT\Utility\Utility.vbproj">
       <Project>{ac9d408a-10a6-4e83-9944-4b2864c6ba53}</Project>
       <Name>Utility</Name>
     </ProjectReference>
