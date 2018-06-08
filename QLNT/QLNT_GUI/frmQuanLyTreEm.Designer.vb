@@ -48,6 +48,7 @@ Partial Class frmQuanLyTreEm
         Me.txtDienThoai = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtMaLop = New System.Windows.Forms.TextBox()
+        Me.btnSearchName = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -120,7 +121,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.txtSearchName.Location = New System.Drawing.Point(292, 40)
         Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.Size = New System.Drawing.Size(355, 20)
+        Me.txtSearchName.Size = New System.Drawing.Size(294, 20)
         Me.txtSearchName.TabIndex = 7
         '
         'Label4
@@ -294,11 +295,21 @@ Partial Class frmQuanLyTreEm
         Me.txtMaLop.Size = New System.Drawing.Size(151, 20)
         Me.txtMaLop.TabIndex = 32
         '
+        'btnSearchName
+        '
+        Me.btnSearchName.Location = New System.Drawing.Point(592, 38)
+        Me.btnSearchName.Name = "btnSearchName"
+        Me.btnSearchName.Size = New System.Drawing.Size(55, 23)
+        Me.btnSearchName.TabIndex = 33
+        Me.btnSearchName.Text = "Tìm"
+        Me.btnSearchName.UseVisualStyleBackColor = True
+        '
         'frmQuanLyTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(669, 439)
+        Me.Controls.Add(Me.btnSearchName)
         Me.Controls.Add(Me.txtMaLop)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtDienThoai)
@@ -359,4 +370,5 @@ Partial Class frmQuanLyTreEm
     Friend WithEvents txtDienThoai As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents txtMaLop As TextBox
+    Friend WithEvents btnSearchName As Button
 End Class
