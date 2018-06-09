@@ -65,7 +65,7 @@ Public Class frmThemTreEm
         End If
         '3. Insert to DB
         Dim result As Result
-        result = teBUS.insert(treem)
+        result = teBUS.insert1(treem)
         If (result.FlagResult = True) Then
             MessageBox.Show("Thêm trẻ em thành công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'set MSSH auto
@@ -93,6 +93,7 @@ Public Class frmThemTreEm
     Private Sub btnNhapVaDong_Click(sender As Object, e As EventArgs) Handles btnNhapVaDong.Click
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
+        tsBUS = New ThamSoBUS()
         If (txtHoTenPhuHuynh.Text = Nothing Or txtTenONha.Text = Nothing Or txtDiaChi.Text = Nothing Or txtDienThoai.Text = Nothing) Then
             MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -131,7 +132,7 @@ Public Class frmThemTreEm
         End If
         '3. Insert to DB
         Dim result As Result
-        result = teBUS.insert(treem)
+        result = teBUS.insert1(treem)
         If (result.FlagResult = True) Then
             MessageBox.Show("Thêm trẻ em thành công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Close()
@@ -142,7 +143,7 @@ Public Class frmThemTreEm
 
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs)
         If (CheckBox1.Checked = True) Then
             peopleCheck = True
         Else

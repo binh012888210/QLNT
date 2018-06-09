@@ -135,4 +135,15 @@
         Me.strDienThoai = strDienThoai
         Me.intTuoi = intTuoi
     End Sub
+    Public Sub New(strMaTreEm As String, strHoTenTreEm As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, intTuoi As Integer, strMaLop As String)
+        Me.strMaTreEm = strMaTreEm
+        Me.strHoTenTreEm = strHoTenTreEm
+        Me.dateNgaySinh = dateNgaySinh
+        Me.strHoTenPhuHuynh = strHoTenPhuHuynh
+        Me.strTenONha = strTenONha
+        Me.strDiaChi = strDiaChi
+        Me.strDienThoai = strDienThoai
+        Me.intTuoi = intTuoi
+        Me.strMaLop = strMaLop
+    End Sub
 End Class

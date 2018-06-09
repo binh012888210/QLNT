@@ -37,7 +37,7 @@ Public Class frmCapNhatTreEm
         TreEmInfo.StrDiaChi1 = txtDiaChi.Text
         TreEmInfo.StrDienThoai1 = txtDienThoai.Text
         TreEmInfo.IntTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
-        result = teBUS.updatetByID(txtMaSoTreEm.Text, TreEmInfo)
+        result = teBUS.updatetByID(TreEmInfo)
         If (peopleCheck = False) Then
             If (teBUS.isValidName(TreEmInfo.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")

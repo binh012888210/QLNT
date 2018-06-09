@@ -3,7 +3,6 @@ Imports QLNT_DTO
 Imports Utility
 
 Public Class frmQuanLyTreEm
-    Dim Change As Integer
     Private teBUS As TreEmBUS
     Private Sub frmQuanLyTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         teBUS = New TreEmBUS()
@@ -49,7 +48,6 @@ Public Class frmQuanLyTreEm
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachTreEm.DataSource)
         myCurrencyManager.Refresh()
-        Change = 0
     End Sub
 
     Private Sub dgvDanhSachTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhSachTreEm.SelectionChanged
@@ -76,32 +74,36 @@ Public Class frmQuanLyTreEm
         End If
     End Sub
     Private Sub btnTiepNhan_Click(sender As Object, e As EventArgs) Handles btnTiepNhan.Click
-        Change = 1
         Dim frm As frmThemTreEm = New frmThemTreEm()
         frm.Show()
     End Sub
 
     Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
-        Change = 1
         Dim frm As frmCapNhatTreEm = New frmCapNhatTreEm()
-        frm.txtMaSoTreEm.Text = txtMaSoTreEm.Text
-        frm.Show()
-    End Sub
 
-    Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
-        Dim TreEmInfo = New TreEmDTO
-        Dim result As Result
-        result = teBUS.deleteByID(txtMaSoTreEm.Text)
-        If (result.FlagResult = False) Then
-            MessageBox.Show("Xoá trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            System.Console.WriteLine(result.SystemMessage)
+        Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y
+        If (-1 < currentRowIndex And currentRowIndex < dgvDanhSachTreEm.RowCount) Then
+            Dim te = CType(dgvDanhSachTreEm.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+            frm.txtMaSoTreEm.Text = te.StrMaTreEm1
+            frm.Show()
+        Else
+            MessageBox.Show("Thêm trẻ em trước khi cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
     End Sub
 
-    Private Sub frmQuanLyTreEm_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
-        If (Change = 1) Then
-            loadListTreEm()
+    Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
+        If (dgvDanhSachTreEm.RowCount > 0) Then
+            Dim TreEmInfo = New TreEmDTO
+            Dim result As Result
+            result = teBUS.deleteByID(txtMaSoTreEm.Text)
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Xoá trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+        Else
+            MessageBox.Show("Không còn trẻ em để xoá", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -145,6 +147,17 @@ Public Class frmQuanLyTreEm
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachTreEm.DataSource)
         myCurrencyManager.Refresh()
-        Change = 0
+    End Sub
+
+    Private Sub btnReLoad_Click(sender As Object, e As EventArgs)
+        loadListTreEm()
+    End Sub
+
+    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click
+        Close()
+    End Sub
+
+    Private Sub frmQuanLyTreEm_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
+        loadListTreEm()
     End Sub
 End Class

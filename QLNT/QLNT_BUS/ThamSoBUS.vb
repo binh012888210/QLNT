@@ -16,4 +16,7 @@ Public Class ThamSoBUS
     Public Function ageMin(date1 As Date) As Boolean
         Return tsDAL.ageMin(date1)
     End Function
+    Public Function KiemTraSiSo(intSiSoLop As Integer) As Boolean
+        Return tsDAL.KiemTraSiSo(intSiSoLop)
+    End Function
 End Class

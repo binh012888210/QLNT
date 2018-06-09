@@ -13,9 +13,7 @@ Public Class TreEmBUS
     Public Function buildMSTE(ByRef nextMste As String) As Result
         Return teDAL.buildMSTE(nextMste)
     End Function
-    Public Function insert(te As TreEmDTO) As Result
-        Return teDAL.insert(te)
-    End Function
+
     Public Function isValidName(HoTenTre As String) As Boolean
         Dim check As Integer
         Dim i As Integer
@@ -80,22 +78,34 @@ Public Class TreEmBUS
         End While
         Return True
     End Function
-    Public Function selectAll(ByRef listTreEm As List(Of TreEmDTO)) As Result
-        '1. verify data here!!
+    Public Function insert1(te As TreEmDTO) As Result
+        Return teDAL.insert1(te)
+    End Function
 
-        '2. insert to DB
-        Return teDAL.selectALL(listTreEm)
+    Public Function insert2(te As TreEmDTO) As Result
+        Return teDAL.insert2(te)
     End Function
-    Public Function updatetByID(iMaTreEm As String, TreEmInfo As TreEmDTO) As Result
-        Return teDAL.updatetByID(iMaTreEm, TreEmInfo)
-    End Function
-    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
-        Return teDAL.selectByID(iMaTreEm, TreEmInfo)
-    End Function
+
     Public Function deleteByID(iMaTreEm As String) As Result
         Return teDAL.deleteByID(iMaTreEm)
     End Function
+
+    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
+        Return teDAL.selectByID(iMaTreEm, TreEmInfo)
+    End Function
+
     Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
         Return teDAL.searchByText(searchText, listTreEm)
+    End Function
+
+    Public Function selectALLbyMaLop(bMaLopNull As Boolean, srtMaLop As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.selectALLbyMaLop(bMaLopNull, srtMaLop, listTreEm)
+    End Function
+    Public Function selectAll(ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.selectALL(listTreEm)
+    End Function
+
+    Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
+        Return teDAL.updatetByID(TreEmInfo)
     End Function
 End Class

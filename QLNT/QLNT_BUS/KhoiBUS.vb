@@ -10,4 +10,7 @@ Public Class KhoiBUS
     Public Sub New(connectionString As String)
         khDAL = New KhoiDAL(connectionString)
     End Sub
+    Public Function selectALL(ByRef listKhoi As List(Of KhoiDTO)) As Result
+        Return khDAL.selectALL(listKhoi)
+    End Function
 End Class

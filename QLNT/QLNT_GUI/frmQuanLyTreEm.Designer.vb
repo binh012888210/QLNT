@@ -58,7 +58,7 @@ Partial Class frmQuanLyTreEm
         Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(292, 101)
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(292, 92)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(355, 318)
@@ -332,7 +332,7 @@ Partial Class frmQuanLyTreEm
         Me.Controls.Add(Me.dgvDanhSachTreEm)
         Me.Name = "frmQuanLyTreEm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmQuanLyTreEm"
+        Me.Text = "Quản lý trẻ em"
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

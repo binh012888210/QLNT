@@ -72,4 +72,33 @@ Public Class ThamSoDAL
             End Using
         End Using
     End Function
+    Public Function KiemTraSiSo(intSiSoLop As Integer) As Boolean
+        Dim query As String = String.Empty
+        query &= "SELECT [SoHocSinhToiDa] "
+        query &= "FROM [tblThamSo] "
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                conn.Open()
+                Dim reader As SqlDataReader
+                reader = comm.ExecuteReader()
+                Dim siSoToiDa As Integer
+                siSoToiDa = Nothing
+                If reader.HasRows = True Then
+                    While reader.Read()
+                        siSoToiDa = reader("SoHocSinhToiDa")
+                    End While
+                End If
+                If (intSiSoLop < siSoToiDa + 1) Then
+                    Return True
+                Else
+                    Return False
+                End If
+            End Using
+        End Using
+    End Function
 End Class
