@@ -1,14 +1,15 @@
 ﻿Public Class TreEmDTO
     Private strMaTreEm As String
-    Private strHoTenTre As String
+    Private strHoTenTreEm As String
     Private dateNgaySinh As DateTime
     Private strHoTenPhuHuynh As String
     Private strTenONha As String
     Private strDiaChi As String
     Private strDienThoai As String
-    Private strMaLop As String
-    Private strGhiChu As String
     Private dateNgayNhapHoc As String
+    Private strGhiChu As String
+    Private intTuoi As Integer
+    Private strMaLop As String
 
     Public Property StrMaTreEm1 As String
         Get
@@ -19,12 +20,12 @@
         End Set
     End Property
 
-    Public Property StrHoTenTre1 As String
+    Public Property StrHoTenTreEm1 As String
         Get
-            Return strHoTenTre
+            Return strHoTenTreEm
         End Get
         Set(value As String)
-            strHoTenTre = value
+            strHoTenTreEm = value
         End Set
     End Property
 
@@ -100,11 +101,20 @@
         End Set
     End Property
 
+    Public Property IntTuoi1 As Integer
+        Get
+            Return intTuoi
+        End Get
+        Set(value As Integer)
+            intTuoi = value
+        End Set
+    End Property
+
     Public Sub New()
     End Sub
-    Public Sub New(strMaTreEm As String, strHoTenTre As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, strMaLop As String, strGhiChu As String, dateNgayNhapHoc As String)
+    Public Sub New(strMaTreEm As String, strHoTenTreEm As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, dateNgayNhapHoc As String, intTuoi As Integer, strGhiChu As String, strMaLop As String)
         Me.strMaTreEm = strMaTreEm
-        Me.strHoTenTre = strHoTenTre
+        Me.strHoTenTreEm = strHoTenTreEm
         Me.dateNgaySinh = dateNgaySinh
         Me.strHoTenPhuHuynh = strHoTenPhuHuynh
         Me.strTenONha = strTenONha
@@ -112,7 +122,17 @@
         Me.strDienThoai = strDienThoai
         Me.strMaLop = strMaLop
         Me.strGhiChu = strGhiChu
+        Me.intTuoi = intTuoi
         Me.dateNgayNhapHoc = dateNgayNhapHoc
     End Sub
-
+    Public Sub New(strMaTreEm As String, strHoTenTreEm As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, intTuoi As Integer)
+        Me.strMaTreEm = strMaTreEm
+        Me.strHoTenTreEm = strHoTenTreEm
+        Me.dateNgaySinh = dateNgaySinh
+        Me.strHoTenPhuHuynh = strHoTenPhuHuynh
+        Me.strTenONha = strTenONha
+        Me.strDiaChi = strDiaChi
+        Me.strDienThoai = strDienThoai
+        Me.intTuoi = intTuoi
+    End Sub
 End Class

@@ -80,4 +80,22 @@ Public Class TreEmBUS
         End While
         Return True
     End Function
+    Public Function selectAll(ByRef listTreEm As List(Of TreEmDTO)) As Result
+        '1. verify data here!!
+
+        '2. insert to DB
+        Return teDAL.selectALL(listTreEm)
+    End Function
+    Public Function updatetByID(iMaTreEm As String, TreEmInfo As TreEmDTO) As Result
+        Return teDAL.updatetByID(iMaTreEm, TreEmInfo)
+    End Function
+    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
+        Return teDAL.selectByID(iMaTreEm, TreEmInfo)
+    End Function
+    Public Function deleteByID(iMaTreEm As String) As Result
+        Return teDAL.deleteByID(iMaTreEm)
+    End Function
+    Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.searchByText(searchText, listTreEm)
+    End Function
 End Class

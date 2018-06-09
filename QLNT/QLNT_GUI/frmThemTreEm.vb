@@ -25,23 +25,29 @@ Public Class frmThemTreEm
         treem = New TreEmDTO()
         teBUS = New TreEmBUS()
         tsBUS = New ThamSoBUS()
+        If (txtHoTenPhuHuynh.Text = Nothing Or txtTenONha.Text = Nothing Or txtDiaChi.Text = Nothing Or txtDienThoai.Text = Nothing) Then
+            MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         '1. Mapping data from GUI control
         treem.StrMaTreEm1 = txtMaSoTreEm.Text
-        treem.StrHoTenTre1 = txtHoTen.Text
+        treem.StrHoTenTreEm1 = txtHoTen.Text
         treem.DateNgaySinh1 = dtpNgaySinh.Value
         treem.StrHoTenPhuHuynh1 = txtHoTenPhuHuynh.Text
         treem.StrTenONha1 = txtTenONha.Text
         treem.StrDiaChi1 = txtDiaChi.Text
         treem.StrDienThoai1 = txtDienThoai.Text
+        'tinh tuoi 
+        treem.IntTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
         '2. Business nhap vao text box
         If (peopleCheck = False) Then
-            If (teBUS.isValidName(treem.StrHoTenTre1) = False) Then
+            If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
             End If
         Else
-            If (teBUS.isValidName1(treem.StrHoTenTre1) = False) Then
+            If (teBUS.isValidName1(treem.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
@@ -87,10 +93,13 @@ Public Class frmThemTreEm
     Private Sub btnNhapVaDong_Click(sender As Object, e As EventArgs) Handles btnNhapVaDong.Click
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
-
+        If (txtHoTenPhuHuynh.Text = Nothing Or txtTenONha.Text = Nothing Or txtDiaChi.Text = Nothing Or txtDienThoai.Text = Nothing) Then
+            MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         '1. Mapping data from GUI control
         treem.StrMaTreEm1 = txtMaSoTreEm.Text
-        treem.StrHoTenTre1 = txtHoTen.Text
+        treem.StrHoTenTreEm1 = txtHoTen.Text
         treem.DateNgaySinh1 = dtpNgaySinh.Value
         treem.StrHoTenPhuHuynh1 = txtHoTenPhuHuynh.Text
         treem.StrTenONha1 = txtTenONha.Text
@@ -98,13 +107,13 @@ Public Class frmThemTreEm
         treem.StrDienThoai1 = txtDienThoai.Text
         '2. Business nhap vao text box
         If (peopleCheck = False) Then
-            If (teBUS.isValidName(treem.StrHoTenTre1) = False) Then
+            If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
             End If
         Else
-            If (teBUS.isValidName1(treem.StrHoTenTre1) = False) Then
+            If (teBUS.isValidName1(treem.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()
                 Return
@@ -139,5 +148,9 @@ Public Class frmThemTreEm
         Else
             peopleCheck = False
         End If
+    End Sub
+
+    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click
+        Me.Close()
     End Sub
 End Class

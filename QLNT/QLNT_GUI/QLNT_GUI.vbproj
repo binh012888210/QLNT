@@ -104,12 +104,6 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQuanLyLop.Designer.vb">
-      <DependentUpon>frmQuanLyLop.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmQuanLyLop.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmQuanLyTreEm.Designer.vb">
       <DependentUpon>frmQuanLyTreEm.vb</DependentUpon>
     </Compile>
@@ -128,10 +122,10 @@
     <Compile Include="frmTraCuuTreEm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmXepLop.Designer.vb">
-      <DependentUpon>frmXepLop.vb</DependentUpon>
+    <Compile Include="frmQuanLyLop.Designer.vb">
+      <DependentUpon>frmQuanLyLop.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmXepLop.vb">
+    <Compile Include="frmQuanLyLop.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLapBaoCaoNgay.Designer.vb">
@@ -144,6 +138,12 @@
       <DependentUpon>frmLapBaoCaoNgayTheoLop.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLapBaoCaoNgayTheoLop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXepLop.Designer.vb">
+      <DependentUpon>frmXepLop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmXepLop.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -178,9 +178,6 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmQuanLyLop.resx">
-      <DependentUpon>frmQuanLyLop.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyTreEm.resx">
       <DependentUpon>frmQuanLyTreEm.vb</DependentUpon>
     </EmbeddedResource>
@@ -190,14 +187,17 @@
     <EmbeddedResource Include="frmTraCuuTreEm.resx">
       <DependentUpon>frmTraCuuTreEm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmXepLop.resx">
-      <DependentUpon>frmXepLop.vb</DependentUpon>
+    <EmbeddedResource Include="frmQuanLyLop.resx">
+      <DependentUpon>frmQuanLyLop.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLapBaoCaoNgay.resx">
       <DependentUpon>frmLapBaoCaoNgay.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLapBaoCaoNgayTheoLop.resx">
       <DependentUpon>frmLapBaoCaoNgayTheoLop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXepLop.resx">
+      <DependentUpon>frmXepLop.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

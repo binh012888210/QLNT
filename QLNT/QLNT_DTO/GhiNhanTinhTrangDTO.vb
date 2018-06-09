@@ -1,4 +1,5 @@
 ﻿Public Class GhiNhanTinhTrangDTO
+    Private strMaPhieuGhiNhan As String
     Private strMaTreEm As String
     Private strMaTinhTrang As String
     Private dateNgayGhiNhan As String
@@ -40,9 +41,19 @@
         End Set
     End Property
 
+    Public Property StrMaPhieuGhiNhan1 As String
+        Get
+            Return strMaPhieuGhiNhan
+        End Get
+        Set(value As String)
+            strMaPhieuGhiNhan = value
+        End Set
+    End Property
+
     Public Sub New()
     End Sub
-    Public Sub New(strMaTreEm As String, strMaTinhTrang As String, dateNgayGhiNhan As String, strMaKhoi As String)
+    Public Sub New(strMaPhieuGhiNhan As String, strMaTreEm As String, strMaTinhTrang As String, dateNgayGhiNhan As String, strMaKhoi As String)
+        Me.strMaPhieuGhiNhan = strMaPhieuGhiNhan
         Me.strMaTreEm = strMaTreEm
         Me.strMaTinhTrang = strMaTinhTrang
         Me.dateNgayGhiNhan = dateNgayGhiNhan

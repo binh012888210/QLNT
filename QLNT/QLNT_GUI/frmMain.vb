@@ -9,12 +9,6 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub XếpLớpToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles XếpLớpToolStripMenuItem2.Click
-        Dim frm As frmXepLop = New frmXepLop()
-        frm.MdiParent = Me
-        frm.Show()
-    End Sub
-
     Private Sub QuanLyTreEmToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuanLyTreEmToolStripMenuItem.Click
         Dim frm As frmQuanLyTreEm = New frmQuanLyTreEm()
         frm.MdiParent = Me

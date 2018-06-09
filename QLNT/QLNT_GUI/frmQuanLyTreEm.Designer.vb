@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmQuanLyTreEm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,9 @@ Partial Class frmQuanLyTreEm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvDanhSachTreEm = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnTiepNhan = New System.Windows.Forms.Button()
         Me.btnCapNhat = New System.Windows.Forms.Button()
@@ -48,17 +48,21 @@ Partial Class frmQuanLyTreEm
         Me.txtDienThoai = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtMaLop = New System.Windows.Forms.TextBox()
-        Me.btnSearchName = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvDanhSachTreEm
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(292, 101)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(355, 318)
-        Me.DataGridView1.TabIndex = 0
+        Me.dgvDanhSachTreEm.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(292, 101)
+        Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
+        Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(355, 318)
+        Me.dgvDanhSachTreEm.TabIndex = 0
         '
         'Label1
         '
@@ -111,17 +115,17 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(357, 9)
+        Me.Label3.Location = New System.Drawing.Point(296, 9)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(219, 18)
+        Me.Label3.Size = New System.Drawing.Size(351, 18)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "----- Tra cứu trẻ em theo tên -----"
+        Me.Label3.Text = "----- Tra cứu trẻ em theo tên hoặc tên phụ huynh -----"
         '
         'txtSearchName
         '
         Me.txtSearchName.Location = New System.Drawing.Point(292, 40)
         Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.Size = New System.Drawing.Size(294, 20)
+        Me.txtSearchName.Size = New System.Drawing.Size(355, 20)
         Me.txtSearchName.TabIndex = 7
         '
         'Label4
@@ -295,21 +299,11 @@ Partial Class frmQuanLyTreEm
         Me.txtMaLop.Size = New System.Drawing.Size(151, 20)
         Me.txtMaLop.TabIndex = 32
         '
-        'btnSearchName
-        '
-        Me.btnSearchName.Location = New System.Drawing.Point(592, 38)
-        Me.btnSearchName.Name = "btnSearchName"
-        Me.btnSearchName.Size = New System.Drawing.Size(55, 23)
-        Me.btnSearchName.TabIndex = 33
-        Me.btnSearchName.Text = "Tìm"
-        Me.btnSearchName.UseVisualStyleBackColor = True
-        '
         'frmQuanLyTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(669, 439)
-        Me.Controls.Add(Me.btnSearchName)
         Me.Controls.Add(Me.txtMaLop)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtDienThoai)
@@ -335,16 +329,17 @@ Partial Class frmQuanLyTreEm
         Me.Controls.Add(Me.btnCapNhat)
         Me.Controls.Add(Me.btnTiepNhan)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvDanhSachTreEm)
         Me.Name = "frmQuanLyTreEm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmQuanLyTreEm"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvDanhSachTreEm As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents btnTiepNhan As Button
     Friend WithEvents btnCapNhat As Button
@@ -370,5 +365,4 @@ Partial Class frmQuanLyTreEm
     Friend WithEvents txtDienThoai As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents txtMaLop As TextBox
-    Friend WithEvents btnSearchName As Button
 End Class
