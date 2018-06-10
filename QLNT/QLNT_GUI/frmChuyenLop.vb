@@ -117,6 +117,9 @@ Public Class frmChuyenLop
         Next n
         Return listLopTo
     End Function
+    Private Sub cbSangLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSangLop.SelectedIndexChanged
+        loadListTreEmSangLop()
+    End Sub
     Private Sub cbTuLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbTuLop.SelectedIndexChanged
         Try
             Dim lopFROM = CType(cbTuLop.SelectedItem, LopDTO)
@@ -232,36 +235,48 @@ Public Class frmChuyenLop
     End Sub
 
     Private Sub btnFROMTo_Click(sender As Object, e As EventArgs) Handles btnFROMTo.Click
-        Dim currentRowIndex As Integer = dgvListHS_FROM.CurrentCellAddress.Y
-        If (-1 < currentRowIndex And currentRowIndex < dgvListHS_FROM.RowCount) Then
-            Dim te = CType(dgvListHS_FROM.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
-            Dim TreEmDuocChuyen = New TreEmDTO
-            Dim result As Result
-            result = teBUS.chuyenLopTreEm(te, cbSangLop.SelectedValue)
-            If (result.FlagResult = False) Then
-                MessageBox.Show("Chuyen lớp khong thành cong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                System.Console.WriteLine(result.SystemMessage)
-                Return
+        If (tsBUS.KiemTraSiSo(dgvListHS_To.RowCount)) Then
+            Dim currentRowIndex As Integer = dgvListHS_FROM.CurrentCellAddress.Y
+            If (-1 < currentRowIndex And currentRowIndex < dgvListHS_FROM.RowCount) Then
+                Dim te = CType(dgvListHS_FROM.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+                Dim TreEmDuocChuyen = New TreEmDTO
+                Dim result As Result
+                result = teBUS.chuyenLopTreEM(te, cbSangLop.SelectedValue)
+                If (result.FlagResult = False) Then
+                    MessageBox.Show("Chuyen lớp khong thành cong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    System.Console.WriteLine(result.SystemMessage)
+                    Return
+                End If
             End If
+            loadListTreEmTuLop()
+            loadListTreEmSangLop()
+        Else
+            MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
         End If
-        loadListTreEmTuLop()
-        loadListTreEmSangLop()
     End Sub
 
     Private Sub btnToFROM_Click(sender As Object, e As EventArgs) Handles btnToFROM.Click
-        Dim currentRowIndex As Integer = dgvListHS_To.CurrentCellAddress.Y
-        If (-1 < currentRowIndex And currentRowIndex < dgvListHS_To.RowCount) Then
-            Dim te = CType(dgvListHS_To.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
-            Dim TreEmDuocChuyen = New TreEmDTO
-            Dim result As Result
-            result = teBUS.chuyenLopTreEM(te, cbTuLop.SelectedValue)
-            If (result.FlagResult = False) Then
-                MessageBox.Show("Chuyen lớp khong thành cong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                System.Console.WriteLine(result.SystemMessage)
-                Return
+        If (tsBUS.KiemTraSiSo(dgvListHS_FROM.RowCount)) Then
+            Dim currentRowIndex As Integer = dgvListHS_To.CurrentCellAddress.Y
+            If (-1 < currentRowIndex And currentRowIndex < dgvListHS_To.RowCount) Then
+                Dim te = CType(dgvListHS_To.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+                Dim TreEmDuocChuyen = New TreEmDTO
+                Dim result As Result
+                result = teBUS.chuyenLopTreEM(te, cbTuLop.SelectedValue)
+                If (result.FlagResult = False) Then
+                    MessageBox.Show("Chuyen lớp khong thành cong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    System.Console.WriteLine(result.SystemMessage)
+                    Return
+                End If
             End If
+            loadListTreEmTuLop()
+            loadListTreEmSangLop()
+        Else
+            MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
         End If
-        loadListTreEmTuLop()
-        loadListTreEmSangLop()
     End Sub
+
+
 End Class

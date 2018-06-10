@@ -111,4 +111,7 @@ Public Class TreEmBUS
     Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
         Return teDAL.chuyenLopTreEM(te, strMalop)
     End Function
+    Public Function searchForm(seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
+        Return teDAL.searchForm(seearchInfo, searchMaKhoi, table)
+    End Function
 End Class

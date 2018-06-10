@@ -3,9 +3,11 @@ Imports QLNT_DTO
 Imports Utility
 Public Class frmCapNhatTreEm
     Private teBUS As TreEmBUS
+    Private tsBUS As ThamSoBUS
     Private peopleCheck As Boolean
     Private Sub frmCapNhatTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         teBUS = New TreEmBUS()
+        tsBUS = New ThamSoBUS()
         loadTreEm()
     End Sub
     Private Sub loadTreEm()
@@ -36,8 +38,7 @@ Public Class frmCapNhatTreEm
         TreEmInfo.StrTenONha1 = txtTenONha.Text
         TreEmInfo.StrDiaChi1 = txtDiaChi.Text
         TreEmInfo.StrDienThoai1 = txtDienThoai.Text
-        TreEmInfo.IntTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
-        result = teBUS.updatetByID(TreEmInfo)
+        TreEmInfo.StrTuoi1 = (Date.Now.Year - dtpNgaySinh.Value.Year).ToString
         If (peopleCheck = False) Then
             If (teBUS.isValidName(TreEmInfo.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
@@ -51,6 +52,12 @@ Public Class frmCapNhatTreEm
                 Return
             End If
         End If
+        If (tsBUS.ageCheck(TreEmInfo.DateNgaySinh1) = False) Then
+            MessageBox.Show("Học sinh chưa đủ tuổi đi học")
+            txtHoTen.Focus()
+            Return
+        End If
+        result = teBUS.updatetByID(TreEmInfo)
         If (result.FlagResult = False) Then
             MessageBox.Show("Cập nhật trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             System.Console.WriteLine(result.SystemMessage)

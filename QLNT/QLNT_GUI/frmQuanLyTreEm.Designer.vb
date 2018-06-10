@@ -46,8 +46,6 @@ Partial Class frmQuanLyTreEm
         Me.txtTenONha = New System.Windows.Forms.TextBox()
         Me.txtDiaChi = New System.Windows.Forms.TextBox()
         Me.txtDienThoai = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.txtMaLop = New System.Windows.Forms.TextBox()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -60,15 +58,16 @@ Partial Class frmQuanLyTreEm
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(292, 92)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
+        Me.dgvDanhSachTreEm.RowHeadersVisible = False
         Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(355, 318)
+        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(355, 303)
         Me.dgvDanhSachTreEm.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(42, 321)
+        Me.Label1.Location = New System.Drawing.Point(43, 291)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 18)
         Me.Label1.TabIndex = 1
@@ -76,7 +75,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnTiepNhan
         '
-        Me.btnTiepNhan.Location = New System.Drawing.Point(20, 353)
+        Me.btnTiepNhan.Location = New System.Drawing.Point(21, 323)
         Me.btnTiepNhan.Name = "btnTiepNhan"
         Me.btnTiepNhan.Size = New System.Drawing.Size(104, 23)
         Me.btnTiepNhan.TabIndex = 2
@@ -85,7 +84,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnCapNhat
         '
-        Me.btnCapNhat.Location = New System.Drawing.Point(146, 353)
+        Me.btnCapNhat.Location = New System.Drawing.Point(147, 323)
         Me.btnCapNhat.Name = "btnCapNhat"
         Me.btnCapNhat.Size = New System.Drawing.Size(124, 23)
         Me.btnCapNhat.TabIndex = 3
@@ -94,7 +93,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnXoa
         '
-        Me.btnXoa.Location = New System.Drawing.Point(20, 396)
+        Me.btnXoa.Location = New System.Drawing.Point(21, 366)
         Me.btnXoa.Name = "btnXoa"
         Me.btnXoa.Size = New System.Drawing.Size(104, 23)
         Me.btnXoa.TabIndex = 4
@@ -140,7 +139,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(146, 396)
+        Me.btnDong.Location = New System.Drawing.Point(147, 366)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(124, 23)
         Me.btnDong.TabIndex = 15
@@ -280,32 +279,11 @@ Partial Class frmQuanLyTreEm
         Me.txtDienThoai.Size = New System.Drawing.Size(151, 20)
         Me.txtDienThoai.TabIndex = 30
         '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(18, 292)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(43, 13)
-        Me.Label12.TabIndex = 31
-        Me.Label12.Text = "Mã Lớp"
-        '
-        'txtMaLop
-        '
-        Me.txtMaLop.Location = New System.Drawing.Point(119, 289)
-        Me.txtMaLop.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtMaLop.Name = "txtMaLop"
-        Me.txtMaLop.ReadOnly = True
-        Me.txtMaLop.Size = New System.Drawing.Size(151, 20)
-        Me.txtMaLop.TabIndex = 32
-        '
         'frmQuanLyTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(669, 439)
-        Me.Controls.Add(Me.txtMaLop)
-        Me.Controls.Add(Me.Label12)
+        Me.ClientSize = New System.Drawing.Size(669, 418)
         Me.Controls.Add(Me.txtDienThoai)
         Me.Controls.Add(Me.txtDiaChi)
         Me.Controls.Add(Me.txtTenONha)
@@ -363,6 +341,4 @@ Partial Class frmQuanLyTreEm
     Friend WithEvents txtTenONha As TextBox
     Friend WithEvents txtDiaChi As TextBox
     Friend WithEvents txtDienThoai As TextBox
-    Friend WithEvents Label12 As Label
-    Friend WithEvents txtMaLop As TextBox
 End Class

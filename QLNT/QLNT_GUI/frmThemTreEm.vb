@@ -7,6 +7,7 @@ Public Class frmThemTreEm
     Private peopleCheck As Boolean
     Private Sub frmThemTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         teBUS = New TreEmBUS()
+        tsBUS = New ThamSoBUS()
         txtHoTen.Focus()
         Dim result As Result
         Dim nextMste = "1"
@@ -23,8 +24,6 @@ Public Class frmThemTreEm
     Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
-        teBUS = New TreEmBUS()
-        tsBUS = New ThamSoBUS()
         If (txtHoTenPhuHuynh.Text = Nothing Or txtTenONha.Text = Nothing Or txtDiaChi.Text = Nothing Or txtDienThoai.Text = Nothing) Then
             MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -38,7 +37,7 @@ Public Class frmThemTreEm
         treem.StrDiaChi1 = txtDiaChi.Text
         treem.StrDienThoai1 = txtDienThoai.Text
         'tinh tuoi 
-        treem.IntTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
+        treem.StrTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
         '2. Business nhap vao text box
         If (peopleCheck = False) Then
             If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
@@ -53,13 +52,8 @@ Public Class frmThemTreEm
                 Return
             End If
         End If
-        If (tsBUS.ageMin(treem.DateNgaySinh1) = False) Then
+        If (tsBUS.ageCheck(treem.DateNgaySinh1) = False) Then
             MessageBox.Show("Học sinh chưa đủ tuổi đi học")
-            txtHoTen.Focus()
-            Return
-        End If
-        If (tsBUS.ageMax(treem.DateNgaySinh1) = False) Then
-            MessageBox.Show("Học sinh quá tuổi đi học")
             txtHoTen.Focus()
             Return
         End If
@@ -93,7 +87,6 @@ Public Class frmThemTreEm
     Private Sub btnNhapVaDong_Click(sender As Object, e As EventArgs) Handles btnNhapVaDong.Click
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
-        tsBUS = New ThamSoBUS()
         If (txtHoTenPhuHuynh.Text = Nothing Or txtTenONha.Text = Nothing Or txtDiaChi.Text = Nothing Or txtDienThoai.Text = Nothing) Then
             MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -106,6 +99,8 @@ Public Class frmThemTreEm
         treem.StrTenONha1 = txtTenONha.Text
         treem.StrDiaChi1 = txtDiaChi.Text
         treem.StrDienThoai1 = txtDienThoai.Text
+        'tinh tuoi 
+        treem.StrTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
         '2. Business nhap vao text box
         If (peopleCheck = False) Then
             If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
@@ -120,19 +115,15 @@ Public Class frmThemTreEm
                 Return
             End If
         End If
-        If (tsBUS.ageMin(treem.DateNgaySinh1) = False) Then
+        If (tsBUS.ageCheck(treem.DateNgaySinh1) = False) Then
             MessageBox.Show("Học sinh chưa đủ tuổi đi học")
-            txtHoTen.Focus()
-            Return
-        End If
-        If (tsBUS.ageMax(treem.DateNgaySinh1) = False) Then
-            MessageBox.Show("Học sinh quá tuổi đi học")
             txtHoTen.Focus()
             Return
         End If
         '3. Insert to DB
         Dim result As Result
         result = teBUS.insert1(treem)
+
         If (result.FlagResult = True) Then
             MessageBox.Show("Thêm trẻ em thành công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Close()

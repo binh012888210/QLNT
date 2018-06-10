@@ -95,7 +95,7 @@ Public Class TreEmDAL
                     .Parameters.AddWithValue("@TenONha", te.StrTenONha1)
                     .Parameters.AddWithValue("@DiaChi", te.StrDiaChi1)
                     .Parameters.AddWithValue("@DienThoai", te.StrDienThoai1)
-                    .Parameters.AddWithValue("@Tuoi", te.IntTuoi1)
+                    .Parameters.AddWithValue("@Tuoi", te.StrTuoi1)
                 End With
                 Try
                     conn.Open()
@@ -109,137 +109,38 @@ Public Class TreEmDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
+    Public Function insert2(te As TreEmDTO) As Result
+
+        Dim query As String = String.Empty
+        query &= "UPDATE [tblTreEm] SET [MaLop] = @malop , [GhiChu]= @ghichu , [NgayNhapHoc]=@ngaynhaphoc WHERE [MaTreEm] = @matreem"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", te.StrMaTreEm1)
+                    .Parameters.AddWithValue("@malop", te.StrMaLop1)
+                    .Parameters.AddWithValue("@ngaynhaphoc", te.DateNgayNhapHoc1)
+                    .Parameters.AddWithValue("@ghichu", te.StrGhiChu1)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Thêm thêm trẻ em vào lớp không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
     Public Function selectALL(ByRef listTreEm As List(Of TreEmDTO)) As Result
 
         Dim query As String = String.Empty
         query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi]"
         query &= "FROM [tblTreEm]"
-
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                End With
-                Try
-                    conn.Open()
-                    Dim reader As SqlDataReader
-                    reader = comm.ExecuteReader()
-                    listTreEm.Clear()
-                    If reader.HasRows = True Then
-                        While reader.Read()
-                            listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi")))
-                        End While
-                    End If
-
-                Catch ex As Exception
-                    conn.Close()
-                    System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Lấy tất cả trẻ em không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-        Return New Result(True) ' thanh cong
-    End Function
-    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
-
-        Dim query As String = String.Empty
-        query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi]"
-        query &= "FROM [tblTreEm]"
-
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                End With
-                Try
-                    conn.Open()
-                    Dim reader As SqlDataReader
-                    reader = comm.ExecuteReader()
-                    If reader.HasRows = True Then
-                        While reader.Read()
-                            If (reader("MaTreEm") = iMaTreEm) Then
-                                TreEmInfo = (New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi")))
-                            End If
-                        End While
-                    End If
-
-                Catch ex As Exception
-                    conn.Close()
-                    System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Lấy thông tin trẻ em không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-        Return New Result(True) ' thanh cong
-    End Function
-    Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
-
-        Dim query As String = String.Empty
-        query &= "UPDATE [tblTreEm] "
-        query &= "SET [HoTenTreEm] = @hotentreem, [NgaySinh] = @ngaysinh, [HoTenPhuHuynh] = @hotenphuhuynh, [TenONha] = @tenonha, [DiaChi] = @diachi, [DienThoai] = @dienthoai, [Tuoi] = @tuoi "
-        query &= "Where [MaTreEm] = @masotreem"
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@masotreem", TreEmInfo.StrMaTreEm1)
-                    .Parameters.AddWithValue("@hotentreem", TreEmInfo.StrHoTenTreEm1)
-                    .Parameters.AddWithValue("@ngaysinh", TreEmInfo.DateNgaySinh1)
-                    .Parameters.AddWithValue("@hotenphuhuynh", TreEmInfo.StrHoTenPhuHuynh1)
-                    .Parameters.AddWithValue("@tenonha", TreEmInfo.StrTenONha1)
-                    .Parameters.AddWithValue("@diachi", TreEmInfo.StrDiaChi1)
-                    .Parameters.AddWithValue("@dienthoai", TreEmInfo.StrDienThoai1)
-                    .Parameters.AddWithValue("@tuoi", TreEmInfo.IntTuoi1)
-
-                End With
-                Try
-                    conn.Open()
-                    comm.ExecuteNonQuery()
-                Catch ex As Exception
-                    Console.WriteLine(ex.StackTrace)
-                    conn.Close()
-                    ' them that bai!!!
-                    Return New Result(False, "Cập nhật tre em không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-
-        Return New Result(True) ' thanh cong
-    End Function
-    Public Function deleteByID(iMaTreEm As String) As Result
-        Dim query As String = String.Empty
-        query &= "DELETE From [tblTreEm] Where [MaTreEm] = @masotreem"
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@masotreem", iMaTreEm)
-                End With
-                Try
-                    conn.Open()
-                    comm.ExecuteNonQuery()
-                Catch ex As Exception
-                    Console.WriteLine(ex.StackTrace)
-                    conn.Close()
-                    ' them that bai!!!
-                    Return New Result(False, "Xóa trẻ em không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-        Return New Result(True) ' thanh cong
-    End Function
-    Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
-        Dim searchText1 As String = searchText
-        Dim query As String = String.Empty
-        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(HoTenTreEm,HoTenPhuHuynh) like '%" + searchText1 + "%'"
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
@@ -314,33 +215,134 @@ Public Class TreEmDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
-    Public Function insert2(te As TreEmDTO) As Result
+    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
 
         Dim query As String = String.Empty
-        query &= "UPDATE [tblTreEm] SET [MaLop] = @malop , [GhiChu]= @ghichu , [NgayNhapHoc]=@ngaynhaphoc WHERE [MaTreEm] = @matreem"
+        query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi] , [MaLop]"
+        query &= "FROM [tblTreEm]"
+
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
                     .Connection = conn
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@matreem", te.StrMaTreEm1)
-                    .Parameters.AddWithValue("@malop", te.StrMaLop1)
-                    .Parameters.AddWithValue("@ngaynhaphoc", te.DateNgayNhapHoc1)
-                    .Parameters.AddWithValue("@ghichu", te.StrGhiChu1)
                 End With
                 Try
                     conn.Open()
-                    comm.ExecuteNonQuery()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            If (reader("MaTreEm") = iMaTreEm) Then
+                                TreEmInfo = (New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi"), reader("MaLop")))
+                            End If
+                        End While
+                    End If
+
                 Catch ex As Exception
                     conn.Close()
                     System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Thêm thêm trẻ em vào lớp không thành công", ex.StackTrace)
+                    Return New Result(False, "Lấy thông tin trẻ em không thành công", ex.StackTrace)
                 End Try
             End Using
         End Using
         Return New Result(True) ' thanh cong
     End Function
+    Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
+
+        Dim query As String = String.Empty
+        query &= "UPDATE [tblTreEm] "
+        query &= "SET [HoTenTreEm] = @hotentreem, [NgaySinh] = @ngaysinh, [HoTenPhuHuynh] = @hotenphuhuynh, [TenONha] = @tenonha, [DiaChi] = @diachi, [DienThoai] = @dienthoai, [Tuoi] = @tuoi "
+        query &= "Where [MaTreEm] = @masotreem"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@masotreem", TreEmInfo.StrMaTreEm1)
+                    .Parameters.AddWithValue("@hotentreem", TreEmInfo.StrHoTenTreEm1)
+                    .Parameters.AddWithValue("@ngaysinh", TreEmInfo.DateNgaySinh1)
+                    .Parameters.AddWithValue("@hotenphuhuynh", TreEmInfo.StrHoTenPhuHuynh1)
+                    .Parameters.AddWithValue("@tenonha", TreEmInfo.StrTenONha1)
+                    .Parameters.AddWithValue("@diachi", TreEmInfo.StrDiaChi1)
+                    .Parameters.AddWithValue("@dienthoai", TreEmInfo.StrDienThoai1)
+                    .Parameters.AddWithValue("@tuoi", TreEmInfo.StrTuoi1)
+
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    Console.WriteLine(ex.StackTrace)
+                    conn.Close()
+                    ' them that bai!!!
+                    Return New Result(False, "Cập nhật tre em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+
+        Return New Result(True) ' thanh cong
+    End Function
+    Public Function deleteByID(iMaTreEm As String) As Result
+        Dim query As String = String.Empty
+        query &= "DELETE From [tblTreEm] Where [MaTreEm] = @masotreem"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@masotreem", iMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    Console.WriteLine(ex.StackTrace)
+                    conn.Close()
+                    ' them that bai!!!
+                    Return New Result(False, "Xóa trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
+    Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Dim searchText1 As String = searchText
+        Dim query As String = String.Empty
+        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(HoTenTreEm,HoTenPhuHuynh) like '%" + searchText1 + "%'"
+
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    listTreEm.Clear()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi")))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy tất cả trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
+
+
     Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
 
         Dim query As String = String.Empty
@@ -361,6 +363,54 @@ Public Class TreEmDAL
                     conn.Close()
                     System.Console.WriteLine(ex.StackTrace)
                     Return New Result(False, "Chuyển lớp trẻ em vào lớp không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
+    Public Function searchForm(searchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
+
+        Dim query As String = String.Empty
+        query &= "SELECT * "
+        query &= "FROM [tblTreEm],[tblLop],[tblKhoi] "
+        query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] "
+        query &= "And ([MaTreEm] = @matreem Or [tblKhoi].[MaKhoi] =@makhoi OR [HoTenTreEm] = @hotentreem OR [HoTenPhuHuynh]= @hotenphuhuynh OR [TenONha]=@tenonha OR [DiaChi]=@diachi "
+        query &= "OR [DienThoai]=@dienthoai OR [Tuoi]=@tuoi OR [GhiChu]=@ghichu) "
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", searchInfo.StrMaTreEm1)
+                    .Parameters.AddWithValue("@hotentreem", searchInfo.StrHoTenTreEm1)
+                    .Parameters.AddWithValue("@hotenphuhuynh", searchInfo.StrHoTenPhuHuynh1)
+                    .Parameters.AddWithValue("@tenonha", searchInfo.StrTenONha1)
+                    .Parameters.AddWithValue("@diachi", searchInfo.StrDiaChi1)
+                    .Parameters.AddWithValue("@dienthoai", searchInfo.StrDienThoai1)
+                    .Parameters.AddWithValue("@tuoi", searchInfo.StrTuoi1)
+                    .Parameters.AddWithValue("@makhoi", searchMaKhoi)
+                    .Parameters.AddWithValue("@ghichu", searchInfo.StrGhiChu1)
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    table.Columns.Add("Mã trẻ em", Type.GetType("System.String"))
+                    table.Columns.Add("Họ tên trẻ em", Type.GetType("System.String"))
+                    table.Columns.Add("Tuổi", Type.GetType("System.String"))
+                    table.Columns.Add("Mã khối", Type.GetType("System.String"))
+                    table.Columns.Add("Ghi chú", Type.GetType("System.String"))
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            table.Rows.Add(reader("MaTreEm"), reader("HoTenTreEm"), reader("Tuoi"), reader("MaKhoi"), reader("GhiChu"))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy tất cả trẻ em không thành công", ex.StackTrace)
                 End Try
             End Using
         End Using

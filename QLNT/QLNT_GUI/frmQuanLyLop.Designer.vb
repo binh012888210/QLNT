@@ -29,7 +29,7 @@ Partial Class frmQuanLyLop
         Me.dgvTreEmChuaCoLop = New System.Windows.Forms.DataGridView()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnNhap = New System.Windows.Forms.Button()
-        Me.btnXoa = New System.Windows.Forms.Button()
+        Me.btnChuyenLop = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbKhoi = New System.Windows.Forms.ComboBox()
         Me.cbLop = New System.Windows.Forms.ComboBox()
@@ -69,6 +69,7 @@ Partial Class frmQuanLyLop
         Me.dgvTreEmCoLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTreEmCoLop.Location = New System.Drawing.Point(344, 74)
         Me.dgvTreEmCoLop.Name = "dgvTreEmCoLop"
+        Me.dgvTreEmCoLop.RowHeadersVisible = False
         Me.dgvTreEmCoLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvTreEmCoLop.Size = New System.Drawing.Size(285, 338)
         Me.dgvTreEmCoLop.TabIndex = 2
@@ -90,6 +91,7 @@ Partial Class frmQuanLyLop
         Me.dgvTreEmChuaCoLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTreEmChuaCoLop.Location = New System.Drawing.Point(26, 161)
         Me.dgvTreEmChuaCoLop.Name = "dgvTreEmChuaCoLop"
+        Me.dgvTreEmChuaCoLop.RowHeadersVisible = False
         Me.dgvTreEmChuaCoLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvTreEmChuaCoLop.Size = New System.Drawing.Size(285, 251)
         Me.dgvTreEmChuaCoLop.TabIndex = 10
@@ -113,14 +115,14 @@ Partial Class frmQuanLyLop
         Me.btnNhap.Text = "Thêm vào lớp ->"
         Me.btnNhap.UseVisualStyleBackColor = True
         '
-        'btnXoa
+        'btnChuyenLop
         '
-        Me.btnXoa.Location = New System.Drawing.Point(537, 41)
-        Me.btnXoa.Name = "btnXoa"
-        Me.btnXoa.Size = New System.Drawing.Size(92, 23)
-        Me.btnXoa.TabIndex = 13
-        Me.btnXoa.Text = "Chuyển lớp"
-        Me.btnXoa.UseVisualStyleBackColor = True
+        Me.btnChuyenLop.Location = New System.Drawing.Point(537, 41)
+        Me.btnChuyenLop.Name = "btnChuyenLop"
+        Me.btnChuyenLop.Size = New System.Drawing.Size(92, 23)
+        Me.btnChuyenLop.TabIndex = 13
+        Me.btnChuyenLop.Text = "Chuyển lớp"
+        Me.btnChuyenLop.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -225,7 +227,7 @@ Partial Class frmQuanLyLop
         Me.Controls.Add(Me.cbLop)
         Me.Controls.Add(Me.cbKhoi)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.btnXoa)
+        Me.Controls.Add(Me.btnChuyenLop)
         Me.Controls.Add(Me.btnNhap)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.dgvTreEmChuaCoLop)
@@ -251,7 +253,7 @@ Partial Class frmQuanLyLop
     Friend WithEvents dgvTreEmChuaCoLop As DataGridView
     Friend WithEvents Label4 As Label
     Friend WithEvents btnNhap As Button
-    Friend WithEvents btnXoa As Button
+    Friend WithEvents btnChuyenLop As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents cbKhoi As ComboBox
     Friend WithEvents cbLop As ComboBox

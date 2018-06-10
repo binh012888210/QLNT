@@ -6,7 +6,6 @@ Public Class frmQuanLyLop
     Private lpBUS As LopBUS
     Private teBUS As TreEmBUS
     Private tsBUS As ThamSoBUS
-    Dim change As Integer
     Private Sub frmQuanLyLop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         khBUS = New KhoiBUS
         lpBUS = New LopBUS
@@ -60,10 +59,10 @@ Public Class frmQuanLyLop
 
         loadListTreEmChuaCoLop()
         loadListTreEmCoLop()
-
         txtMaLop.Text = cbLop.SelectedValue.ToString
     End Sub
     Private Sub cbLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLop.SelectedIndexChanged
+        txtMaKhoi.Text = cbKhoi.SelectedValue.ToString
         txtMaLop.Text = cbLop.SelectedValue.ToString
         loadListTreEmCoLop()
     End Sub
@@ -107,7 +106,6 @@ Public Class frmQuanLyLop
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvTreEmChuaCoLop.DataSource)
         myCurrencyManager.Refresh()
-        change = 0
     End Sub
     Private Sub loadListTreEmCoLop()
 
@@ -152,8 +150,6 @@ Public Class frmQuanLyLop
         myCurrencyManager.Refresh()
 
         txtSoTreEmCuaLop.Text = dgvTreEmCoLop.RowCount.ToString
-
-        change = 0
     End Sub
 
     Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click
@@ -164,9 +160,11 @@ Public Class frmQuanLyLop
                 Dim te = CType(dgvTreEmChuaCoLop.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
                 frm.txtMaSoTreEm.Text = te.StrMaTreEm1
                 frm.txtHoTen.Text = te.StrHoTenTreEm1
-                frm.txtTuoi.Text = te.IntTuoi1.ToString
+                frm.txtTuoi.Text = te.StrTuoi1
                 frm.txtMaLop.Text = cbLop.SelectedValue
                 frm.ShowDialog()
+                loadListTreEmChuaCoLop()
+                loadListTreEmCoLop()
             Else
                 MessageBox.Show("Không có trẻ em nào không có lớp", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 MessageBox.Show("Thêm trẻ em trước khi xếp lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -176,27 +174,19 @@ Public Class frmQuanLyLop
             MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
-        change = 1
     End Sub
 
     Private Sub btnThemTreEm_Click(sender As Object, e As EventArgs) Handles btnThemTreEm.Click
         Dim frm As frmThemTreEm = New frmThemTreEm()
-        frm.Show()
-        change = 1
+        frm.ShowDialog()
+        loadListTreEmChuaCoLop()
     End Sub
 
-    Private Sub frmQuanLyLop_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
-        If (change = 1) Then
-            loadListTreEmCoLop()
-            loadListTreEmChuaCoLop()
-        End If
-    End Sub
-
-    Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
+    Private Sub btnChuyenLop_Click(sender As Object, e As EventArgs) Handles btnChuyenLop.Click
         Dim frm As frmChuyenLop = New frmChuyenLop()
         frm.txtMaKhoi.Text = txtMaKhoi.Text
         frm.txtTenKhoi.Text = cbKhoi.Text
-        frm.Show()
-        change = 1
+        frm.ShowDialog()
+        loadListTreEmCoLop()
     End Sub
 End Class
