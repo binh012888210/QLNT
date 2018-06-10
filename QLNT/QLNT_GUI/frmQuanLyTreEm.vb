@@ -3,6 +3,7 @@ Imports QLNT_DTO
 Imports Utility
 
 Public Class frmQuanLyTreEm
+    Dim change As Integer
     Private teBUS As TreEmBUS
     Private Sub frmQuanLyTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         teBUS = New TreEmBUS()
@@ -48,6 +49,7 @@ Public Class frmQuanLyTreEm
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachTreEm.DataSource)
         myCurrencyManager.Refresh()
+        change = 0
     End Sub
 
     Private Sub dgvDanhSachTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhSachTreEm.SelectionChanged
@@ -76,6 +78,7 @@ Public Class frmQuanLyTreEm
     Private Sub btnTiepNhan_Click(sender As Object, e As EventArgs) Handles btnTiepNhan.Click
         Dim frm As frmThemTreEm = New frmThemTreEm()
         frm.Show()
+        change = 1
     End Sub
 
     Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
@@ -90,6 +93,7 @@ Public Class frmQuanLyTreEm
             MessageBox.Show("Thêm trẻ em trước khi cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
+        change = 1
     End Sub
 
     Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
@@ -105,6 +109,7 @@ Public Class frmQuanLyTreEm
         Else
             MessageBox.Show("Không còn trẻ em để xoá", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+        change = 1
     End Sub
 
     Private Sub txtSearchName_TextChanged(sender As Object, e As EventArgs) Handles txtSearchName.TextChanged
@@ -149,15 +154,14 @@ Public Class frmQuanLyTreEm
         myCurrencyManager.Refresh()
     End Sub
 
-    Private Sub btnReLoad_Click(sender As Object, e As EventArgs)
-        loadListTreEm()
-    End Sub
 
     Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click
         Close()
     End Sub
 
     Private Sub frmQuanLyTreEm_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
-        loadListTreEm()
+        If (change = 1) Then
+            loadListTreEm()
+        End If
     End Sub
 End Class

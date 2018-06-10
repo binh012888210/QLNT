@@ -22,62 +22,43 @@ Partial Class frmChuyenLop
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnToFROM = New System.Windows.Forms.Button()
-        Me.cbKhoi = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnChuyenHS = New System.Windows.Forms.Button()
         Me.dgvListHS_FROM = New System.Windows.Forms.DataGridView()
         Me.cbTuLop = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.dgvListHS_To = New System.Windows.Forms.DataGridView()
         Me.cbSangLop = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnFROMTo = New System.Windows.Forms.Button()
         Me.btnDong = New System.Windows.Forms.Button()
+        Me.btnToFROM = New System.Windows.Forms.Button()
+        Me.btnFROMTo = New System.Windows.Forms.Button()
+        Me.dgvListHS_To = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtSiSoLopTu = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtSiSoLopSang = New System.Windows.Forms.TextBox()
+        Me.txtMaKhoi = New System.Windows.Forms.TextBox()
+        Me.txtTenKhoi = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cbMaKhoi = New System.Windows.Forms.ComboBox()
         CType(Me.dgvListHS_FROM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvListHS_To, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnToFROM
-        '
-        Me.btnToFROM.Location = New System.Drawing.Point(359, 309)
-        Me.btnToFROM.Name = "btnToFROM"
-        Me.btnToFROM.Size = New System.Drawing.Size(52, 23)
-        Me.btnToFROM.TabIndex = 91
-        Me.btnToFROM.Text = "<"
-        Me.btnToFROM.UseVisualStyleBackColor = True
-        '
-        'cbKhoi
-        '
-        Me.cbKhoi.FormattingEnabled = True
-        Me.cbKhoi.Location = New System.Drawing.Point(336, 29)
-        Me.cbKhoi.Name = "cbKhoi"
-        Me.cbKhoi.Size = New System.Drawing.Size(125, 21)
-        Me.cbKhoi.TabIndex = 77
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(287, 32)
+        Me.Label3.Location = New System.Drawing.Point(33, 23)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(31, 13)
+        Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 82
-        Me.Label3.Text = "Khối:"
-        '
-        'btnChuyenHS
-        '
-        Me.btnChuyenHS.Location = New System.Drawing.Point(336, 458)
-        Me.btnChuyenHS.Name = "btnChuyenHS"
-        Me.btnChuyenHS.Size = New System.Drawing.Size(125, 23)
-        Me.btnChuyenHS.TabIndex = 83
-        Me.btnChuyenHS.Text = "Chuyển Học Sinh"
-        Me.btnChuyenHS.UseVisualStyleBackColor = True
+        Me.Label3.Text = "Mã Khối"
         '
         'dgvListHS_FROM
         '
         Me.dgvListHS_FROM.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgvListHS_FROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvListHS_FROM.Location = New System.Drawing.Point(32, 113)
+        Me.dgvListHS_FROM.Location = New System.Drawing.Point(36, 145)
         Me.dgvListHS_FROM.MultiSelect = False
         Me.dgvListHS_FROM.Name = "dgvListHS_FROM"
         Me.dgvListHS_FROM.RowHeadersVisible = False
@@ -88,25 +69,69 @@ Partial Class frmChuyenLop
         'cbTuLop
         '
         Me.cbTuLop.FormattingEnabled = True
-        Me.cbTuLop.Location = New System.Drawing.Point(90, 77)
+        Me.cbTuLop.Location = New System.Drawing.Point(94, 109)
         Me.cbTuLop.Name = "cbTuLop"
-        Me.cbTuLop.Size = New System.Drawing.Size(153, 21)
+        Me.cbTuLop.Size = New System.Drawing.Size(118, 21)
         Me.cbTuLop.TabIndex = 85
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(29, 80)
+        Me.Label2.Location = New System.Drawing.Point(33, 114)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 86
         Me.Label2.Text = "Từ Lớp:"
         '
+        'cbSangLop
+        '
+        Me.cbSangLop.FormattingEnabled = True
+        Me.cbSangLop.Location = New System.Drawing.Point(505, 109)
+        Me.cbSangLop.Name = "cbSangLop"
+        Me.cbSangLop.Size = New System.Drawing.Size(115, 21)
+        Me.cbSangLop.TabIndex = 88
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(431, 114)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(56, 13)
+        Me.Label4.TabIndex = 89
+        Me.Label4.Text = "Sang Lớp:"
+        '
+        'btnDong
+        '
+        Me.btnDong.Location = New System.Drawing.Point(659, 46)
+        Me.btnDong.Name = "btnDong"
+        Me.btnDong.Size = New System.Drawing.Size(75, 23)
+        Me.btnDong.TabIndex = 92
+        Me.btnDong.Text = "Đóng"
+        Me.btnDong.UseVisualStyleBackColor = True
+        '
+        'btnToFROM
+        '
+        Me.btnToFROM.Location = New System.Drawing.Point(363, 341)
+        Me.btnToFROM.Name = "btnToFROM"
+        Me.btnToFROM.Size = New System.Drawing.Size(52, 23)
+        Me.btnToFROM.TabIndex = 91
+        Me.btnToFROM.Text = "<"
+        Me.btnToFROM.UseVisualStyleBackColor = True
+        '
+        'btnFROMTo
+        '
+        Me.btnFROMTo.Location = New System.Drawing.Point(363, 275)
+        Me.btnFROMTo.Name = "btnFROMTo"
+        Me.btnFROMTo.Size = New System.Drawing.Size(52, 23)
+        Me.btnFROMTo.TabIndex = 90
+        Me.btnFROMTo.Text = ">"
+        Me.btnFROMTo.UseVisualStyleBackColor = True
+        '
         'dgvListHS_To
         '
         Me.dgvListHS_To.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgvListHS_To.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvListHS_To.Location = New System.Drawing.Point(430, 113)
+        Me.dgvListHS_To.Location = New System.Drawing.Point(434, 145)
         Me.dgvListHS_To.MultiSelect = False
         Me.dgvListHS_To.Name = "dgvListHS_To"
         Me.dgvListHS_To.ReadOnly = True
@@ -115,46 +140,99 @@ Partial Class frmChuyenLop
         Me.dgvListHS_To.Size = New System.Drawing.Size(309, 325)
         Me.dgvListHS_To.TabIndex = 87
         '
-        'cbSangLop
+        'Label1
         '
-        Me.cbSangLop.FormattingEnabled = True
-        Me.cbSangLop.Location = New System.Drawing.Point(503, 74)
-        Me.cbSangLop.Name = "cbSangLop"
-        Me.cbSangLop.Size = New System.Drawing.Size(153, 21)
-        Me.cbSangLop.TabIndex = 88
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(242, 112)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(30, 13)
+        Me.Label1.TabIndex = 93
+        Me.Label1.Text = "Sỉ số"
         '
-        'Label4
+        'txtSiSoLopTu
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(427, 77)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(56, 13)
-        Me.Label4.TabIndex = 89
-        Me.Label4.Text = "Sang Lớp:"
+        Me.txtSiSoLopTu.Location = New System.Drawing.Point(278, 109)
+        Me.txtSiSoLopTu.Name = "txtSiSoLopTu"
+        Me.txtSiSoLopTu.ReadOnly = True
+        Me.txtSiSoLopTu.Size = New System.Drawing.Size(30, 20)
+        Me.txtSiSoLopTu.TabIndex = 94
         '
-        'btnFROMTo
+        'Label5
         '
-        Me.btnFROMTo.Location = New System.Drawing.Point(359, 243)
-        Me.btnFROMTo.Name = "btnFROMTo"
-        Me.btnFROMTo.Size = New System.Drawing.Size(52, 23)
-        Me.btnFROMTo.TabIndex = 90
-        Me.btnFROMTo.Text = ">"
-        Me.btnFROMTo.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(656, 114)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(30, 13)
+        Me.Label5.TabIndex = 95
+        Me.Label5.Text = "Sỉ số"
         '
-        'btnDong
+        'txtSiSoLopSang
         '
-        Me.btnDong.Location = New System.Drawing.Point(664, 458)
-        Me.btnDong.Name = "btnDong"
-        Me.btnDong.Size = New System.Drawing.Size(75, 23)
-        Me.btnDong.TabIndex = 92
-        Me.btnDong.Text = "Đóng"
-        Me.btnDong.UseVisualStyleBackColor = True
+        Me.txtSiSoLopSang.Location = New System.Drawing.Point(692, 111)
+        Me.txtSiSoLopSang.Name = "txtSiSoLopSang"
+        Me.txtSiSoLopSang.ReadOnly = True
+        Me.txtSiSoLopSang.Size = New System.Drawing.Size(30, 20)
+        Me.txtSiSoLopSang.TabIndex = 96
+        '
+        'txtMaKhoi
+        '
+        Me.txtMaKhoi.Location = New System.Drawing.Point(104, 20)
+        Me.txtMaKhoi.Name = "txtMaKhoi"
+        Me.txtMaKhoi.ReadOnly = True
+        Me.txtMaKhoi.Size = New System.Drawing.Size(100, 20)
+        Me.txtMaKhoi.TabIndex = 97
+        '
+        'txtTenKhoi
+        '
+        Me.txtTenKhoi.Location = New System.Drawing.Point(104, 55)
+        Me.txtTenKhoi.Name = "txtTenKhoi"
+        Me.txtTenKhoi.ReadOnly = True
+        Me.txtTenKhoi.Size = New System.Drawing.Size(100, 20)
+        Me.txtTenKhoi.TabIndex = 99
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(33, 58)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(49, 13)
+        Me.Label6.TabIndex = 98
+        Me.Label6.Text = "Tên khối"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(284, 78)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(190, 18)
+        Me.Label7.TabIndex = 100
+        Me.Label7.Text = "----- Chuyển lớp trẻ em  -----"
+        '
+        'cbMaKhoi
+        '
+        Me.cbMaKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbMaKhoi.FormattingEnabled = True
+        Me.cbMaKhoi.Location = New System.Drawing.Point(104, 54)
+        Me.cbMaKhoi.Name = "cbMaKhoi"
+        Me.cbMaKhoi.Size = New System.Drawing.Size(100, 21)
+        Me.cbMaKhoi.TabIndex = 101
+        Me.cbMaKhoi.Visible = False
         '
         'frmChuyenLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(777, 498)
+        Me.ClientSize = New System.Drawing.Size(782, 506)
+        Me.Controls.Add(Me.cbMaKhoi)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.txtTenKhoi)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.txtMaKhoi)
+        Me.Controls.Add(Me.txtSiSoLopSang)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtSiSoLopTu)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnDong)
         Me.Controls.Add(Me.btnToFROM)
         Me.Controls.Add(Me.btnFROMTo)
@@ -164,9 +242,7 @@ Partial Class frmChuyenLop
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cbTuLop)
         Me.Controls.Add(Me.dgvListHS_FROM)
-        Me.Controls.Add(Me.btnChuyenHS)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.cbKhoi)
         Me.Name = "frmChuyenLop"
         Me.Text = "ChuyenLop"
         CType(Me.dgvListHS_FROM, System.ComponentModel.ISupportInitialize).EndInit()
@@ -175,17 +251,23 @@ Partial Class frmChuyenLop
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnToFROM As Button
-    Friend WithEvents cbKhoi As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnChuyenHS As Button
     Friend WithEvents dgvListHS_FROM As DataGridView
     Friend WithEvents cbTuLop As ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents dgvListHS_To As DataGridView
     Friend WithEvents cbSangLop As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnFROMTo As Button
     Friend WithEvents btnDong As Button
+    Friend WithEvents btnToFROM As Button
+    Friend WithEvents btnFROMTo As Button
+    Friend WithEvents dgvListHS_To As DataGridView
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtSiSoLopTu As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtSiSoLopSang As TextBox
+    Friend WithEvents txtMaKhoi As TextBox
+    Friend WithEvents txtTenKhoi As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents cbMaKhoi As ComboBox
 End Class

@@ -108,4 +108,7 @@ Public Class TreEmBUS
     Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
         Return teDAL.updatetByID(TreEmInfo)
     End Function
+    Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
+        Return teDAL.chuyenLopTreEM(te, strMalop)
+    End Function
 End Class

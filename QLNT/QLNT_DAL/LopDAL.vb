@@ -12,7 +12,7 @@ Public Class LopDAL
     Public Sub New(ConnectionString As String)
         Me.connectionString = ConnectionString
     End Sub
-    Public Function selectALL_ByMaNamHoc(iMaKhoi As Integer, ByRef listLop As List(Of LopDTO)) As Result
+    Public Function selectALL_ByKhoi(iMaKhoi As Integer, ByRef listLop As List(Of LopDTO)) As Result
 
         Dim query As String = String.Empty
         query &= " SELECT [MaLop], [TenLop], [MaKhoi], [ThuTuLop] "

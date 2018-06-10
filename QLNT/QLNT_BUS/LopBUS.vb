@@ -13,7 +13,7 @@ Public Class LopBUS
     Public Function selectALL(ByRef listLop As List(Of KhoiDTO)) As Result
         Return lpDAL.selectALL(listLop)
     End Function
-    Public Function selectALL_ByMaNamHoc(iMaKhoi As Integer, ByRef listLop As List(Of LopDTO)) As Result
-        Return lpDAL.selectALL_ByMaNamHoc(iMaKhoi, listLop)
+    Public Function selectALL_ByKhoi(iMaKhoi As Integer, ByRef listLop As List(Of LopDTO)) As Result
+        Return lpDAL.selectALL_ByKhoi(iMaKhoi, listLop)
     End Function
 End Class

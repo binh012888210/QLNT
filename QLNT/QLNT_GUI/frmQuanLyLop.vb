@@ -6,7 +6,7 @@ Public Class frmQuanLyLop
     Private lpBUS As LopBUS
     Private teBUS As TreEmBUS
     Private tsBUS As ThamSoBUS
-
+    Dim change As Integer
     Private Sub frmQuanLyLop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         khBUS = New KhoiBUS
         lpBUS = New LopBUS
@@ -30,7 +30,7 @@ Public Class frmQuanLyLop
         If (listKhoi.Count > 0) Then
             cbKhoi.SelectedIndex = 0
         End If
-
+        txtMaKhoi.Text = cbKhoi.SelectedValue.ToString
     End Sub
 
     Private Sub cbKhoi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbKhoi.SelectedIndexChanged
@@ -38,7 +38,7 @@ Public Class frmQuanLyLop
         Try
             Dim khoi = CType(cbKhoi.SelectedItem, KhoiDTO)
             Dim listLop = New List(Of LopDTO)
-            Dim Result2 = lpBUS.selectALL_ByMaNamHoc(khoi.StrMaKhoi1, listLop)
+            Dim Result2 = lpBUS.selectALL_ByKhoi(khoi.StrMaKhoi1, listLop)
             If (Result2.FlagResult = False) Then
                 MessageBox.Show("Lấy danh sách lớp theo khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 System.Console.WriteLine(Result2.SystemMessage)
@@ -57,7 +57,14 @@ Public Class frmQuanLyLop
             System.Console.WriteLine(ex.StackTrace)
 
         End Try
+
         loadListTreEmChuaCoLop()
+        loadListTreEmCoLop()
+
+        txtMaLop.Text = cbLop.SelectedValue.ToString
+    End Sub
+    Private Sub cbLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLop.SelectedIndexChanged
+        txtMaLop.Text = cbLop.SelectedValue.ToString
         loadListTreEmCoLop()
     End Sub
     Private Sub loadListTreEmChuaCoLop()
@@ -100,9 +107,10 @@ Public Class frmQuanLyLop
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvTreEmChuaCoLop.DataSource)
         myCurrencyManager.Refresh()
-
+        change = 0
     End Sub
     Private Sub loadListTreEmCoLop()
+
         Dim listTreEm = New List(Of TreEmDTO)
         Dim result3 As Result
         result3 = teBUS.selectALLbyMaLop(False, cbLop.SelectedValue.ToString, listTreEm)
@@ -144,6 +152,8 @@ Public Class frmQuanLyLop
         myCurrencyManager.Refresh()
 
         txtSoTreEmCuaLop.Text = dgvTreEmCoLop.RowCount.ToString
+
+        change = 0
     End Sub
 
     Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click
@@ -166,15 +176,27 @@ Public Class frmQuanLyLop
             MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
+        change = 1
     End Sub
 
     Private Sub btnThemTreEm_Click(sender As Object, e As EventArgs) Handles btnThemTreEm.Click
         Dim frm As frmThemTreEm = New frmThemTreEm()
         frm.Show()
+        change = 1
     End Sub
 
     Private Sub frmQuanLyLop_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
-        loadListTreEmCoLop()
-        loadListTreEmChuaCoLop()
+        If (change = 1) Then
+            loadListTreEmCoLop()
+            loadListTreEmChuaCoLop()
+        End If
+    End Sub
+
+    Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
+        Dim frm As frmChuyenLop = New frmChuyenLop()
+        frm.txtMaKhoi.Text = txtMaKhoi.Text
+        frm.txtTenKhoi.Text = cbKhoi.Text
+        frm.Show()
+        change = 1
     End Sub
 End Class

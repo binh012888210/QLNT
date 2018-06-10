@@ -341,4 +341,29 @@ Public Class TreEmDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
+    Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
+
+        Dim query As String = String.Empty
+        query &= "UPDATE [tblTreEm] SET [MaLop] = @malop  WHERE [MaTreEm] = @matreem"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", te.StrMaTreEm1)
+                    .Parameters.AddWithValue("@malop", strMalop)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Chuyển lớp trẻ em vào lớp không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
 End Class

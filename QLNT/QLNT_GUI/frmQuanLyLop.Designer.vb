@@ -36,6 +36,10 @@ Partial Class frmQuanLyLop
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtSoTreEmCuaLop = New System.Windows.Forms.TextBox()
         Me.btnThemTreEm = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtMaKhoi = New System.Windows.Forms.TextBox()
+        Me.txtMaLop = New System.Windows.Forms.TextBox()
         CType(Me.dgvTreEmCoLop, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvTreEmChuaCoLop, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,7 +47,7 @@ Partial Class frmQuanLyLop
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(56, 77)
+        Me.Label1.Location = New System.Drawing.Point(23, 77)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 0
@@ -52,7 +56,7 @@ Partial Class frmQuanLyLop
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(56, 41)
+        Me.Label2.Location = New System.Drawing.Point(23, 41)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(45, 13)
         Me.Label2.TabIndex = 1
@@ -115,7 +119,7 @@ Partial Class frmQuanLyLop
         Me.btnXoa.Name = "btnXoa"
         Me.btnXoa.Size = New System.Drawing.Size(92, 23)
         Me.btnXoa.TabIndex = 13
-        Me.btnXoa.Text = "Xoá khỏi lớp"
+        Me.btnXoa.Text = "Chuyển lớp"
         Me.btnXoa.UseVisualStyleBackColor = True
         '
         'Label6
@@ -132,18 +136,18 @@ Partial Class frmQuanLyLop
         '
         Me.cbKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbKhoi.FormattingEnabled = True
-        Me.cbKhoi.Location = New System.Drawing.Point(117, 36)
+        Me.cbKhoi.Location = New System.Drawing.Point(84, 36)
         Me.cbKhoi.Name = "cbKhoi"
-        Me.cbKhoi.Size = New System.Drawing.Size(133, 21)
+        Me.cbKhoi.Size = New System.Drawing.Size(106, 21)
         Me.cbKhoi.TabIndex = 17
         '
         'cbLop
         '
         Me.cbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbLop.FormattingEnabled = True
-        Me.cbLop.Location = New System.Drawing.Point(117, 74)
+        Me.cbLop.Location = New System.Drawing.Point(84, 74)
         Me.cbLop.Name = "cbLop"
-        Me.cbLop.Size = New System.Drawing.Size(133, 21)
+        Me.cbLop.Size = New System.Drawing.Size(106, 21)
         Me.cbLop.TabIndex = 18
         '
         'Label7
@@ -172,11 +176,49 @@ Partial Class frmQuanLyLop
         Me.btnThemTreEm.Text = "Thêm trẻ em"
         Me.btnThemTreEm.UseVisualStyleBackColor = True
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(212, 41)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(45, 13)
+        Me.Label5.TabIndex = 31
+        Me.Label5.Text = "Mã khối"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(212, 77)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(39, 13)
+        Me.Label8.TabIndex = 30
+        Me.Label8.Text = "Mã lớp"
+        '
+        'txtMaKhoi
+        '
+        Me.txtMaKhoi.Location = New System.Drawing.Point(274, 36)
+        Me.txtMaKhoi.Name = "txtMaKhoi"
+        Me.txtMaKhoi.ReadOnly = True
+        Me.txtMaKhoi.Size = New System.Drawing.Size(37, 20)
+        Me.txtMaKhoi.TabIndex = 32
+        '
+        'txtMaLop
+        '
+        Me.txtMaLop.Location = New System.Drawing.Point(274, 74)
+        Me.txtMaLop.Name = "txtMaLop"
+        Me.txtMaLop.ReadOnly = True
+        Me.txtMaLop.Size = New System.Drawing.Size(37, 20)
+        Me.txtMaLop.TabIndex = 33
+        '
         'frmQuanLyLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(657, 433)
+        Me.Controls.Add(Me.txtMaLop)
+        Me.Controls.Add(Me.txtMaKhoi)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnThemTreEm)
         Me.Controls.Add(Me.txtSoTreEmCuaLop)
         Me.Controls.Add(Me.Label7)
@@ -193,6 +235,7 @@ Partial Class frmQuanLyLop
         Me.Controls.Add(Me.Label1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmQuanLyLop"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Quản lý lớp"
         CType(Me.dgvTreEmCoLop, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvTreEmChuaCoLop, System.ComponentModel.ISupportInitialize).EndInit()
@@ -215,4 +258,8 @@ Partial Class frmQuanLyLop
     Friend WithEvents Label7 As Label
     Friend WithEvents txtSoTreEmCuaLop As TextBox
     Friend WithEvents btnThemTreEm As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtMaKhoi As TextBox
+    Friend WithEvents txtMaLop As TextBox
 End Class
