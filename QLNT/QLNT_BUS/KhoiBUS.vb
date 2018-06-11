@@ -13,4 +13,10 @@ Public Class KhoiBUS
     Public Function selectALL(ByRef listKhoi As List(Of KhoiDTO)) As Result
         Return khDAL.selectALL(listKhoi)
     End Function
+    Public Function getKhoiByMaLop(strMaLop As String, ByRef khoiInfo As KhoiDTO) As Result
+        Return khDAL.getKhoiByMaLop(strMaLop, khoiInfo)
+    End Function
+    Public Function getKhoiByMaKhoi(strMaKhoi As String, ByRef khoiInfo As KhoiDTO) As Result
+        Return khDAL.getKhoiByMaKhoi(strMaKhoi, khoiInfo)
+    End Function
 End Class

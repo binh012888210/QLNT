@@ -3,12 +3,17 @@ Imports QLNT_DTO
 Imports Utility
 
 Public Class TinhTrangBUS
-    Private ttBUS As TinhTrangBUS
+    Private ttDAL As TinhTrangDAL
     Public Sub New()
-        ttBUS = New TinhTrangBUS()
+        ttDAL = New TinhTrangDAL()
     End Sub
     Public Sub New(connectionString As String)
-        ttBUS = New TinhTrangBUS(connectionString)
+        ttDAL = New TinhTrangDAL(connectionString)
     End Sub
-
+    Public Function getTinhTrangByMaTinhTrang(strTinhTrang As String, ByRef tinhTrang As TinhTrangDTO) As Result
+        Return ttDAL.getTinhTrangByMaTinhTrang(strTinhTrang, tinhTrang)
+    End Function
+    Public Function selectALL(ByRef listTinhTrang As List(Of TinhTrangDTO)) As Result
+        Return ttDAL.selectALL(listTinhTrang)
+    End Function
 End Class

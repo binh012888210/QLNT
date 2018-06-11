@@ -54,7 +54,7 @@ Partial Class frmCapNhatTreEm
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(219, 364)
+        Me.btnDong.Location = New System.Drawing.Point(185, 364)
         Me.btnDong.Margin = New System.Windows.Forms.Padding(2)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(97, 19)
@@ -64,7 +64,7 @@ Partial Class frmCapNhatTreEm
         '
         'btnCapNhat
         '
-        Me.btnCapNhat.Location = New System.Drawing.Point(31, 364)
+        Me.btnCapNhat.Location = New System.Drawing.Point(43, 364)
         Me.btnCapNhat.Margin = New System.Windows.Forms.Padding(2)
         Me.btnCapNhat.Name = "btnCapNhat"
         Me.btnCapNhat.Size = New System.Drawing.Size(77, 19)

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmXepLop
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmXepLop
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dtpNgayNhapHoc = New System.Windows.Forms.DateTimePicker()
         Me.txtGhiChu = New System.Windows.Forms.TextBox()
@@ -36,7 +36,6 @@ Partial Class frmXepLop
         Me.btnDong = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtMaLop = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'dtpNgayNhapHoc
@@ -134,7 +133,7 @@ Partial Class frmXepLop
         '
         'btnThem
         '
-        Me.btnThem.Location = New System.Drawing.Point(26, 282)
+        Me.btnThem.Location = New System.Drawing.Point(54, 282)
         Me.btnThem.Name = "btnThem"
         Me.btnThem.Size = New System.Drawing.Size(60, 23)
         Me.btnThem.TabIndex = 29
@@ -143,7 +142,7 @@ Partial Class frmXepLop
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(205, 282)
+        Me.btnDong.Location = New System.Drawing.Point(175, 282)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(75, 23)
         Me.btnDong.TabIndex = 30
@@ -169,21 +168,11 @@ Partial Class frmXepLop
         Me.txtMaLop.Size = New System.Drawing.Size(151, 20)
         Me.txtMaLop.TabIndex = 35
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(103, 282)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(92, 23)
-        Me.Button1.TabIndex = 36
-        Me.Button1.Text = "Thêm và đóng"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmXepLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(305, 336)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(305, 330)
         Me.Controls.Add(Me.txtMaLop)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.btnDong)
@@ -223,5 +212,4 @@ Partial Class frmXepLop
     Friend WithEvents btnDong As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents txtMaLop As TextBox
-    Friend WithEvents Button1 As Button
 End Class

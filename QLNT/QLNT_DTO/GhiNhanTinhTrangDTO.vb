@@ -2,7 +2,7 @@
     Private strMaPhieuGhiNhan As String
     Private strMaTreEm As String
     Private strMaTinhTrang As String
-    Private dateNgayGhiNhan As String
+    Private dateNgayGhiNhan As DateTime
     Private strMaKhoi As String
 
     Public Property StrMaTreEm1 As String
@@ -20,15 +20,6 @@
         End Get
         Set(value As String)
             strMaTinhTrang = value
-        End Set
-    End Property
-
-    Public Property DateNgayGhiNhan1 As String
-        Get
-            Return dateNgayGhiNhan
-        End Get
-        Set(value As String)
-            dateNgayGhiNhan = value
         End Set
     End Property
 
@@ -50,9 +41,18 @@
         End Set
     End Property
 
+    Public Property DateNgayGhiNhan1 As Date
+        Get
+            Return dateNgayGhiNhan
+        End Get
+        Set(value As Date)
+            dateNgayGhiNhan = value
+        End Set
+    End Property
+
     Public Sub New()
     End Sub
-    Public Sub New(strMaPhieuGhiNhan As String, strMaTreEm As String, strMaTinhTrang As String, dateNgayGhiNhan As String, strMaKhoi As String)
+    Public Sub New(strMaPhieuGhiNhan As String, strMaTreEm As String, strMaTinhTrang As String, dateNgayGhiNhan As DateTime, strMaKhoi As String)
         Me.strMaPhieuGhiNhan = strMaPhieuGhiNhan
         Me.strMaTreEm = strMaTreEm
         Me.strMaTinhTrang = strMaTinhTrang

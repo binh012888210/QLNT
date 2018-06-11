@@ -154,7 +154,7 @@ Public Class frmQuanLyLop
 
     Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click
         Dim frm As frmXepLop = New frmXepLop()
-        If (tsBUS.KiemTraSiSo(dgvTreEmCoLop.RowCount)) Then
+        If (tsBUS.KiemTraSiSo(dgvTreEmCoLop.RowCount)) Then '          kiem tra xem lop co thoa yeu cau si so toi da
             Dim currentRowIndex As Integer = dgvTreEmChuaCoLop.CurrentCellAddress.Y
             If (-1 < currentRowIndex And currentRowIndex < dgvTreEmChuaCoLop.RowCount) Then
                 Dim te = CType(dgvTreEmChuaCoLop.Rows(currentRowIndex).DataBoundItem, TreEmDTO)

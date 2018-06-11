@@ -5,30 +5,20 @@ Public Class frmCapNhatTreEm
     Private teBUS As TreEmBUS
     Private tsBUS As ThamSoBUS
     Private peopleCheck As Boolean
+
     Private Sub frmCapNhatTreEm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         teBUS = New TreEmBUS()
         tsBUS = New ThamSoBUS()
+
         loadTreEm()
     End Sub
     Private Sub loadTreEm()
         Dim TreEmInfo = New TreEmDTO
-        Dim result As Result
-        result = teBUS.selectByID(txtMaSoTreEm.Text, TreEmInfo)
-        If (result.FlagResult = False) Then
-            MessageBox.Show("Lấy danh sách trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            System.Console.WriteLine(result.SystemMessage)
-            Return
-        End If
-        txtMaSoTreEm.Text = TreEmInfo.StrMaTreEm1
-        txtHoTen.Text = TreEmInfo.StrHoTenTreEm1
-        dtpNgaySinh.Text = TreEmInfo.DateNgaySinh1
-        txtHoTenPhuHuynh.Text = TreEmInfo.StrHoTenPhuHuynh1
-        txtTenONha.Text = TreEmInfo.StrTenONha1
-        txtDiaChi.Text = TreEmInfo.StrDiaChi1
-        txtDienThoai.Text = TreEmInfo.StrDienThoai1
     End Sub
 
-    Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
+    Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click 'Thuc hien viec cap nhat
+
         Dim TreEmInfo = New TreEmDTO
         Dim result As Result
         TreEmInfo.StrMaTreEm1 = txtMaSoTreEm.Text
@@ -39,6 +29,7 @@ Public Class frmCapNhatTreEm
         TreEmInfo.StrDiaChi1 = txtDiaChi.Text
         TreEmInfo.StrDienThoai1 = txtDienThoai.Text
         TreEmInfo.StrTuoi1 = (Date.Now.Year - dtpNgaySinh.Value.Year).ToString
+
         If (peopleCheck = False) Then
             If (teBUS.isValidName(TreEmInfo.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
@@ -57,25 +48,26 @@ Public Class frmCapNhatTreEm
             txtHoTen.Focus()
             Return
         End If
+
         result = teBUS.updatetByID(TreEmInfo)
         If (result.FlagResult = False) Then
             MessageBox.Show("Cập nhật trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             System.Console.WriteLine(result.SystemMessage)
             Return
+        Else
+            MessageBox.Show("Cập nhật trẻ em thành công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            System.Console.WriteLine(result.SystemMessage)
+            Close()
+            Return
         End If
-        txtHoTen.ReadOnly = True
-        dtpNgaySinh.Enabled = False
-        txtHoTenPhuHuynh.ReadOnly = True
-        txtTenONha.ReadOnly = True
-        txtDiaChi.ReadOnly = True
-        txtDienThoai.ReadOnly = True
-        CheckBox1.Enabled = False
+
     End Sub
 
-    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click
+    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click 'Thuc hien viec dong
         Close()
     End Sub
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged 'Thuc hien viec kiem tra dan toc thieu so khi nhap ten
         If (CheckBox1.Checked = True) Then
             peopleCheck = True
         Else

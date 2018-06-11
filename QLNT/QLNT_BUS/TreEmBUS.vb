@@ -10,6 +10,7 @@ Public Class TreEmBUS
     Public Sub New(connectionString As String)
         teDAL = New TreEmDAL(connectionString)
     End Sub
+
     Public Function buildMSTE(ByRef nextMste As String) As Result
         Return teDAL.buildMSTE(nextMste)
     End Function
@@ -46,6 +47,7 @@ Public Class TreEmBUS
         End While
         Return True
     End Function
+
     Public Function isValidName1(HoTenTre As String) As Boolean 'danh cho dan toc thieu so
         Dim check As Integer
         Dim i As Integer
@@ -78,6 +80,7 @@ Public Class TreEmBUS
         End While
         Return True
     End Function
+
     Public Function insert1(te As TreEmDTO) As Result
         Return teDAL.insert1(te)
     End Function
@@ -86,32 +89,37 @@ Public Class TreEmBUS
         Return teDAL.insert2(te)
     End Function
 
-    Public Function deleteByID(iMaTreEm As String) As Result
-        Return teDAL.deleteByID(iMaTreEm)
+    Public Function selectAll(ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.selectALL(listTreEm)
     End Function
 
-    Public Function selectByID(iMaTreEm As String, ByRef TreEmInfo As TreEmDTO) As Result
-        Return teDAL.selectByID(iMaTreEm, TreEmInfo)
+    Public Function selectALLbyMaLop(bMaLopNull As Boolean, srtMaLop As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.selectALLbyMaLop(bMaLopNull, srtMaLop, listTreEm)
     End Function
 
     Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
         Return teDAL.searchByText(searchText, listTreEm)
     End Function
 
-    Public Function selectALLbyMaLop(bMaLopNull As Boolean, srtMaLop As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
-        Return teDAL.selectALLbyMaLop(bMaLopNull, srtMaLop, listTreEm)
+    Public Function searchByMaTreEm(strMaTreEm As String, ByRef treEmInfo As TreEmDTO) As Result
+        Return teDAL.searchByMaTreEm(strMaTreEm, treEmInfo)
     End Function
-    Public Function selectAll(ByRef listTreEm As List(Of TreEmDTO)) As Result
-        Return teDAL.selectALL(listTreEm)
+
+    Public Function searchForm(seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
+        Return teDAL.searchForm(seearchInfo, searchMaKhoi, table)
     End Function
 
     Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
         Return teDAL.updatetByID(TreEmInfo)
     End Function
+
+    Public Function deleteByID(iMaTreEm As String) As Result
+        Return teDAL.deleteByID(iMaTreEm)
+    End Function
+
     Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
         Return teDAL.chuyenLopTreEM(te, strMalop)
     End Function
-    Public Function searchForm(seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
-        Return teDAL.searchForm(seearchInfo, searchMaKhoi, table)
-    End Function
+
+
 End Class

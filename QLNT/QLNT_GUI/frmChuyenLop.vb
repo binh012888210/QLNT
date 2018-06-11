@@ -6,49 +6,18 @@ Public Class frmChuyenLop
     Private teBUS As TreEmBUS
     Private tsBUS As ThamSoBUS
     Private khBUS As KhoiBUS
-
     Private listLopFROM As List(Of LopDTO)
-    Private Sub cbMaKhoi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMaKhoi.SelectedIndexChanged 'Chuyen lop trong menu
-        If (cbMaKhoi.Visible = True) Then
-            Dim khoi = CType(cbMaKhoi.SelectedItem, KhoiDTO)
-            Dim Result = lpBUS.selectALL_ByKhoi(khoi.StrMaKhoi1, listLopFROM)
-            If (Result.FlagResult = False) Then
-                MessageBox.Show("Lấy danh sách học sinh từ lớp không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                System.Console.WriteLine(Result.SystemMessage)
-                Return
-            End If
 
-            cbTuLop.DataSource = New BindingSource(listLopFROM, String.Empty)
-            cbTuLop.DisplayMember = "StrTenLop1"
-            cbTuLop.ValueMember = "StrMaLop1"
-            Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbTuLop.DataSource)
-            myCurrencyManager.Refresh()
-            If (listLopFROM.Count > 0) Then
-                cbTuLop.SelectedIndex = 0
-            End If
-            'Load danh sach lop hoc sinh chyen sang
-            Dim listLopTO = New List(Of LopDTO)
-            listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop chuyen tu)
-            cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
-            cbSangLop.DisplayMember = "StrTenLop1"
-            cbSangLop.ValueMember = "StrMaLop1"
-            Dim myCurrencyManager1 As CurrencyManager = Me.BindingContext(cbSangLop.DataSource)
-            myCurrencyManager1.Refresh()
-            If (listLopTO.Count > 0) Then
-
-                cbSangLop.SelectedIndex = 0
-            End If
-            txtMaKhoi.Text = khoi.StrMaKhoi1
-        End If
-    End Sub
     Private Sub frmChuyenLop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         lpBUS = New LopBUS
         teBUS = New TreEmBUS
         tsBUS = New ThamSoBUS
         khBUS = New KhoiBUS
         listLopFROM = New List(Of LopDTO)
-        If (txtMaKhoi.Text = Nothing) Then 'Day la truong hop chuyen lop trong menu
-            cbMaKhoi.Visible = True
+
+        If (txtMaKhoi.Text = Nothing) Then 'Day la truong hop chuyen lop trong frmMainMenu
+            cbMaKhoi.Visible = True 'Hien cbKhoi de chon khoi do khi mo form nay trong main menu thi txtMaKhoi se khong co san
             Dim listKhoi = New List(Of KhoiDTO)
             Dim result1 As Result
             result1 = khBUS.selectALL(listKhoi)
@@ -68,8 +37,9 @@ Public Class frmChuyenLop
             End If
             Return
         End If
+
         Try
-            If (cbMaKhoi.Visible = False) Then 'Day la truong hop chuyen lop trong form
+            If (cbMaKhoi.Visible = False) Then 'Day la truong hop chuyen lop mo trong frmQuanLyLop
                 'Load danh sach lop hoc sinh chuyen tu
                 Dim Result = lpBUS.selectALL_ByKhoi(txtMaKhoi.Text, listLopFROM)
                 If (Result.FlagResult = False) Then
@@ -88,7 +58,7 @@ Public Class frmChuyenLop
                 End If
                 'Load danh sach lop hoc sinh chyen sang
                 Dim listLopTO = New List(Of LopDTO)
-                listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop chuyen tu)
+                listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop hoc sinh chuyen tu)
                 cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
                 cbSangLop.DisplayMember = "StrTenLop1"
                 cbSangLop.ValueMember = "StrMaLop1"
@@ -102,10 +72,51 @@ Public Class frmChuyenLop
         Catch ex As Exception
             System.Console.WriteLine(ex.StackTrace)
         End Try
-        loadListTreEmTuLop()
-        loadListTreEmSangLop()
+        loadListTreEmTuLop() 'load lai danh sach khi co thay doi
+        loadListTreEmSangLop() 'load lai danh sach khi co thay doi
+
     End Sub
+
+    Private Sub cbMaKhoi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMaKhoi.SelectedIndexChanged 'Chuyen lop trong frmMainMenu
+
+        If (cbMaKhoi.Visible = True) Then
+            'Load danh sach lop hoc sinh chuyen tu
+            Dim khoi = CType(cbMaKhoi.SelectedItem, KhoiDTO)
+            Dim Result = lpBUS.selectALL_ByKhoi(khoi.StrMaKhoi1, listLopFROM)
+            If (Result.FlagResult = False) Then
+                MessageBox.Show("Lấy danh sách học sinh từ lớp không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(Result.SystemMessage)
+                Return
+            End If
+
+            cbTuLop.DataSource = New BindingSource(listLopFROM, String.Empty)
+            cbTuLop.DisplayMember = "StrTenLop1"
+            cbTuLop.ValueMember = "StrMaLop1"
+            Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbTuLop.DataSource)
+            myCurrencyManager.Refresh()
+            If (listLopFROM.Count > 0) Then
+                cbTuLop.SelectedIndex = 0
+            End If
+
+            'Load danh sach lop hoc sinh chyen sang
+            Dim listLopTO = New List(Of LopDTO)
+            listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop chuyen tu)
+            cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
+            cbSangLop.DisplayMember = "StrTenLop1"
+            cbSangLop.ValueMember = "StrMaLop1"
+            Dim myCurrencyManager1 As CurrencyManager = Me.BindingContext(cbSangLop.DataSource)
+            myCurrencyManager1.Refresh()
+            If (listLopTO.Count > 0) Then
+
+                cbSangLop.SelectedIndex = 0
+            End If
+            txtMaKhoi.Text = khoi.StrMaKhoi1
+        End If
+
+    End Sub
+
     Private Function buildListLopTo(listLopFROM As List(Of LopDTO)) As List(Of LopDTO)
+
         Dim listLopTo = New List(Of LopDTO)
         If (listLopFROM.Count < 1) Then
             Return listLopTo
@@ -116,14 +127,17 @@ Public Class frmChuyenLop
             End If
         Next n
         Return listLopTo
-    End Function
-    Private Sub cbSangLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSangLop.SelectedIndexChanged
-        loadListTreEmSangLop()
-    End Sub
-    Private Sub cbTuLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbTuLop.SelectedIndexChanged
-        Try
-            Dim lopFROM = CType(cbTuLop.SelectedItem, LopDTO)
 
+    End Function
+
+    Private Sub cbSangLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSangLop.SelectedIndexChanged
+        loadListTreEmSangLop() 'load lai danh sach khi co thay doi
+    End Sub
+
+    Private Sub cbTuLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbTuLop.SelectedIndexChanged 'Kiem tra khi gia tri cbTuLop thay doi
+
+        Try
+            Dim lopFROM = CType(cbTuLop.SelectedItem, LopDTO) 'Load lai cbSangLop 
             Dim listLopTO = buildListLopTo(listLopFROM)
             cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
             cbSangLop.DisplayMember = "StrTenLop1"
@@ -137,11 +151,12 @@ Public Class frmChuyenLop
             System.Console.WriteLine(ex.StackTrace)
             Return
         End Try
-        loadListTreEmTuLop()
-        loadListTreEmSangLop()
+        loadListTreEmTuLop() 'load lai danh sach khi co thay doi
+        loadListTreEmSangLop() 'load lai danh sach khi co thay doi
+
     End Sub
 
-    Private Sub loadListTreEmTuLop()
+    Private Sub loadListTreEmTuLop() 'Load du lieu vao datagridview
 
         Dim listTreEm = New List(Of TreEmDTO)
         Dim result As Result
@@ -185,7 +200,7 @@ Public Class frmChuyenLop
 
         txtSiSoLopTu.Text = dgvListHS_FROM.RowCount.ToString
     End Sub
-    Private Sub loadListTreEmSangLop()
+    Private Sub loadListTreEmSangLop() 'Load du lieu vao datagridview
 
         Dim listTreEm = New List(Of TreEmDTO)
         Dim result As Result
@@ -234,8 +249,9 @@ Public Class frmChuyenLop
         Close()
     End Sub
 
-    Private Sub btnFROMTo_Click(sender As Object, e As EventArgs) Handles btnFROMTo.Click
-        If (tsBUS.KiemTraSiSo(dgvListHS_To.RowCount)) Then
+    Private Sub btnFROMTo_Click(sender As Object, e As EventArgs) Handles btnFROMTo.Click 'Chuyen tu trai qua phai
+
+        If (tsBUS.KiemTraSiSo(dgvListHS_To.RowCount)) Then 'kiem tra xem lop co thoa yeu cau si so toi da
             Dim currentRowIndex As Integer = dgvListHS_FROM.CurrentCellAddress.Y
             If (-1 < currentRowIndex And currentRowIndex < dgvListHS_FROM.RowCount) Then
                 Dim te = CType(dgvListHS_FROM.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
@@ -254,10 +270,12 @@ Public Class frmChuyenLop
             MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
+
     End Sub
 
-    Private Sub btnToFROM_Click(sender As Object, e As EventArgs) Handles btnToFROM.Click
-        If (tsBUS.KiemTraSiSo(dgvListHS_FROM.RowCount)) Then
+    Private Sub btnToFROM_Click(sender As Object, e As EventArgs) Handles btnToFROM.Click 'Chuyen tu phai qua trai
+
+        If (tsBUS.KiemTraSiSo(dgvListHS_FROM.RowCount)) Then 'Kiem tra xem lop co thoa yeu cau si so toi da
             Dim currentRowIndex As Integer = dgvListHS_To.CurrentCellAddress.Y
             If (-1 < currentRowIndex And currentRowIndex < dgvListHS_To.RowCount) Then
                 Dim te = CType(dgvListHS_To.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
@@ -276,7 +294,7 @@ Public Class frmChuyenLop
             MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
-    End Sub
 
+    End Sub
 
 End Class

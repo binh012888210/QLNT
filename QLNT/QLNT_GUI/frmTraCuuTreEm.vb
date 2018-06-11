@@ -54,57 +54,5 @@ Public Class frmTraCuuTreEm
         dgvDanhSachTreEm.Columns.Clear()
         dgvDanhSachTreEm.DataSource = Nothing
     End Sub
-    'Private Sub loadListTreEm()
-    '    dgvDanhSachTreEm.Columns.Clear()
-    '    dgvDanhSachTreEm.DataSource = Nothing
 
-    '    dgvDanhSachTreEm.AutoGenerateColumns = False
-    '    dgvDanhSachTreEm.AllowUserToAddRows = False
-    '    dgvDanhSachTreEm.DataSource = listTreEm
-
-    '    Dim table As New DataTable
-
-
-    '    Dim clMaTreEm = New DataGridViewTextBoxColumn()
-    '    clMaTreEm.Name = "MaTreEm"
-    '    clMaTreEm.HeaderText = "Mã Trẻ Em"
-    '    clMaTreEm.DataPropertyName = "StrMaTreEm1" ''ten trong DTO
-    '    clMaTreEm.ReadOnly = True
-    '    dgvDanhSachTreEm.Columns.Add(clMaTreEm)
-
-    '    Dim clTenTreEm = New DataGridViewTextBoxColumn()
-    '    clTenTreEm.Name = "HoTenTreEm"
-    '    clTenTreEm.HeaderText = "Tên Trẻ Em"
-    '    clTenTreEm.DataPropertyName = "StrHoTenTreEm1" 'ten trong DTO
-    '    clTenTreEm.ReadOnly = True
-    '    dgvDanhSachTreEm.Columns.Add(clTenTreEm)
-
-    '    Dim clTuoi = New DataGridViewTextBoxColumn()
-    '    clTuoi.Name = "Tuoi"
-    '    clTuoi.HeaderText = "Tuổi"
-    '    clTuoi.DataPropertyName = "StrTuoi1" 'ten trong DTO
-    '    clTuoi.ReadOnly = True
-    '    dgvDanhSachTreEm.Columns.Add(clTuoi)
-
-    '    Dim clGhiChu = New DataGridViewTextBoxColumn()
-    '    clGhiChu.Name = "GhiChu"
-    '    clGhiChu.HeaderText = "Ghi chú"
-    '    clGhiChu.DataPropertyName = "StrGhiChu1" 'ten trong DTO
-    '    clGhiChu.ReadOnly = True
-    '    dgvDanhSachTreEm.Columns.Add(clGhiChu)
-
-    '    dgvDanhSachTreEm.DataSource = listKhoi
-
-    '    Dim clKhoiLop = New DataGridViewTextBoxColumn()
-    '    clKhoiLop.Name = "KhoiLop"
-    '    clKhoiLop.HeaderText = "Khối lớp"
-    '    clKhoiLop.DataPropertyName = "StrTenKhoi1" 'ten trong DTO
-    '    clKhoiLop.ReadOnly = True
-    '    dgvDanhSachTreEm.Columns.Add(clKhoiLop)
-
-
-    '    Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachTreEm.DataSource)
-    '    myCurrencyManager.Refresh()
-
-    'End Sub
 End Class

@@ -152,4 +152,8 @@
         Me.strTuoi = strTuoi
         Me.strGhiChu = strGhiChu
     End Sub
+    Public Sub New(strMaTreEm As String, strHoTenTreEm As String)
+        Me.strMaTreEm = strMaTreEm
+        Me.strHoTenTreEm = strHoTenTreEm
+    End Sub
 End Class

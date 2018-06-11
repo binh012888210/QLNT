@@ -39,7 +39,7 @@ Public Class frmMain
     End Sub
 
     Private Sub GhiNhậnTìnhTrạngTrẻToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GhiNhậnTìnhTrạngTrẻToolStripMenuItem.Click
-        Dim frm As frmGhiNhanTinhTrangTre = New frmGhiNhanTinhTrangTre()
+        Dim frm As frmQuanLyGhiNhanTinhTrangTre = New frmQuanLyGhiNhanTinhTrangTre()
         frm.MdiParent = Me
         frm.Show()
     End Sub
