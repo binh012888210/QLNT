@@ -44,7 +44,7 @@ Public Class frmThemTreEm
         'tinh tuoi 
         treem.StrTuoi1 = Date.Now.Year - dtpNgaySinh.Value.Year
         '2. Business nhap vao text box
-        If (peopleCheck = False) Then
+        If (CheckBox1.Checked = False) Then
             If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
                 MessageBox.Show("Họ tên học sinh không đúng")
                 txtHoTen.Focus()

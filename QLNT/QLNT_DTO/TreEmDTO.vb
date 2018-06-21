@@ -6,7 +6,7 @@
     Private strTenONha As String
     Private strDiaChi As String
     Private strDienThoai As String
-    Private dateNgayNhapHoc As String
+    Private dateNgayNhapHoc As DateTime
     Private strGhiChu As String
     Private strTuoi As String
     Private strMaLop As String
@@ -92,14 +92,7 @@
         End Set
     End Property
 
-    Public Property DateNgayNhapHoc1 As String
-        Get
-            Return dateNgayNhapHoc
-        End Get
-        Set(value As String)
-            dateNgayNhapHoc = value
-        End Set
-    End Property
+
 
     Public Property StrTuoi1 As String
         Get
@@ -110,9 +103,18 @@
         End Set
     End Property
 
+    Public Property DateNgayNhapHoc1 As Date
+        Get
+            Return dateNgayNhapHoc
+        End Get
+        Set(value As Date)
+            dateNgayNhapHoc = value
+        End Set
+    End Property
+
     Public Sub New()
     End Sub
-    Public Sub New(strMaTreEm As String, strHoTenTreEm As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, dateNgayNhapHoc As String, strTuoi As String, strGhiChu As String, strMaLop As String)
+    Public Sub New(strMaTreEm As String, strHoTenTreEm As String, dateNgaySinh As DateTime, strHoTenPhuHuynh As String, strTenONha As String, strDiaChi As String, strDienThoai As String, dateNgayNhapHoc As DateTime, strTuoi As String, strGhiChu As String, strMaLop As String)
         Me.strMaTreEm = strMaTreEm
         Me.strHoTenTreEm = strHoTenTreEm
         Me.dateNgaySinh = dateNgaySinh

@@ -62,7 +62,7 @@ Public Class frmQuanLyLop
         txtMaLop.Text = cbLop.SelectedValue.ToString
     End Sub
     Private Sub cbLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLop.SelectedIndexChanged
-        txtMaKhoi.Text = cbKhoi.SelectedValue.ToString
+        txtMaKhoi.Text = cbKhoi.SelectedValue.ToString 'Chu Y
         txtMaLop.Text = cbLop.SelectedValue.ToString
         loadListTreEmCoLop()
     End Sub
@@ -152,36 +152,97 @@ Public Class frmQuanLyLop
         txtSoTreEmCuaLop.Text = dgvTreEmCoLop.RowCount.ToString
     End Sub
 
-    Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click
-        Dim frm As frmXepLop = New frmXepLop()
-        If (tsBUS.KiemTraSiSo(dgvTreEmCoLop.RowCount)) Then '          kiem tra xem lop co thoa yeu cau si so toi da
-            Dim currentRowIndex As Integer = dgvTreEmChuaCoLop.CurrentCellAddress.Y
-            If (-1 < currentRowIndex And currentRowIndex < dgvTreEmChuaCoLop.RowCount) Then
+    Private Sub dgvTreEmCoLop_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvTreEmCoLop.CellMouseClick
+        ' Get the current cell location.
+        Dim currentRowIndex As Integer = dgvTreEmCoLop.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
+        If (-1 < currentRowIndex And currentRowIndex < dgvTreEmCoLop.RowCount) Then
+            Try
+                Dim te = CType(dgvTreEmCoLop.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+                txtMaLop1.Text = te.StrMaLop1
+                txtMaSoTreEm.Text = te.StrMaTreEm1
+                txtHoTen.Text = te.StrHoTenTreEm1
+                txtTuoi.Text = te.StrTuoi1
+                dtpNgayNhapHoc.Text = te.DateNgayNhapHoc1.ToShortDateString()
+                txtGhiChu.Text = te.StrGhiChu1
+                btnCapNhat.Visible = True
+                btnXoaKhoiLop.Visible = True
+                btnThemVaoLop.Visible = False
+            Catch ex As Exception
+                Console.WriteLine(ex.StackTrace)
+            End Try
+        End If
+    End Sub
+    Private Sub dgvTreEmChuaCoLop_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvTreEmChuaCoLop.CellMouseClick
+        ' Get the current cell location.
+        Dim currentRowIndex As Integer = dgvTreEmChuaCoLop.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
+        If (-1 < currentRowIndex And currentRowIndex < dgvTreEmChuaCoLop.RowCount) Then
+            Try
                 Dim te = CType(dgvTreEmChuaCoLop.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
-                frm.txtMaSoTreEm.Text = te.StrMaTreEm1
-                frm.txtHoTen.Text = te.StrHoTenTreEm1
-                frm.txtTuoi.Text = te.StrTuoi1
-                frm.txtMaLop.Text = cbLop.SelectedValue
-                frm.ShowDialog()
-                loadListTreEmChuaCoLop()
-                loadListTreEmCoLop()
-            Else
-                MessageBox.Show("Không có trẻ em nào không có lớp", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                MessageBox.Show("Thêm trẻ em trước khi xếp lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Return
-            End If
-        Else
-            MessageBox.Show("Danh sách lớp đã đầy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Return
+                txtMaLop1.Text = "Học sinh chưa được xếp lớp"
+                txtMaSoTreEm.Text = te.StrMaTreEm1
+                txtHoTen.Text = te.StrHoTenTreEm1
+                txtTuoi.Text = te.StrTuoi1
+                dtpNgayNhapHoc.Text = Date.Now
+                txtGhiChu.Text = String.Empty
+                btnCapNhat.Visible = False
+                btnXoaKhoiLop.Visible = False
+                btnThemVaoLop.Visible = True
+            Catch ex As Exception
+                Console.WriteLine(ex.StackTrace)
+            End Try
         End If
     End Sub
 
-    Private Sub btnThemTreEm_Click(sender As Object, e As EventArgs) Handles btnThemTreEm.Click
-        Dim frm As frmThemTreEm = New frmThemTreEm()
-        frm.ShowDialog()
+    Private Sub btnThemVaoLop_Click(sender As Object, e As EventArgs) Handles btnThemVaoLop.Click
+        Dim treem As TreEmDTO
+        treem = New TreEmDTO()
+        If (txtGhiChu.Text = Nothing) Then
+            MessageBox.Show("Vui lòng điền vào ghi chú.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+        '1. Mapping data from GUI control
+        treem.StrMaTreEm1 = txtMaSoTreEm.Text
+        treem.StrMaLop1 = txtMaLop.Text
+        treem.DateNgayNhapHoc1 = dtpNgayNhapHoc.Value.ToShortDateString
+        treem.StrGhiChu1 = txtGhiChu.Text
+        '2. Insert to DB
+        Dim result As Result
+        result = teBUS.insert2(treem)
+        If (result.FlagResult = True) Then
+            MessageBox.Show("Thêm trẻ em vào lớp '" + cbLop.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            System.Console.WriteLine(result.SystemMessage)
+        Else
+            MessageBox.Show("Thêm trẻ em vào lớp '" + cbLop.Text + "' không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+        End If
         loadListTreEmChuaCoLop()
+        loadListTreEmCoLop()
     End Sub
-
+    Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click
+        Dim treem As TreEmDTO
+        treem = New TreEmDTO()
+        If (txtGhiChu.Text = Nothing) Then
+            MessageBox.Show("Vui lòng điền vào ghi chú.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+        '1. Mapping data from GUI control
+        treem.StrMaTreEm1 = txtMaSoTreEm.Text
+        treem.StrMaLop1 = txtMaLop.Text
+        treem.DateNgayNhapHoc1 = dtpNgayNhapHoc.Value.ToShortDateString
+        treem.StrGhiChu1 = txtGhiChu.Text
+        '2. Insert to DB
+        Dim result As Result
+        result = teBUS.insert2(treem)
+        If (result.FlagResult = True) Then
+            MessageBox.Show("Cập nhật trẻ '" + txtHoTen.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            System.Console.WriteLine(result.SystemMessage)
+        Else
+            MessageBox.Show("Cập nhật trẻ '" + txtHoTen.Text + "' không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+        End If
+        loadListTreEmChuaCoLop()
+        loadListTreEmCoLop()
+    End Sub
     Private Sub btnChuyenLop_Click(sender As Object, e As EventArgs) Handles btnChuyenLop.Click
         Dim frm As frmChuyenLop = New frmChuyenLop()
         frm.txtMaKhoi.Text = txtMaKhoi.Text

@@ -48,7 +48,7 @@ Partial Class frmChuyenLop
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 23)
+        Me.Label3.Location = New System.Drawing.Point(20, 60)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 82
@@ -180,7 +180,7 @@ Partial Class frmChuyenLop
         '
         'txtMaKhoi
         '
-        Me.txtMaKhoi.Location = New System.Drawing.Point(91, 20)
+        Me.txtMaKhoi.Location = New System.Drawing.Point(91, 57)
         Me.txtMaKhoi.Name = "txtMaKhoi"
         Me.txtMaKhoi.ReadOnly = True
         Me.txtMaKhoi.Size = New System.Drawing.Size(100, 20)
@@ -188,7 +188,7 @@ Partial Class frmChuyenLop
         '
         'txtTenKhoi
         '
-        Me.txtTenKhoi.Location = New System.Drawing.Point(91, 55)
+        Me.txtTenKhoi.Location = New System.Drawing.Point(91, 19)
         Me.txtTenKhoi.Name = "txtTenKhoi"
         Me.txtTenKhoi.ReadOnly = True
         Me.txtTenKhoi.Size = New System.Drawing.Size(100, 20)
@@ -197,7 +197,7 @@ Partial Class frmChuyenLop
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(20, 58)
+        Me.Label6.Location = New System.Drawing.Point(20, 22)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 98
@@ -217,7 +217,7 @@ Partial Class frmChuyenLop
         '
         Me.cbMaKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbMaKhoi.FormattingEnabled = True
-        Me.cbMaKhoi.Location = New System.Drawing.Point(91, 54)
+        Me.cbMaKhoi.Location = New System.Drawing.Point(91, 18)
         Me.cbMaKhoi.Name = "cbMaKhoi"
         Me.cbMaKhoi.Size = New System.Drawing.Size(100, 21)
         Me.cbMaKhoi.TabIndex = 101
@@ -252,7 +252,6 @@ Partial Class frmChuyenLop
         Me.MinimizeBox = False
         Me.Name = "frmChuyenLop"
         Me.Text = "Chuyển lớp"
-        Me.TopMost = True
         CType(Me.dgvListHS_FROM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvListHS_To, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

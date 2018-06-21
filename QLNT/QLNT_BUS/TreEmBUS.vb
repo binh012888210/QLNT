@@ -16,16 +16,13 @@ Public Class TreEmBUS
     End Function
 
     Public Function isValidName(HoTenTre As String) As Boolean
-        Dim check As Integer
-        Dim i As Integer
+        Dim check As Integer = 0
+        Dim i As Integer = 0
         Dim words() As String = HoTenTre.Split(" ")
         For Each word As String In words
             check = check + 1
         Next
-        If (HoTenTre.Length < 1) Then 'text box khong dc rong
-            Return False
-        End If
-        If (check < 1 Or check > 5) Then 'tu 2 den 5 tu
+        If (check < 2 Or check > 5) Then 'tu 2 den 5 tu
             Return False
         End If
         While (i < HoTenTre.Length)
@@ -49,21 +46,18 @@ Public Class TreEmBUS
     End Function
 
     Public Function isValidName1(HoTenTre As String) As Boolean 'danh cho dan toc thieu so
-        Dim check As Integer
-        Dim i As Integer
+        Dim check As Integer = 0
+        Dim i As Integer = 0
         Dim words() As String = HoTenTre.Split(" ")
         For Each word As String In words
             check = check + 1
         Next
-        If (HoTenTre.Length < 1) Then 'text box khong dc rong
+        If (check > 1) Then 'tu 2 den 5 tu
             Return False
         End If
-        If (check > 2) Then 'tu 2 den 5 tu
-            Return False
-        End If
+        i = i + 1 'tai vi chu dau la dau phay
         While (i < HoTenTre.Length)
-            If (HoTenTre(i) <> " " And HoTenTre(i) <> "'") Then
-                check = Asc(HoTenTre(i))
+            check = Asc(HoTenTre(i))
                 If (check < 65) Then
                     Return False
                 End If
@@ -75,7 +69,7 @@ Public Class TreEmBUS
                         Return False
                     End If
                 End If
-            End If
+
             i = i + 1
         End While
         Return True

@@ -179,13 +179,13 @@ Public Class TreEmDAL
 
         Dim query As String = String.Empty
         If (bMaLopNull = True) Then
-            query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi], [MaLop] "
+            query &= "SELECT [MaTreEm],[HoTenTreEm],[NgaySinh],[HoTenPhuHuynh],[TenONha],[DiaChi],[DienThoai],[Tuoi],[MaLop] "
             query &= "FROM [tblTreEm] "
-            query &= "WHERE [MaTreEm] is not null and [MaLop] is null"
+            query &= "WHERE [MaLop] is null"
         Else
-            query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi], [MaLop] "
+            query &= "SELECT [MaTreEm],[HoTenTreEm],[NgaySinh],[HoTenPhuHuynh],[TenONha],[DiaChi],[DienThoai],[Tuoi],[MaLop],[NgayNhapHoc],[GhiChu] "
             query &= "FROM [tblTreEm] "
-            query &= "WHERE [MaTreEm] is not null and [MaLop] = @malop "
+            query &= "WHERE [MaLop] = @malop "
 
         End If
         Using conn As New SqlConnection(connectionString)
@@ -208,7 +208,7 @@ Public Class TreEmDAL
                             If (bMaLopNull = True) Then
                                 listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi")))
                             Else
-                                listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi"), reader("MaLop")))
+                                listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("NgayNhapHoc"), reader("Tuoi"), reader("GhiChu"), reader("MaLop")))
                             End If
                         End While
                     End If
@@ -433,6 +433,8 @@ Public Class TreEmDAL
         Return New Result(True) ' thanh cong
 
     End Function
+
+
 
 
 
