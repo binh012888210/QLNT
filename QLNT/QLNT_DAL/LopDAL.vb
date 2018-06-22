@@ -1,4 +1,6 @@
-﻿Imports System.Configuration
+﻿
+
+Imports System.Configuration
 Imports System.Data.SqlClient
 Imports QLNT_DTO
 Imports Utility
@@ -50,11 +52,13 @@ Public Class LopDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
-    Public Function selectALL(ByRef listLop As List(Of KhoiDTO)) As Result
+    Public Function selectALL(ByRef listLop As List(Of LopDTO)) As Result
 
         Dim query As String = String.Empty
         query &= " SELECT [MaLop], [TenLop], [MaKhoi], [ThuTuLop]"
         query &= " FROM [tblLop]"
+        'query &= " ORDER BY "
+        'query &= " [ThuTuLop] ASC "
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
@@ -70,7 +74,7 @@ Public Class LopDAL
                     listLop.Clear()
                     If reader.HasRows = True Then
                         While reader.Read()
-                            listLop.Add(New KhoiDTO(reader("MaKhoi"), reader("TenKhoi")))
+                            listLop.Add(New LopDTO(reader("MaLop"), reader("TenLop"), reader("MaKhoi"), reader("ThuTuLop")))
                         End While
                     End If
 

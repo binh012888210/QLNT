@@ -9,9 +9,11 @@ Public Class TreEmDAL
         ' Read ConnectionString value from App.config file
         connectionString = ConfigurationManager.AppSettings("ConnectionString")
     End Sub
+
     Public Sub New(ConnectionString As String)
         Me.connectionString = ConnectionString
     End Sub
+
     Public Function buildMSTE(ByRef nextMste As String) As Result 'ex: 180001
 
         nextMste = String.Empty
@@ -132,7 +134,7 @@ Public Class TreEmDAL
                 Catch ex As Exception
                     conn.Close()
                     System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Thêm thêm trẻ em vào lớp không thành công", ex.StackTrace)
+                    Return New Result(False, "Cập nhật trẻ em không thành công", ex.StackTrace)
                 End Try
             End Using
         End Using
@@ -224,6 +226,44 @@ Public Class TreEmDAL
 
     End Function
 
+    Public Function selectALLbyMaLopIsNotNull(ByRef listTreEm As List(Of TreEmDTO)) As Result
+
+        Dim query As String = String.Empty
+
+        query &= "SELECT * "
+        query &= "FROM [tblTreEm] "
+        query &= "WHERE [MaLop] is not null"
+
+
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    listTreEm.Clear()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("NgayNhapHoc"), reader("Tuoi"), reader("GhiChu"), reader("MaLop")))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy tất cả trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
+
     Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
 
         Dim searchText1 As String = searchText
@@ -259,49 +299,40 @@ Public Class TreEmDAL
 
     End Function
 
-    Public Function searchByMaTreEm(strMaTreEm As String, ByRef treEmInfo As TreEmDTO) As Result
-
-        Dim query As String = String.Empty
-        query &= "SELECT * "
-        query &= "FROM [tblTreEm] "
-        query &= "WHERE [MaTreEm]=@matreem"
-
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@matreem", strMaTreEm)
-                End With
-                Try
-                    conn.Open()
-                    Dim reader As SqlDataReader
-                    reader = comm.ExecuteReader()
-                    If reader.HasRows = True Then
-                        While reader.Read()
-                            treEmInfo = (New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm")))
-                        End While
-                    End If
-
-                Catch ex As Exception
-                    conn.Close()
-                    System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Lấy thông tin trẻ em không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-        Return New Result(True) ' thanh cong
-    End Function
-
-    Public Function searchForm(searchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
+    Public Function searchForm(advSearch As Boolean, searchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
 
         Dim query As String = String.Empty
         query &= "SELECT * "
         query &= "FROM [tblTreEm],[tblLop],[tblKhoi] "
         query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] "
-        query &= "And ([MaTreEm] = @matreem Or [tblKhoi].[MaKhoi] =@makhoi OR [HoTenTreEm] = @hotentreem OR [HoTenPhuHuynh]= @hotenphuhuynh OR [TenONha]=@tenonha OR [DiaChi]=@diachi "
-        query &= "OR [DienThoai]=@dienthoai OR [Tuoi]=@tuoi OR [GhiChu]=@ghichu) "
+        If (advSearch = True) Then
+            query &= " AND [tblKhoi].[MaKhoi] = @makhoi "
+        End If
+        If (searchInfo.StrMaTreEm1 <> "%%") Then
+            query &= " AND [MaTreEm] Like @matreem "
+        End If
+        If (searchInfo.StrHoTenTreEm1 <> "%%") Then
+            query &= " AND [HoTenTreEm] Like @hotentreem "
+        End If
+        If (searchInfo.StrHoTenPhuHuynh1 <> "%%") Then
+            query &= " AND [HoTenPhuHuynh] Like @hotenphuhuynh "
+        End If
+        If (searchInfo.StrTenONha1 <> "%%") Then
+            query &= " AND [TenONha] Like @tenonha "
+        End If
+        If (searchInfo.StrDiaChi1 <> "%%") Then
+            query &= " AND [DiaChi] Like @diachi "
+        End If
+        If (searchInfo.StrDienThoai1 <> "%%") Then
+            query &= " AND [DienThoai] Like @dienthoai "
+        End If
+        If (searchInfo.StrTuoi1 <> "%%") Then
+            query &= " AND [Tuoi] Like @tuoi "
+        End If
+        If (searchInfo.StrGhiChu1 <> "%%") Then
+            query &= " AND [GhiChu] Like @ghichu "
+        End If
+
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
@@ -342,6 +373,41 @@ Public Class TreEmDAL
         End Using
         Return New Result(True) ' thanh cong
 
+    End Function
+
+    Public Function searchByID(strMaTreEm As String, ByRef treEmInfo As TreEmDTO) As Result
+
+        Dim query As String = String.Empty
+        query &= "SELECT * "
+        query &= "FROM [tblTreEm] "
+        query &= "WHERE [MaTreEm]=@matreem"
+
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            treEmInfo = (New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm")))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy thông tin trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
     End Function
 
     Public Function updatetByID(treEmInfo As TreEmDTO) As Result
@@ -400,6 +466,65 @@ Public Class TreEmDAL
                     conn.Close()
                     ' them that bai!!!
                     Return New Result(False, "Xóa trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
+
+    Public Function deleteClassByID(strMaTreEm As String) As Result
+        Dim query As String = String.Empty
+        query &= "UPDATE [tblTreEm] SET [MaLop] = NULL , [GhiChu]= NULL , [NgayNhapHoc]= NULL WHERE [MaTreEm] = @matreem"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Cập nhật trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
+
+    Public Function getKhoiByID(strMaTreEm As String, ByRef khoiInfo As KhoiDTO) As Result
+        Dim query As String = String.Empty
+        query &= "SELECT * "
+        query &= "FROM [tblTreEm],[tblLop],[tblKhoi] "
+        query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] "
+        query &= " AND [MaTreEm]=@matreem "
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            khoiInfo = (New KhoiDTO(reader("MaKhoi"), reader("TenKhoi")))
+                        End While
+                    End If
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lay thong tin khoi hong thanh cong", ex.StackTrace)
                 End Try
             End Using
         End Using

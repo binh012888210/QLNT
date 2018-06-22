@@ -250,4 +250,21 @@ Public Class frmQuanLyLop
         frm.ShowDialog()
         loadListTreEmCoLop()
     End Sub
+
+    Private Sub btnXoaKhoiLop_Click(sender As Object, e As EventArgs) Handles btnXoaKhoiLop.Click
+        Dim treem As TreEmDTO
+        treem = New TreEmDTO()
+        '1. Mapping data from GUI control
+        treem.StrMaTreEm1 = txtMaSoTreEm.Text
+        '2. Insert to DB
+        Dim result As Result
+        result = teBUS.deleteClassByID(txtMaSoTreEm.Text)
+        If (result.FlagResult = True) Then
+            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + txtMaLop1.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + txtMaLop1.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        loadListTreEmChuaCoLop()
+        loadListTreEmCoLop()
+    End Sub
 End Class

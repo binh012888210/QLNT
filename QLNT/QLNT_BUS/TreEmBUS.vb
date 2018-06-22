@@ -91,28 +91,40 @@ Public Class TreEmBUS
         Return teDAL.selectALLbyMaLop(bMaLopNull, srtMaLop, listTreEm)
     End Function
 
+    Public Function selectALLbyMaLopIsNotNull(ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.selectALLbyMaLopIsNotNull(listTreEm)
+    End Function
+
     Public Function searchByText(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
         Return teDAL.searchByText(searchText, listTreEm)
     End Function
 
-    Public Function searchByMaTreEm(strMaTreEm As String, ByRef treEmInfo As TreEmDTO) As Result
-        Return teDAL.searchByMaTreEm(strMaTreEm, treEmInfo)
+    Public Function searchForm(advSearch As Boolean, seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
+        Return teDAL.searchForm(advSearch, seearchInfo, searchMaKhoi, table)
     End Function
 
-    Public Function searchForm(seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
-        Return teDAL.searchForm(seearchInfo, searchMaKhoi, table)
+    Public Function searchByID(strMaTreEm As String, ByRef treEmInfo As TreEmDTO) As Result
+        Return teDAL.searchByID(strMaTreEm, treEmInfo)
     End Function
 
     Public Function updatetByID(TreEmInfo As TreEmDTO) As Result
         Return teDAL.updatetByID(TreEmInfo)
     End Function
 
-    Public Function deleteByID(iMaTreEm As String) As Result
-        Return teDAL.deleteByID(iMaTreEm)
+    Public Function deleteByID(strMaTreEm As String) As Result
+        Return teDAL.deleteByID(strMaTreEm)
+    End Function
+
+    Public Function deleteClassByID(strMaTreEm As String) As Result
+        Return teDAL.deleteClassByID(strMaTreEm)
     End Function
 
     Public Function chuyenLopTreEM(te As TreEmDTO, strMalop As String) As Result
         Return teDAL.chuyenLopTreEM(te, strMalop)
+    End Function
+
+    Public Function getKhoiByID(strMaTreEm As String, ByRef khoiInfo As KhoiDTO) As Result
+        Return teDAL.getKhoiByID(strMaTreEm, khoiInfo)
     End Function
 
 

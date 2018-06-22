@@ -28,18 +28,24 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtMaGhiNhan = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.dgvDanhSachGhiNhan = New System.Windows.Forms.DataGridView()
+        Me.dgvDanhSachTreEm = New System.Windows.Forms.DataGridView()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtHoTenTre = New System.Windows.Forms.TextBox()
-        Me.btnGhiNhan = New System.Windows.Forms.Button()
+        Me.btnThemGhiNhan = New System.Windows.Forms.Button()
         Me.btnCapNhatGhiNhan = New System.Windows.Forms.Button()
-        Me.txtNgayGhiNhan = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnXoaGhiNhan = New System.Windows.Forms.Button()
         Me.btnDong = New System.Windows.Forms.Button()
-        Me.txtTinhTrang = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtTenKhoi = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dgvDanhSachGhiNhan = New System.Windows.Forms.DataGridView()
+        Me.dtpNgayGhiNhan = New System.Windows.Forms.DateTimePicker()
+        Me.cbTinhTrang = New System.Windows.Forms.ComboBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cbLop = New System.Windows.Forms.ComboBox()
+        CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -96,23 +102,23 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(352, 21)
+        Me.Label7.Location = New System.Drawing.Point(351, 9)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(196, 18)
+        Me.Label7.Size = New System.Drawing.Size(187, 18)
         Me.Label7.TabIndex = 35
-        Me.Label7.Text = "----- Danh sách ghi nhận -----"
+        Me.Label7.Text = "----- Danh sách trẻ em  -----"
         '
-        'dgvDanhSachGhiNhan
+        'dgvDanhSachTreEm
         '
-        Me.dgvDanhSachGhiNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvDanhSachGhiNhan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgvDanhSachGhiNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(274, 56)
-        Me.dgvDanhSachGhiNhan.Name = "dgvDanhSachGhiNhan"
-        Me.dgvDanhSachGhiNhan.RowHeadersVisible = False
-        Me.dgvDanhSachGhiNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDanhSachGhiNhan.Size = New System.Drawing.Size(374, 298)
-        Me.dgvDanhSachGhiNhan.TabIndex = 34
+        Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(274, 53)
+        Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
+        Me.dgvDanhSachTreEm.RowHeadersVisible = False
+        Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(339, 123)
+        Me.dgvDanhSachTreEm.TabIndex = 34
         '
         'Label8
         '
@@ -133,14 +139,14 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.txtHoTenTre.Size = New System.Drawing.Size(151, 20)
         Me.txtHoTenTre.TabIndex = 40
         '
-        'btnGhiNhan
+        'btnThemGhiNhan
         '
-        Me.btnGhiNhan.Location = New System.Drawing.Point(21, 292)
-        Me.btnGhiNhan.Name = "btnGhiNhan"
-        Me.btnGhiNhan.Size = New System.Drawing.Size(97, 23)
-        Me.btnGhiNhan.TabIndex = 42
-        Me.btnGhiNhan.Text = "Thêm Ghi nhận"
-        Me.btnGhiNhan.UseVisualStyleBackColor = True
+        Me.btnThemGhiNhan.Location = New System.Drawing.Point(21, 292)
+        Me.btnThemGhiNhan.Name = "btnThemGhiNhan"
+        Me.btnThemGhiNhan.Size = New System.Drawing.Size(97, 23)
+        Me.btnThemGhiNhan.TabIndex = 42
+        Me.btnThemGhiNhan.Text = "Thêm Ghi nhận"
+        Me.btnThemGhiNhan.UseVisualStyleBackColor = True
         '
         'btnCapNhatGhiNhan
         '
@@ -150,15 +156,6 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.btnCapNhatGhiNhan.TabIndex = 43
         Me.btnCapNhatGhiNhan.Text = "Cập nhật ghi nhận"
         Me.btnCapNhatGhiNhan.UseVisualStyleBackColor = True
-        '
-        'txtNgayGhiNhan
-        '
-        Me.txtNgayGhiNhan.Location = New System.Drawing.Point(100, 217)
-        Me.txtNgayGhiNhan.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtNgayGhiNhan.Name = "txtNgayGhiNhan"
-        Me.txtNgayGhiNhan.ReadOnly = True
-        Me.txtNgayGhiNhan.Size = New System.Drawing.Size(151, 20)
-        Me.txtNgayGhiNhan.TabIndex = 44
         '
         'Label9
         '
@@ -188,15 +185,6 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.btnDong.Text = "Đóng"
         Me.btnDong.UseVisualStyleBackColor = True
         '
-        'txtTinhTrang
-        '
-        Me.txtTinhTrang.Location = New System.Drawing.Point(102, 131)
-        Me.txtTinhTrang.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtTinhTrang.Name = "txtTinhTrang"
-        Me.txtTinhTrang.ReadOnly = True
-        Me.txtTinhTrang.Size = New System.Drawing.Size(151, 20)
-        Me.txtTinhTrang.TabIndex = 48
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -216,24 +204,98 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.txtTenKhoi.Size = New System.Drawing.Size(151, 20)
         Me.txtTenKhoi.TabIndex = 51
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(331, 188)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(235, 18)
+        Me.Label1.TabIndex = 52
+        Me.Label1.Text = "----- Danh sách phiếu ghi nhận -----"
+        '
+        'dgvDanhSachGhiNhan
+        '
+        Me.dgvDanhSachGhiNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDanhSachGhiNhan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgvDanhSachGhiNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(274, 220)
+        Me.dgvDanhSachGhiNhan.Name = "dgvDanhSachGhiNhan"
+        Me.dgvDanhSachGhiNhan.RowHeadersVisible = False
+        Me.dgvDanhSachGhiNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvDanhSachGhiNhan.Size = New System.Drawing.Size(339, 134)
+        Me.dgvDanhSachGhiNhan.TabIndex = 53
+        '
+        'dtpNgayGhiNhan
+        '
+        Me.dtpNgayGhiNhan.Location = New System.Drawing.Point(101, 214)
+        Me.dtpNgayGhiNhan.Name = "dtpNgayGhiNhan"
+        Me.dtpNgayGhiNhan.Size = New System.Drawing.Size(151, 20)
+        Me.dtpNgayGhiNhan.TabIndex = 54
+        Me.dtpNgayGhiNhan.Value = New Date(2018, 6, 22, 9, 7, 51, 0)
+        '
+        'cbTinhTrang
+        '
+        Me.cbTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbTinhTrang.FormattingEnabled = True
+        Me.cbTinhTrang.Location = New System.Drawing.Point(104, 131)
+        Me.cbTinhTrang.Name = "cbTinhTrang"
+        Me.cbTinhTrang.Size = New System.Drawing.Size(149, 21)
+        Me.cbTinhTrang.TabIndex = 55
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(311, 30)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(68, 17)
+        Me.CheckBox1.TabIndex = 56
+        Me.CheckBox1.Text = "Theo lớp"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(445, 29)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(49, 13)
+        Me.Label6.TabIndex = 57
+        Me.Label6.Text = "Chọn lớp"
+        Me.Label6.Visible = False
+        '
+        'cbLop
+        '
+        Me.cbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbLop.FormattingEnabled = True
+        Me.cbLop.Location = New System.Drawing.Point(500, 26)
+        Me.cbLop.Name = "cbLop"
+        Me.cbLop.Size = New System.Drawing.Size(95, 21)
+        Me.cbLop.TabIndex = 58
+        Me.cbLop.Visible = False
+        '
         'frmQuanLyGhiNhanTinhTrangTre
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(672, 379)
+        Me.ClientSize = New System.Drawing.Size(641, 379)
+        Me.Controls.Add(Me.cbLop)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.cbTinhTrang)
+        Me.Controls.Add(Me.dtpNgayGhiNhan)
+        Me.Controls.Add(Me.dgvDanhSachGhiNhan)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtTenKhoi)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.txtTinhTrang)
         Me.Controls.Add(Me.btnDong)
         Me.Controls.Add(Me.btnXoaGhiNhan)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.txtNgayGhiNhan)
         Me.Controls.Add(Me.btnCapNhatGhiNhan)
-        Me.Controls.Add(Me.btnGhiNhan)
+        Me.Controls.Add(Me.btnThemGhiNhan)
         Me.Controls.Add(Me.txtHoTenTre)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.dgvDanhSachGhiNhan)
+        Me.Controls.Add(Me.dgvDanhSachTreEm)
         Me.Controls.Add(Me.txtMaGhiNhan)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -244,6 +306,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.MinimizeBox = False
         Me.Name = "frmQuanLyGhiNhanTinhTrangTre"
         Me.Text = "Quản lý ghi nhận tình trạng trẻ em"
+        CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -255,16 +318,21 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
     Friend WithEvents Label5 As Label
     Friend WithEvents txtMaGhiNhan As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents dgvDanhSachGhiNhan As DataGridView
+    Friend WithEvents dgvDanhSachTreEm As DataGridView
     Friend WithEvents Label8 As Label
     Friend WithEvents txtHoTenTre As TextBox
-    Friend WithEvents btnGhiNhan As Button
+    Friend WithEvents btnThemGhiNhan As Button
     Friend WithEvents btnCapNhatGhiNhan As Button
-    Friend WithEvents txtNgayGhiNhan As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents btnXoaGhiNhan As Button
     Friend WithEvents btnDong As Button
-    Friend WithEvents txtTinhTrang As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents txtTenKhoi As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents dgvDanhSachGhiNhan As DataGridView
+    Friend WithEvents dtpNgayGhiNhan As DateTimePicker
+    Friend WithEvents cbTinhTrang As ComboBox
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents cbLop As ComboBox
 End Class

@@ -60,6 +60,7 @@ Public Class frmQuanLyTreEm
         myCurrencyManager.Refresh()
 
     End Sub
+
     Private Sub dgvDanhSachTreEm_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvDanhSachTreEm.CellMouseClick
         ' Get the current cell location.
         Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
@@ -73,11 +74,13 @@ Public Class frmQuanLyTreEm
                 txtTenONha.Text = te.StrTenONha1
                 txtDiaChi.Text = te.StrDiaChi1
                 txtDienThoai.Text = te.StrDienThoai1
+                newKid = False
             Catch ex As Exception
                 Console.WriteLine(ex.StackTrace)
             End Try
         End If
     End Sub
+
     Private Sub btnTiepNhan_Click(sender As Object, e As EventArgs) Handles btnTiepNhan.Click 'Mo form tiep nhan
 
         newKid = True
@@ -107,6 +110,10 @@ Public Class frmQuanLyTreEm
     End Sub
 
     Private Sub btnCapNhat_Click(sender As Object, e As EventArgs) Handles btnCapNhat.Click 'Mo form cap nhat
+        If (txtMaSoTreEm.Text = Nothing) Then
+            MessageBox.Show("Cập nhật trẻ em không hợp lệ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
         Dim treem As TreEmDTO
         treem = New TreEmDTO()
         '1. Mapping data from GUI control
@@ -143,6 +150,7 @@ Public Class frmQuanLyTreEm
             Return
         End If
         If (newKid = True) Then
+            newKid = False
             '3. Insert to DB
             Dim result As Result
             result = teBUS.insert1(treem)
@@ -167,7 +175,10 @@ Public Class frmQuanLyTreEm
     End Sub
 
     Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click 'Xoa tre em khoi co so du lieu
-
+        If (txtMaSoTreEm.Text = Nothing) Then
+            MessageBox.Show("Chọn trẻ em trong danh sách trẻ em trước khi xoá.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
         If (dgvDanhSachTreEm.RowCount > 0) Then
             Dim result As Result
             result = gnBUS.deleteByMaTreEm(txtMaSoTreEm.Text) 'Xoa KHOA NGOAI THAM CHIEU TRUOC 

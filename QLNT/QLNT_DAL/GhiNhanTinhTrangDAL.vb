@@ -61,8 +61,8 @@ Public Class GhiNhanTinhTrangDAL
     Public Function insert(ghinhan As GhiNhanTinhTrangDTO) As Result
 
         Dim query As String = String.Empty
-        query &= "INSERT INTO [tblGhiNhanTinhTrang] ([MaPhieuGhiNhan], [MaTreEm], [MaTinhTrang], [NgayGhiNhan], [MaKhoi]) "
-        query &= "VALUES (@maphieughinhan,@matreem,@matinhtrang,@ngayghinhan,@makhoi) "
+        query &= "INSERT INTO [tblGhiNhanTinhTrang] ([MaPhieuGhiNhan], [MaTreEm], [MaTinhTrang], [NgayGhiNhan]) "
+        query &= "VALUES (@maphieughinhan,@matreem,@matinhtrang,@ngayghinhan) "
 
         'Dim nextID = 0
         'Dim result As Result
@@ -82,7 +82,6 @@ Public Class GhiNhanTinhTrangDAL
                     .Parameters.AddWithValue("@matreem", ghinhan.StrMaTreEm1)
                     .Parameters.AddWithValue("@matinhtrang", ghinhan.StrMaTinhTrang1)
                     .Parameters.AddWithValue("@ngayghinhan", ghinhan.DateNgayGhiNhan1)
-                    .Parameters.AddWithValue("@makhoi", ghinhan.StrMaKhoi1)
 
                 End With
                 Try
@@ -100,7 +99,7 @@ Public Class GhiNhanTinhTrangDAL
     Public Function selectALL(ByRef listGhiNhan As List(Of GhiNhanTinhTrangDTO)) As Result
 
         Dim query As String = String.Empty
-        query &= "SELECT [MaPhieuGhiNhan], [MaTreEm], [MaTinhTrang], [NgayGhiNhan], [MaKhoi] "
+        query &= "SELECT [MaPhieuGhiNhan], [MaTreEm], [MaTinhTrang], [NgayGhiNhan] "
         query &= "FROM [tblGhiNhanTinhTrang]"
 
         Using conn As New SqlConnection(connectionString)
@@ -117,7 +116,7 @@ Public Class GhiNhanTinhTrangDAL
                     listGhiNhan.Clear()
                     If reader.HasRows = True Then
                         While reader.Read()
-                            listGhiNhan.Add(New GhiNhanTinhTrangDTO(reader("MaPhieuGhiNhan"), reader("MaTreEm"), reader("MaTinhTrang"), reader("NgayGhiNhan"), reader("MaKhoi")))
+                            listGhiNhan.Add(New GhiNhanTinhTrangDTO(reader("MaPhieuGhiNhan"), reader("MaTreEm"), reader("MaTinhTrang"), reader("NgayGhiNhan")))
                         End While
                     End If
 
@@ -203,41 +202,6 @@ Public Class GhiNhanTinhTrangDAL
                     conn.Close()
                     ' them that bai!!!
                     Return New Result(False, "Xóa ghi nhận không thành công", ex.StackTrace)
-                End Try
-            End Using
-        End Using
-        Return New Result(True) ' thanh cong
-    End Function
-    Public Function selectByGhiNhanNull(ByRef listTreEm As List(Of TreEmDTO)) As Result
-        Dim query As String = String.Empty
-
-        query &= " SELECT * FROM [tblTreEm] "
-        query &= "WHERE [MaTreEm] Not IN (SELECT [tblTreEm].[MaTreEm] FROM [tblTreEm],[tblGhiNhanTinhTrang] WHERE ([tblTreEm].[MaTreEm])=[tblGhiNhanTinhTrang].[MaTreEm] ) "
-        query &= "AND [MaLop] Is not null"
-
-
-        Using conn As New SqlConnection(connectionString)
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = conn
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                End With
-                Try
-                    conn.Open()
-                    Dim reader As SqlDataReader
-                    reader = comm.ExecuteReader()
-                    listTreEm.Clear()
-                    If reader.HasRows = True Then
-                        While reader.Read()
-                            listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi"), reader("MaLop")))
-                        End While
-                    End If
-
-                Catch ex As Exception
-                    conn.Close()
-                    System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Lấy tất cả ghi nhận không thành công", ex.StackTrace)
                 End Try
             End Using
         End Using

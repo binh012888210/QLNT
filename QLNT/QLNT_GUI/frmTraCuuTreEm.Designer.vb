@@ -26,15 +26,12 @@ Partial Class frmTraCuuTreEm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtTuoi = New System.Windows.Forms.TextBox()
-        Me.txtMaKhoi = New System.Windows.Forms.TextBox()
         Me.txtGhiChu = New System.Windows.Forms.TextBox()
         Me.txtMaTreEm = New System.Windows.Forms.TextBox()
         Me.btnTraCuu = New System.Windows.Forms.Button()
         Me.btnTraCuuMoi = New System.Windows.Forms.Button()
-        Me.btnDong = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtHoTen = New System.Windows.Forms.TextBox()
         Me.txtDienThoai = New System.Windows.Forms.TextBox()
@@ -46,16 +43,22 @@ Partial Class frmTraCuuTreEm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.cbKhoi = New System.Windows.Forms.ComboBox()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvDanhSachTreEm
         '
+        Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(28, 296)
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(500, 30)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.RowHeadersVisible = False
-        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(487, 209)
+        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(421, 303)
         Me.dgvDanhSachTreEm.TabIndex = 0
         '
         'Label1
@@ -71,7 +74,7 @@ Partial Class frmTraCuuTreEm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(272, 63)
+        Me.Label6.Location = New System.Drawing.Point(256, 79)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(54, 13)
@@ -81,27 +84,17 @@ Partial Class frmTraCuuTreEm
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(25, 216)
+        Me.Label10.Location = New System.Drawing.Point(267, 193)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(44, 13)
         Me.Label10.TabIndex = 22
         Me.Label10.Text = "Ghi chú"
         '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(272, 105)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(45, 13)
-        Me.Label11.TabIndex = 23
-        Me.Label11.Text = "Mã khối"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 100)
+        Me.Label2.Location = New System.Drawing.Point(292, 116)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(28, 13)
@@ -110,23 +103,15 @@ Partial Class frmTraCuuTreEm
         '
         'txtTuoi
         '
-        Me.txtTuoi.Location = New System.Drawing.Point(105, 97)
+        Me.txtTuoi.Location = New System.Drawing.Point(352, 113)
         Me.txtTuoi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTuoi.Name = "txtTuoi"
-        Me.txtTuoi.Size = New System.Drawing.Size(143, 20)
+        Me.txtTuoi.Size = New System.Drawing.Size(118, 20)
         Me.txtTuoi.TabIndex = 41
-        '
-        'txtMaKhoi
-        '
-        Me.txtMaKhoi.Location = New System.Drawing.Point(372, 98)
-        Me.txtMaKhoi.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtMaKhoi.Name = "txtMaKhoi"
-        Me.txtMaKhoi.Size = New System.Drawing.Size(143, 20)
-        Me.txtMaKhoi.TabIndex = 40
         '
         'txtGhiChu
         '
-        Me.txtGhiChu.Location = New System.Drawing.Point(105, 213)
+        Me.txtGhiChu.Location = New System.Drawing.Point(327, 190)
         Me.txtGhiChu.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGhiChu.Name = "txtGhiChu"
         Me.txtGhiChu.Size = New System.Drawing.Size(143, 20)
@@ -134,7 +119,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtMaTreEm
         '
-        Me.txtMaTreEm.Location = New System.Drawing.Point(105, 60)
+        Me.txtMaTreEm.Location = New System.Drawing.Point(98, 76)
         Me.txtMaTreEm.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMaTreEm.Name = "txtMaTreEm"
         Me.txtMaTreEm.Size = New System.Drawing.Size(143, 20)
@@ -142,36 +127,27 @@ Partial Class frmTraCuuTreEm
         '
         'btnTraCuu
         '
-        Me.btnTraCuu.Location = New System.Drawing.Point(450, 216)
+        Me.btnTraCuu.Location = New System.Drawing.Point(375, 294)
         Me.btnTraCuu.Name = "btnTraCuu"
-        Me.btnTraCuu.Size = New System.Drawing.Size(65, 52)
+        Me.btnTraCuu.Size = New System.Drawing.Size(95, 39)
         Me.btnTraCuu.TabIndex = 42
         Me.btnTraCuu.Text = "Tra cứu"
         Me.btnTraCuu.UseVisualStyleBackColor = True
         '
         'btnTraCuuMoi
         '
-        Me.btnTraCuuMoi.Location = New System.Drawing.Point(12, 14)
+        Me.btnTraCuuMoi.Location = New System.Drawing.Point(270, 294)
         Me.btnTraCuuMoi.Name = "btnTraCuuMoi"
-        Me.btnTraCuuMoi.Size = New System.Drawing.Size(84, 23)
+        Me.btnTraCuuMoi.Size = New System.Drawing.Size(84, 39)
         Me.btnTraCuuMoi.TabIndex = 43
         Me.btnTraCuuMoi.Text = "Tra cứu mới"
         Me.btnTraCuuMoi.UseVisualStyleBackColor = True
-        '
-        'btnDong
-        '
-        Me.btnDong.Location = New System.Drawing.Point(461, 14)
-        Me.btnDong.Name = "btnDong"
-        Me.btnDong.Size = New System.Drawing.Size(75, 28)
-        Me.btnDong.TabIndex = 44
-        Me.btnDong.Text = "Đóng"
-        Me.btnDong.UseVisualStyleBackColor = True
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(191, 256)
+        Me.Label4.Location = New System.Drawing.Point(605, 9)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(183, 18)
         Me.Label4.TabIndex = 46
@@ -179,7 +155,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtHoTen
         '
-        Me.txtHoTen.Location = New System.Drawing.Point(372, 60)
+        Me.txtHoTen.Location = New System.Drawing.Point(327, 76)
         Me.txtHoTen.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTen.Name = "txtHoTen"
         Me.txtHoTen.Size = New System.Drawing.Size(143, 20)
@@ -187,7 +163,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtDienThoai
         '
-        Me.txtDienThoai.Location = New System.Drawing.Point(372, 173)
+        Me.txtDienThoai.Location = New System.Drawing.Point(100, 190)
         Me.txtDienThoai.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDienThoai.Name = "txtDienThoai"
         Me.txtDienThoai.Size = New System.Drawing.Size(141, 20)
@@ -195,7 +171,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtDiaChi
         '
-        Me.txtDiaChi.Location = New System.Drawing.Point(105, 173)
+        Me.txtDiaChi.Location = New System.Drawing.Point(327, 152)
         Me.txtDiaChi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDiaChi.Name = "txtDiaChi"
         Me.txtDiaChi.Size = New System.Drawing.Size(143, 20)
@@ -203,7 +179,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtTenONha
         '
-        Me.txtTenONha.Location = New System.Drawing.Point(105, 134)
+        Me.txtTenONha.Location = New System.Drawing.Point(98, 149)
         Me.txtTenONha.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTenONha.Name = "txtTenONha"
         Me.txtTenONha.Size = New System.Drawing.Size(143, 20)
@@ -211,7 +187,7 @@ Partial Class frmTraCuuTreEm
         '
         'txtHoTenPhuHuynh
         '
-        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(372, 134)
+        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(132, 113)
         Me.txtHoTenPhuHuynh.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTenPhuHuynh.Name = "txtHoTenPhuHuynh"
         Me.txtHoTenPhuHuynh.Size = New System.Drawing.Size(143, 20)
@@ -220,7 +196,7 @@ Partial Class frmTraCuuTreEm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 63)
+        Me.Label3.Location = New System.Drawing.Point(38, 79)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(54, 13)
@@ -230,7 +206,7 @@ Partial Class frmTraCuuTreEm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(272, 176)
+        Me.Label5.Location = New System.Drawing.Point(38, 193)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(55, 13)
@@ -240,7 +216,7 @@ Partial Class frmTraCuuTreEm
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(25, 176)
+        Me.Label7.Location = New System.Drawing.Point(267, 152)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(40, 13)
@@ -250,7 +226,7 @@ Partial Class frmTraCuuTreEm
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(25, 137)
+        Me.Label9.Location = New System.Drawing.Point(38, 152)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 13)
@@ -260,18 +236,60 @@ Partial Class frmTraCuuTreEm
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(272, 137)
+        Me.Label8.Location = New System.Drawing.Point(38, 116)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(92, 13)
+        Me.Label8.Size = New System.Drawing.Size(79, 13)
         Me.Label8.TabIndex = 50
-        Me.Label8.Text = "Họ tên phụ huynh"
+        Me.Label8.Text = "Tên phụ huynh"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(17, 39)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(88, 13)
+        Me.Label12.TabIndex = 65
+        Me.Label12.Text = "Thông tin cơ bản"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(20, 233)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(143, 17)
+        Me.CheckBox1.TabIndex = 66
+        Me.CheckBox1.Text = "Tra cứu trẻ em nâng cao"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(38, 271)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(49, 13)
+        Me.Label13.TabIndex = 67
+        Me.Label13.Text = "Tên khối"
+        '
+        'cbKhoi
+        '
+        Me.cbKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbKhoi.FormattingEnabled = True
+        Me.cbKhoi.Location = New System.Drawing.Point(97, 268)
+        Me.cbKhoi.Name = "cbKhoi"
+        Me.cbKhoi.Size = New System.Drawing.Size(143, 21)
+        Me.cbKhoi.TabIndex = 68
         '
         'frmTraCuuTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(557, 535)
+        Me.ClientSize = New System.Drawing.Size(947, 367)
+        Me.Controls.Add(Me.cbKhoi)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtHoTen)
         Me.Controls.Add(Me.txtDienThoai)
         Me.Controls.Add(Me.txtDiaChi)
@@ -283,15 +301,12 @@ Partial Class frmTraCuuTreEm
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.btnDong)
         Me.Controls.Add(Me.btnTraCuuMoi)
         Me.Controls.Add(Me.btnTraCuu)
         Me.Controls.Add(Me.txtTuoi)
-        Me.Controls.Add(Me.txtMaKhoi)
         Me.Controls.Add(Me.txtGhiChu)
         Me.Controls.Add(Me.txtMaTreEm)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
@@ -312,15 +327,12 @@ Partial Class frmTraCuuTreEm
     Friend WithEvents Label1 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label10 As Label
-    Friend WithEvents Label11 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents txtTuoi As TextBox
-    Friend WithEvents txtMaKhoi As TextBox
     Friend WithEvents txtGhiChu As TextBox
     Friend WithEvents txtMaTreEm As TextBox
     Friend WithEvents btnTraCuu As Button
     Friend WithEvents btnTraCuuMoi As Button
-    Friend WithEvents btnDong As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents txtHoTen As TextBox
     Friend WithEvents txtDienThoai As TextBox
@@ -332,4 +344,8 @@ Partial Class frmTraCuuTreEm
     Friend WithEvents Label7 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents cbKhoi As ComboBox
 End Class

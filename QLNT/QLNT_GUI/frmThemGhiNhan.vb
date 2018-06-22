@@ -24,7 +24,6 @@ Public Class frmThemGhiNhan
             Return
         End If
         txtMaGhiNhan.Text = nextMsgn
-        loadListTreEmChuaCoGhiNhan()
         loadCBTinhTrang()
     End Sub
 
@@ -45,49 +44,7 @@ Public Class frmThemGhiNhan
         myCurrencyManager.Refresh()
     End Sub
 
-    Private Sub loadListTreEmChuaCoGhiNhan() 'load danh sach tre em chua co ghi nhan nao
 
-        Dim listTreEm = New List(Of TreEmDTO)
-        Dim result As Result
-        result = ghinhanBUS.selectByGhiNhanNull(listTreEm)
-        If (result.FlagResult = False) Then
-            MessageBox.Show("Lấy danh sách trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            System.Console.WriteLine(result.SystemMessage)
-            Return
-        End If
-        dgvListTreEm.Columns.Clear()
-        dgvListTreEm.DataSource = Nothing
-
-        dgvListTreEm.AutoGenerateColumns = False
-        dgvListTreEm.AllowUserToAddRows = False
-        dgvListTreEm.DataSource = listTreEm
-
-        Dim clMaTreEm = New DataGridViewTextBoxColumn()
-        clMaTreEm.Name = "MaTreEm"
-        clMaTreEm.HeaderText = "Mã Trẻ Em"
-        clMaTreEm.DataPropertyName = "StrMaTreEm1" ''ten trong DTO
-        clMaTreEm.ReadOnly = True
-        dgvListTreEm.Columns.Add(clMaTreEm)
-
-        Dim clTenTreEm = New DataGridViewTextBoxColumn()
-        clTenTreEm.Name = "HoTenTreEm"
-        clTenTreEm.HeaderText = "Tên Trẻ Em"
-        clTenTreEm.DataPropertyName = "StrHoTenTreEm1" 'ten trong DTO
-        clTenTreEm.ReadOnly = True
-        dgvListTreEm.Columns.Add(clTenTreEm)
-
-        Dim clMaLop = New DataGridViewTextBoxColumn()
-        clMaLop.Name = "MaLop"
-        clMaLop.HeaderText = "Mã Lớp"
-        clMaLop.DataPropertyName = "StrMaLop1" 'ten trong DTO
-        clMaLop.ReadOnly = True
-        dgvListTreEm.Columns.Add(clMaLop)
-
-        Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvListTreEm.DataSource)
-        myCurrencyManager.Refresh()
-
-
-    End Sub
     Private Sub dgvListTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvListTreEm.SelectionChanged 'Chon tre em trong danh sach tr em chua co ghi nhan
         Dim currentRowIndex As Integer = dgvListTreEm.CurrentCellAddress.Y
         If (-1 < currentRowIndex And currentRowIndex < dgvListTreEm.RowCount) Then
@@ -97,7 +54,7 @@ Public Class frmThemGhiNhan
 
             Dim khoiInfo = New KhoiDTO
             Dim result As Result
-            result = khBUS.getKhoiByMaLop(treem.StrMaLop1, khoiInfo) 'Lay ten khoi
+            result = teBUS.getKhoiByID(treem.StrMaTreEm1, khoiInfo) 'Lay ten khoi
             If (result.FlagResult = False) Then
                 MessageBox.Show("Lấy thông tin khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 System.Console.WriteLine(result.SystemMessage)
@@ -117,7 +74,6 @@ Public Class frmThemGhiNhan
         '1. Mapping data from GUI control
         ghinhan.StrMaPhieuGhiNhan1 = txtMaGhiNhan.Text
         ghinhan.StrMaTreEm1 = txtMaSoTreEm.Text
-        ghinhan.StrMaKhoi1 = strMaKhoi
         ghinhan.DateNgayGhiNhan1 = dtpNgayGhiNhan.Value
         ghinhan.StrMaTinhTrang1 = cbTinhTrang.SelectedValue
         '2. Insert to DB

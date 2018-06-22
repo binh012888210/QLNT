@@ -85,7 +85,7 @@ Partial Class frmQuanLyLop
         Me.dgvTreEmCoLop.Name = "dgvTreEmCoLop"
         Me.dgvTreEmCoLop.RowHeadersVisible = False
         Me.dgvTreEmCoLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTreEmCoLop.Size = New System.Drawing.Size(285, 244)
+        Me.dgvTreEmCoLop.Size = New System.Drawing.Size(285, 231)
         Me.dgvTreEmCoLop.TabIndex = 2
         '
         'Label3
@@ -103,7 +103,7 @@ Partial Class frmQuanLyLop
         Me.dgvTreEmChuaCoLop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvTreEmChuaCoLop.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvTreEmChuaCoLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTreEmChuaCoLop.Location = New System.Drawing.Point(24, 289)
+        Me.dgvTreEmChuaCoLop.Location = New System.Drawing.Point(22, 276)
         Me.dgvTreEmChuaCoLop.Name = "dgvTreEmChuaCoLop"
         Me.dgvTreEmChuaCoLop.RowHeadersVisible = False
         Me.dgvTreEmChuaCoLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -114,7 +114,7 @@ Partial Class frmQuanLyLop
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(33, 259)
+        Me.Label4.Location = New System.Drawing.Point(33, 244)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(264, 18)
         Me.Label4.TabIndex = 11
@@ -122,7 +122,7 @@ Partial Class frmQuanLyLop
         '
         'btnThemVaoLop
         '
-        Me.btnThemVaoLop.Location = New System.Drawing.Point(105, 223)
+        Me.btnThemVaoLop.Location = New System.Drawing.Point(107, 218)
         Me.btnThemVaoLop.Name = "btnThemVaoLop"
         Me.btnThemVaoLop.Size = New System.Drawing.Size(119, 23)
         Me.btnThemVaoLop.TabIndex = 12
@@ -304,7 +304,7 @@ Partial Class frmQuanLyLop
         '
         'btnCapNhat
         '
-        Me.btnCapNhat.Location = New System.Drawing.Point(62, 223)
+        Me.btnCapNhat.Location = New System.Drawing.Point(64, 218)
         Me.btnCapNhat.Name = "btnCapNhat"
         Me.btnCapNhat.Size = New System.Drawing.Size(75, 23)
         Me.btnCapNhat.TabIndex = 45
@@ -314,7 +314,7 @@ Partial Class frmQuanLyLop
         '
         'btnXoaKhoiLop
         '
-        Me.btnXoaKhoiLop.Location = New System.Drawing.Point(193, 223)
+        Me.btnXoaKhoiLop.Location = New System.Drawing.Point(195, 218)
         Me.btnXoaKhoiLop.Name = "btnXoaKhoiLop"
         Me.btnXoaKhoiLop.Size = New System.Drawing.Size(75, 23)
         Me.btnXoaKhoiLop.TabIndex = 46
@@ -364,7 +364,7 @@ Partial Class frmQuanLyLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 456)
+        Me.ClientSize = New System.Drawing.Size(655, 447)
         Me.Controls.Add(Me.txtMaLop1)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label15)
