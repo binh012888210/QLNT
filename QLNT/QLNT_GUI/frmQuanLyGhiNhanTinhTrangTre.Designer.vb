@@ -46,6 +46,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbLop = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -103,7 +104,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(383, 63)
+        Me.Label7.Location = New System.Drawing.Point(383, 59)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(187, 18)
         Me.Label7.TabIndex = 35
@@ -220,11 +221,11 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.dgvDanhSachGhiNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachGhiNhan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachGhiNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(306, 274)
+        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(306, 289)
         Me.dgvDanhSachGhiNhan.Name = "dgvDanhSachGhiNhan"
         Me.dgvDanhSachGhiNhan.RowHeadersVisible = False
         Me.dgvDanhSachGhiNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDanhSachGhiNhan.Size = New System.Drawing.Size(339, 134)
+        Me.dgvDanhSachGhiNhan.Size = New System.Drawing.Size(339, 119)
         Me.dgvDanhSachGhiNhan.TabIndex = 53
         '
         'dtpNgayGhiNhan
@@ -284,11 +285,22 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label11.TabIndex = 101
         Me.Label11.Text = "----- Quản Lý Ghi Nhận Tình Trạng Trẻ  -----"
         '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(343, 263)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(277, 17)
+        Me.CheckBox2.TabIndex = 102
+        Me.CheckBox2.Text = "Lấy danh sách phiếu ghi nhận của trẻ em được chọn"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
         'frmQuanLyGhiNhanTinhTrangTre
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(696, 453)
+        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cbLop)
         Me.Controls.Add(Me.Label6)
@@ -349,4 +361,5 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
     Friend WithEvents Label6 As Label
     Friend WithEvents cbLop As ComboBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents CheckBox2 As CheckBox
 End Class

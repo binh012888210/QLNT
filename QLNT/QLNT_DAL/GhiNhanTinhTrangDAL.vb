@@ -129,6 +129,41 @@ Public Class GhiNhanTinhTrangDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
+    Public Function selectALLByMaTreEm(strMaTreEm As String, ByRef listGhiNhan As List(Of GhiNhanTinhTrangDTO)) As Result
+
+        Dim query As String = String.Empty
+        query &= "SELECT [MaPhieuGhiNhan], [MaTreEm], [MaTinhTrang], [NgayGhiNhan] "
+        query &= "FROM [tblGhiNhanTinhTrang] "
+        query &= "WHERE [MaTreEm] = @matreem "
+
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    listGhiNhan.Clear()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            listGhiNhan.Add(New GhiNhanTinhTrangDTO(reader("MaPhieuGhiNhan"), reader("MaTreEm"), reader("MaTinhTrang"), reader("NgayGhiNhan")))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy ghi nhận theo mã trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+    End Function
     Public Function updatetByID(ghinhan As GhiNhanTinhTrangDTO) As Result
 
         Dim query As String = String.Empty

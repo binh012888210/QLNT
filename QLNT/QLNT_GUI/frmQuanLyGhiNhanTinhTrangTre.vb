@@ -56,9 +56,9 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
         dgvDanhSachTreEm.Columns.Add(clTenTreEm)
 
         Dim clTenPhuHuynh = New DataGridViewTextBoxColumn()
-        clTenPhuHuynh.Name = "TenPhuHuynh"
-        clTenPhuHuynh.HeaderText = "Tên Phụ Huynh"
-        clTenPhuHuynh.DataPropertyName = "StrHoTenPhuHuynh1"
+        clTenPhuHuynh.Name = "MaLop"
+        clTenPhuHuynh.HeaderText = "Mã Lớp"
+        clTenPhuHuynh.DataPropertyName = "StrMaLop1"
         clTenPhuHuynh.ReadOnly = True
         dgvDanhSachTreEm.Columns.Add(clTenPhuHuynh)
 
@@ -162,6 +162,57 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
 
     End Sub
 
+    Private Sub loadListGhiNhanSelectByMaTreEm() 'Load du lieu vao datagridview
+        Dim listGhiNhan = New List(Of GhiNhanTinhTrangDTO)
+        Dim result As Result
+        result = ghinhanBUS.selectALLByMaTreEm(maTreEm, listGhiNhan)
+        If (result.FlagResult = False) Then
+            MessageBox.Show("Lấy danh sách ghi nhận không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+            Return
+        End If
+        dgvDanhSachGhiNhan.Columns.Clear()
+        dgvDanhSachGhiNhan.DataSource = Nothing
+
+        dgvDanhSachGhiNhan.AutoGenerateColumns = False
+        dgvDanhSachGhiNhan.AllowUserToAddRows = False
+        dgvDanhSachGhiNhan.DataSource = listGhiNhan
+
+        Dim clMaGhiNhan = New DataGridViewTextBoxColumn()
+        clMaGhiNhan.Name = "MaGhiNhan"
+        clMaGhiNhan.HeaderText = "Mã Ghi Nhận"
+        clMaGhiNhan.DataPropertyName = "StrMaPhieuGhiNhan1" ''ten trong DTO
+        clMaGhiNhan.ReadOnly = True
+        dgvDanhSachGhiNhan.Columns.Add(clMaGhiNhan)
+
+        Dim clMaTreEm = New DataGridViewTextBoxColumn()
+        clMaTreEm.Name = "MaTreEm"
+        clMaTreEm.HeaderText = "Mã Trẻ Em"
+        clMaTreEm.DataPropertyName = "StrMaTreEm1" 'ten trong DTO
+        clMaTreEm.ReadOnly = True
+        dgvDanhSachGhiNhan.Columns.Add(clMaTreEm)
+
+        Dim clMaTinhTrang = New DataGridViewTextBoxColumn()
+        clMaTinhTrang.Name = "MaTinhTrang"
+        clMaTinhTrang.HeaderText = "Mã Tình Trạng"
+        clMaTinhTrang.DataPropertyName = "StrMaTinhTrang1" 'ten trong DTO
+        clMaTinhTrang.ReadOnly = True
+        dgvDanhSachGhiNhan.Columns.Add(clMaTinhTrang)
+
+        Dim clNgayGhiNhan = New DataGridViewTextBoxColumn()
+        clNgayGhiNhan.Name = "NgayGhiNhan"
+        clNgayGhiNhan.HeaderText = "Ngày Ghi Nhận"
+        clNgayGhiNhan.DataPropertyName = "DateNgayGhiNhan1" 'ten trong DTO
+        clNgayGhiNhan.ReadOnly = True
+        dgvDanhSachGhiNhan.Columns.Add(clNgayGhiNhan)
+
+
+
+        Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachGhiNhan.DataSource)
+        myCurrencyManager.Refresh()
+
+    End Sub
+
     Private Sub loadCBTinhTrang() 'Load cbTinhTrang 
         Dim listTinhTrang = New List(Of TinhTrangDTO)
         Dim result As Result
@@ -197,6 +248,12 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
         myCurrencyManager.Refresh()
     End Sub
 
+    Private Sub cbLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLop.SelectedIndexChanged
+        If (CheckBox1.Checked = True) Then
+            loadListTreEmSelectByClass()
+        End If
+    End Sub
+
     Private Sub dgvDanhSachTreEm_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvDanhSachTreEm.CellMouseClick
         Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
         If (-1 < currentRowIndex And currentRowIndex < dgvDanhSachTreEm.RowCount) Then
@@ -212,10 +269,41 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
                     System.Console.WriteLine(result.SystemMessage)
                     Return
                 End If
+                maTreEm = te.StrMaTreEm1
                 If (newGhiNhan = True) Then
                     txtHoTenTre.Text = te.StrHoTenTreEm1
                     txtTenKhoi.Text = khoiInfo.StrTenKhoi1
-                    maTreEm = te.StrMaTreEm1
+                End If
+                If (CheckBox2.Checked = True) Then
+                    loadListGhiNhanSelectByMaTreEm()
+                End If
+            Catch ex As Exception
+                Console.WriteLine(ex.StackTrace)
+            End Try
+        End If
+    End Sub
+    Private Sub dgvDanhSachTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhSachTreEm.SelectionChanged
+        Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
+        If (-1 < currentRowIndex And currentRowIndex < dgvDanhSachTreEm.RowCount) Then
+            Try
+                Dim te = CType(dgvDanhSachTreEm.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+
+
+                Dim khoiInfo = New KhoiDTO 'Lay ten tre em trong sql
+                Dim result As Result
+                result = teBUS.getKhoiByID(te.StrMaTreEm1, khoiInfo)
+                If (result.FlagResult = False) Then
+                    MessageBox.Show("Lấy thông tin khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    System.Console.WriteLine(result.SystemMessage)
+                    Return
+                End If
+                maTreEm = te.StrMaTreEm1
+                If (newGhiNhan = True) Then
+                    txtHoTenTre.Text = te.StrHoTenTreEm1
+                    txtTenKhoi.Text = khoiInfo.StrTenKhoi1
+                End If
+                If (CheckBox2.Checked = True) Then
+                    loadListGhiNhanSelectByMaTreEm()
                 End If
             Catch ex As Exception
                 Console.WriteLine(ex.StackTrace)
@@ -283,7 +371,11 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
                 System.Console.WriteLine(result.SystemMessage)
                 Return
             End If
-            loadListGhiNhan()
+            If (CheckBox2.Checked = True) Then
+                loadListGhiNhanSelectByMaTreEm()
+            Else
+                loadListGhiNhan()
+            End If
             txtMaGhiNhan.Text = String.Empty
             txtHoTenTre.Text = String.Empty
             txtTenKhoi.Text = String.Empty
@@ -310,7 +402,7 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
             Return
         End If
         txtMaGhiNhan.Text = nextMsgn
-        txtHoTenTre.Text = "Vui long chon trong danh sach ke ben"
+        txtHoTenTre.Text = "Vui long chon tre em "
         txtTenKhoi.Text = String.Empty
         dtpNgayGhiNhan.Value = DateTime.Now
         loadCBTinhTrang()
@@ -327,7 +419,7 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
         '1. Mapping data from GUI control
         ghinhan.StrMaPhieuGhiNhan1 = txtMaGhiNhan.Text
         ghinhan.StrMaTreEm1 = maTreEm
-        ghinhan.DateNgayGhiNhan1 = dtpNgayGhiNhan.Value
+        ghinhan.DateNgayGhiNhan1 = dtpNgayGhiNhan.Value.ToShortDateString
         ghinhan.StrMaTinhTrang1 = cbTinhTrang.SelectedValue
         '2. Insert to DB
         If (txtTenKhoi.Text = Nothing) Then
@@ -355,7 +447,11 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
             End If
 
         End If
-        loadListGhiNhan()
+        If (CheckBox2.Checked = True) Then
+            loadListGhiNhanSelectByMaTreEm()
+        Else
+            loadListGhiNhan()
+        End If
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
@@ -370,9 +466,13 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
         End If
     End Sub
 
-    Private Sub cbLop_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLop.SelectedIndexChanged
-        If (CheckBox1.Checked = True) Then
-            loadListTreEmSelectByClass()
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If (CheckBox2.Checked = True) Then
+            loadListGhiNhanSelectByMaTreEm()
+        Else
+            loadListGhiNhan()
         End If
     End Sub
+
+
 End Class

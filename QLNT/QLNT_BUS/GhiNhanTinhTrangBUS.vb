@@ -27,4 +27,7 @@ Public Class GhiNhanTinhTrangBUS
     Public Function selectALL(ByRef listGhiNhan As List(Of GhiNhanTinhTrangDTO)) As Result
         Return gnttDAL.selectALL(listGhiNhan)
     End Function
+    Public Function selectALLByMaTreEm(strMaTreEm As String, ByRef listGhiNhan As List(Of GhiNhanTinhTrangDTO)) As Result
+        Return gnttDAL.selectALLByMaTreEm(strMaTreEm, listGhiNhan)
+    End Function
 End Class

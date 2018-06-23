@@ -116,11 +116,11 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(363, 61)
+        Me.Label3.Location = New System.Drawing.Point(382, 61)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(351, 18)
+        Me.Label3.Size = New System.Drawing.Size(327, 18)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "----- Tra cứu trẻ em theo tên hoặc tên phụ huynh -----"
+        Me.Label3.Text = "----- Tra cứu trẻ em theo tên hoặc mã trẻ em -----"
         '
         'txtSearchName
         '

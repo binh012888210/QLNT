@@ -268,7 +268,7 @@ Public Class TreEmDAL
 
         Dim searchText1 As String = searchText
         Dim query As String = String.Empty
-        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(HoTenTreEm,HoTenPhuHuynh) like '%" + searchText1 + "%'"
+        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(MaTreEm,HoTenTreEm) like '%" + searchText1 + "%'"
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
