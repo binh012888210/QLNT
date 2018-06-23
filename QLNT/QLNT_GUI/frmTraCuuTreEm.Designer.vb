@@ -277,6 +277,7 @@ Partial Class frmTraCuuTreEm
         'cbKhoi
         '
         Me.cbKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbKhoi.Enabled = False
         Me.cbKhoi.FormattingEnabled = True
         Me.cbKhoi.Location = New System.Drawing.Point(115, 333)
         Me.cbKhoi.Name = "cbKhoi"

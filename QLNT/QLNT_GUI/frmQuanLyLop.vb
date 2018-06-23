@@ -209,10 +209,10 @@ Public Class frmQuanLyLop
         Dim result As Result
         result = teBUS.insert2(treem)
         If (result.FlagResult = True) Then
-            MessageBox.Show("Thêm trẻ em vào lớp '" + cbLop.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Thêm trẻ '" + txtHoTen.Text + "' vào lớp '" + cbLop.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             System.Console.WriteLine(result.SystemMessage)
         Else
-            MessageBox.Show("Thêm trẻ em vào lớp '" + cbLop.Text + "' không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Thêm trẻ '" + txtHoTen.Text + "' vào lớp '" + cbLop.Text + "' không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             System.Console.WriteLine(result.SystemMessage)
         End If
         loadListTreEmChuaCoLop()
@@ -260,10 +260,17 @@ Public Class frmQuanLyLop
         Dim result As Result
         result = teBUS.deleteClassByID(txtMaSoTreEm.Text)
         If (result.FlagResult = True) Then
-            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + txtMaLop1.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + cbLop.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + txtMaLop1.Text + "' thành công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Xoá trẻ '" + txtHoTen.Text + "' khỏi lớp '" + cbLop.Text + "' không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+
+        txtMaSoTreEm.Text = String.Empty
+        txtMaLop1.Text = String.Empty
+        txtHoTen.Text = String.Empty
+        txtTuoi.Text = String.Empty
+        dtpNgayNhapHoc.Value.ToShortDateString()
+        txtGhiChu.Text = String.Empty
         loadListTreEmChuaCoLop()
         loadListTreEmCoLop()
     End Sub

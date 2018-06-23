@@ -64,7 +64,10 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
 
         Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvDanhSachTreEm.DataSource)
         myCurrencyManager.Refresh()
-
+        If (dgvDanhSachTreEm.RowCount > 0) Then
+            Dim te = CType(dgvDanhSachTreEm.Rows(dgvDanhSachTreEm.CurrentCellAddress.Y).DataBoundItem, TreEmDTO)
+            maTreEm = te.StrMaTreEm1
+        End If
     End Sub
 
     Private Sub loadListTreEmSelectByClass() 'Load list tre em vao datagridview
@@ -282,34 +285,34 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
             End Try
         End If
     End Sub
-    Private Sub dgvDanhSachTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhSachTreEm.SelectionChanged
-        Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
-        If (-1 < currentRowIndex And currentRowIndex < dgvDanhSachTreEm.RowCount) Then
-            Try
-                Dim te = CType(dgvDanhSachTreEm.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
+    'Private Sub dgvDanhSachTreEm_SelectionChanged(sender As Object, e As EventArgs) Handles dgvDanhSachTreEm.SelectionChanged
+    '    Dim currentRowIndex As Integer = dgvDanhSachTreEm.CurrentCellAddress.Y 'Cap nhat du lieu tu datagridview
+    '    If (-1 < currentRowIndex And currentRowIndex < dgvDanhSachTreEm.RowCount) Then
+    '        Try
+    '            Dim te = CType(dgvDanhSachTreEm.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
 
 
-                Dim khoiInfo = New KhoiDTO 'Lay ten tre em trong sql
-                Dim result As Result
-                result = teBUS.getKhoiByID(te.StrMaTreEm1, khoiInfo)
-                If (result.FlagResult = False) Then
-                    MessageBox.Show("Lấy thông tin khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    System.Console.WriteLine(result.SystemMessage)
-                    Return
-                End If
-                maTreEm = te.StrMaTreEm1
-                If (newGhiNhan = True) Then
-                    txtHoTenTre.Text = te.StrHoTenTreEm1
-                    txtTenKhoi.Text = khoiInfo.StrTenKhoi1
-                End If
-                If (CheckBox2.Checked = True) Then
-                    loadListGhiNhanSelectByMaTreEm()
-                End If
-            Catch ex As Exception
-                Console.WriteLine(ex.StackTrace)
-            End Try
-        End If
-    End Sub
+    '            Dim khoiInfo = New KhoiDTO 'Lay ten tre em trong sql
+    '            Dim result As Result
+    '            result = teBUS.getKhoiByID(te.StrMaTreEm1, khoiInfo)
+    '            If (result.FlagResult = False) Then
+    '                MessageBox.Show("Lấy thông tin khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '                System.Console.WriteLine(result.SystemMessage)
+    '                Return
+    '            End If
+    '            maTreEm = te.StrMaTreEm1
+    '            If (newGhiNhan = True) Then
+    '                txtHoTenTre.Text = te.StrHoTenTreEm1
+    '                txtTenKhoi.Text = khoiInfo.StrTenKhoi1
+    '            End If
+    '            If (CheckBox2.Checked = True) Then
+    '                loadListGhiNhanSelectByMaTreEm()
+    '            End If
+    '        Catch ex As Exception
+    '            Console.WriteLine(ex.StackTrace)
+    '        End Try
+    '    End If
+    'End Sub
 
     Private Sub dgvDanhSachGhiNhan_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvDanhSachGhiNhan.CellMouseClick
         ' Get the current cell location.
@@ -402,7 +405,7 @@ Public Class frmQuanLyGhiNhanTinhTrangTre
             Return
         End If
         txtMaGhiNhan.Text = nextMsgn
-        txtHoTenTre.Text = "Vui long chon tre em "
+        txtHoTenTre.Text = "Vui long chon tre em  --> "
         txtTenKhoi.Text = String.Empty
         dtpNgayGhiNhan.Value = DateTime.Now
         loadCBTinhTrang()
