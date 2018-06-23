@@ -16,4 +16,7 @@ Public Class TinhTrangBUS
     Public Function selectALL(ByRef listTinhTrang As List(Of TinhTrangDTO)) As Result
         Return ttDAL.selectALL(listTinhTrang)
     End Function
+    Public Function update(tt As TinhTrangDTO) As Result
+        Return ttDAL.update(tt)
+    End Function
 End Class

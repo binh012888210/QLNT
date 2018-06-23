@@ -78,4 +78,32 @@ Public Class TinhTrangDAL
         End Using
         Return New Result(True) ' thanh cong
     End Function
+    Public Function update(tt As TinhTrangDTO) As Result
+        Dim query As String = String.Empty
+        query &= "UPDATE [tblTinhTrang] "
+        query &= "SET [MaTinhTrang] = @matinhtrang, [TenTinhTrang] = @tentinhtrang  "
+        query &= "Where [MaTinhTrang] = @matinhtrang"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matinhtrang", tt.StrMaTinhTrang1)
+                    .Parameters.AddWithValue("@tentinhtrang", tt.StrTenTinhTrang1)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    Console.WriteLine(ex.StackTrace)
+                    conn.Close()
+                    ' them that bai!!!
+                    Return New Result(False, "Cập nhật ghi nhận không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+
+        Return New Result(True) ' thanh cong
+    End Function
 End Class

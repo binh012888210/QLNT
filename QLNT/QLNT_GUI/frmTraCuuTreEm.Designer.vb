@@ -147,7 +147,7 @@ Partial Class frmTraCuuTreEm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(605, 9)
+        Me.Label4.Location = New System.Drawing.Point(630, 9)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(183, 18)
         Me.Label4.TabIndex = 46

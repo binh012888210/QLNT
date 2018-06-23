@@ -28,8 +28,8 @@ Partial Class frmCapNhatQuyDinh
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtSiSoToiDaMoi = New System.Windows.Forms.TextBox()
+        Me.txtTinhTrangMoi = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnCapNhat = New System.Windows.Forms.Button()
@@ -44,7 +44,6 @@ Partial Class frmCapNhatQuyDinh
         Me.cbTinhTrang.Name = "cbTinhTrang"
         Me.cbTinhTrang.Size = New System.Drawing.Size(150, 21)
         Me.cbTinhTrang.TabIndex = 52
-        Me.cbTinhTrang.Visible = False
         '
         'txtSiSoToiDa
         '
@@ -95,19 +94,19 @@ Partial Class frmCapNhatQuyDinh
         Me.Label6.TabIndex = 55
         Me.Label6.Text = "Sỉ số tối đa của lớp mới"
         '
-        'TextBox1
+        'txtSiSoToiDaMoi
         '
-        Me.TextBox1.Location = New System.Drawing.Point(216, 236)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(151, 20)
-        Me.TextBox1.TabIndex = 56
+        Me.txtSiSoToiDaMoi.Location = New System.Drawing.Point(216, 236)
+        Me.txtSiSoToiDaMoi.Name = "txtSiSoToiDaMoi"
+        Me.txtSiSoToiDaMoi.Size = New System.Drawing.Size(151, 20)
+        Me.txtSiSoToiDaMoi.TabIndex = 56
         '
-        'TextBox2
+        'txtTinhTrangMoi
         '
-        Me.TextBox2.Location = New System.Drawing.Point(216, 103)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox2.TabIndex = 57
+        Me.txtTinhTrangMoi.Location = New System.Drawing.Point(216, 103)
+        Me.txtTinhTrangMoi.Name = "txtTinhTrangMoi"
+        Me.txtTinhTrangMoi.Size = New System.Drawing.Size(150, 20)
+        Me.txtTinhTrangMoi.TabIndex = 57
         '
         'Label1
         '
@@ -152,8 +151,8 @@ Partial Class frmCapNhatQuyDinh
         Me.ClientSize = New System.Drawing.Size(455, 339)
         Me.Controls.Add(Me.btnDong)
         Me.Controls.Add(Me.btnCapNhat)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtTinhTrangMoi)
+        Me.Controls.Add(Me.txtSiSoToiDaMoi)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
@@ -175,8 +174,8 @@ Partial Class frmCapNhatQuyDinh
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtSiSoToiDaMoi As TextBox
+    Friend WithEvents txtTinhTrangMoi As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnCapNhat As Button

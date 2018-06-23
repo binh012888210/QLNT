@@ -16,4 +16,13 @@ Public Class ThamSoBUS
     Public Function KiemTraSiSo(intSiSoLop As Integer) As Boolean
         Return tsDAL.KiemTraSiSo(intSiSoLop)
     End Function
+    Public Function update(ts As ThamSoDTO, text As String) As Result
+        Return tsDAL.update(ts, text)
+    End Function
+    Public Function selectALL(ByRef listTinhTrang As List(Of ThamSoDTO)) As Result
+        Return tsDAL.selectALL(listTinhTrang)
+    End Function
+    Public Function LoadSiSo(ByRef text As String) As Result
+        Return tsDAL.LoadSiSo(text)
+    End Function
 End Class
