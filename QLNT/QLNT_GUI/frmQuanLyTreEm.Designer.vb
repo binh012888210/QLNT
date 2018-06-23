@@ -47,6 +47,7 @@ Partial Class frmQuanLyTreEm
         Me.txtDienThoai = New System.Windows.Forms.TextBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.dtpNgaySinh = New System.Windows.Forms.DateTimePicker()
+        Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,18 +58,18 @@ Partial Class frmQuanLyTreEm
         Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(292, 92)
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(319, 144)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.RowHeadersVisible = False
         Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(355, 303)
+        Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(439, 303)
         Me.dgvDanhSachTreEm.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(43, 291)
+        Me.Label1.Location = New System.Drawing.Point(70, 343)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 18)
         Me.Label1.TabIndex = 1
@@ -76,7 +77,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnTiepNhan
         '
-        Me.btnTiepNhan.Location = New System.Drawing.Point(21, 323)
+        Me.btnTiepNhan.Location = New System.Drawing.Point(48, 375)
         Me.btnTiepNhan.Name = "btnTiepNhan"
         Me.btnTiepNhan.Size = New System.Drawing.Size(104, 23)
         Me.btnTiepNhan.TabIndex = 2
@@ -85,7 +86,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnCapNhat
         '
-        Me.btnCapNhat.Location = New System.Drawing.Point(147, 323)
+        Me.btnCapNhat.Location = New System.Drawing.Point(174, 375)
         Me.btnCapNhat.Name = "btnCapNhat"
         Me.btnCapNhat.Size = New System.Drawing.Size(124, 23)
         Me.btnCapNhat.TabIndex = 3
@@ -94,7 +95,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnXoa
         '
-        Me.btnXoa.Location = New System.Drawing.Point(21, 366)
+        Me.btnXoa.Location = New System.Drawing.Point(48, 418)
         Me.btnXoa.Name = "btnXoa"
         Me.btnXoa.Size = New System.Drawing.Size(104, 23)
         Me.btnXoa.TabIndex = 4
@@ -105,7 +106,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(373, 71)
+        Me.Label2.Location = New System.Drawing.Point(452, 123)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(183, 18)
         Me.Label2.TabIndex = 5
@@ -115,7 +116,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(296, 9)
+        Me.Label3.Location = New System.Drawing.Point(363, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(351, 18)
         Me.Label3.TabIndex = 6
@@ -123,16 +124,16 @@ Partial Class frmQuanLyTreEm
         '
         'txtSearchName
         '
-        Me.txtSearchName.Location = New System.Drawing.Point(292, 40)
+        Me.txtSearchName.Location = New System.Drawing.Point(319, 92)
         Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.Size = New System.Drawing.Size(355, 20)
+        Me.txtSearchName.Size = New System.Drawing.Size(439, 20)
         Me.txtSearchName.TabIndex = 7
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(32, 9)
+        Me.Label4.Location = New System.Drawing.Point(59, 61)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(223, 18)
         Me.Label4.TabIndex = 8
@@ -140,7 +141,7 @@ Partial Class frmQuanLyTreEm
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(147, 366)
+        Me.btnDong.Location = New System.Drawing.Point(174, 418)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(124, 23)
         Me.btnDong.TabIndex = 15
@@ -150,7 +151,7 @@ Partial Class frmQuanLyTreEm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(17, 47)
+        Me.Label5.Location = New System.Drawing.Point(44, 99)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 13)
@@ -160,7 +161,7 @@ Partial Class frmQuanLyTreEm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(17, 83)
+        Me.Label6.Location = New System.Drawing.Point(44, 135)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(54, 13)
@@ -170,7 +171,7 @@ Partial Class frmQuanLyTreEm
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(17, 123)
+        Me.Label7.Location = New System.Drawing.Point(44, 175)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(54, 13)
@@ -180,7 +181,7 @@ Partial Class frmQuanLyTreEm
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(17, 159)
+        Me.Label8.Location = New System.Drawing.Point(44, 211)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(92, 13)
@@ -190,7 +191,7 @@ Partial Class frmQuanLyTreEm
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(17, 194)
+        Me.Label9.Location = New System.Drawing.Point(44, 246)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 13)
@@ -200,7 +201,7 @@ Partial Class frmQuanLyTreEm
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(18, 228)
+        Me.Label10.Location = New System.Drawing.Point(45, 280)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(40, 13)
@@ -210,7 +211,7 @@ Partial Class frmQuanLyTreEm
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(18, 261)
+        Me.Label11.Location = New System.Drawing.Point(45, 313)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(55, 13)
@@ -219,7 +220,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtMaSoTreEm
         '
-        Me.txtMaSoTreEm.Location = New System.Drawing.Point(119, 47)
+        Me.txtMaSoTreEm.Location = New System.Drawing.Point(146, 99)
         Me.txtMaSoTreEm.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMaSoTreEm.Name = "txtMaSoTreEm"
         Me.txtMaSoTreEm.ReadOnly = True
@@ -228,7 +229,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtHoTen
         '
-        Me.txtHoTen.Location = New System.Drawing.Point(119, 80)
+        Me.txtHoTen.Location = New System.Drawing.Point(146, 132)
         Me.txtHoTen.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTen.Name = "txtHoTen"
         Me.txtHoTen.Size = New System.Drawing.Size(151, 20)
@@ -236,7 +237,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtHoTenPhuHuynh
         '
-        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(119, 156)
+        Me.txtHoTenPhuHuynh.Location = New System.Drawing.Point(146, 208)
         Me.txtHoTenPhuHuynh.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTenPhuHuynh.Name = "txtHoTenPhuHuynh"
         Me.txtHoTenPhuHuynh.Size = New System.Drawing.Size(151, 20)
@@ -244,7 +245,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtTenONha
         '
-        Me.txtTenONha.Location = New System.Drawing.Point(119, 194)
+        Me.txtTenONha.Location = New System.Drawing.Point(146, 246)
         Me.txtTenONha.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTenONha.Name = "txtTenONha"
         Me.txtTenONha.Size = New System.Drawing.Size(151, 20)
@@ -252,7 +253,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtDiaChi
         '
-        Me.txtDiaChi.Location = New System.Drawing.Point(119, 228)
+        Me.txtDiaChi.Location = New System.Drawing.Point(146, 280)
         Me.txtDiaChi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDiaChi.Name = "txtDiaChi"
         Me.txtDiaChi.Size = New System.Drawing.Size(151, 20)
@@ -260,7 +261,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtDienThoai
         '
-        Me.txtDienThoai.Location = New System.Drawing.Point(119, 261)
+        Me.txtDienThoai.Location = New System.Drawing.Point(146, 313)
         Me.txtDienThoai.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDienThoai.Name = "txtDienThoai"
         Me.txtDienThoai.Size = New System.Drawing.Size(151, 20)
@@ -269,7 +270,7 @@ Partial Class frmQuanLyTreEm
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(119, 102)
+        Me.CheckBox1.Location = New System.Drawing.Point(146, 154)
         Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(106, 17)
@@ -279,16 +280,27 @@ Partial Class frmQuanLyTreEm
         '
         'dtpNgaySinh
         '
-        Me.dtpNgaySinh.Location = New System.Drawing.Point(119, 124)
+        Me.dtpNgaySinh.Location = New System.Drawing.Point(146, 176)
         Me.dtpNgaySinh.Name = "dtpNgaySinh"
         Me.dtpNgaySinh.Size = New System.Drawing.Size(151, 20)
         Me.dtpNgaySinh.TabIndex = 52
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(272, 21)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(256, 25)
+        Me.Label12.TabIndex = 101
+        Me.Label12.Text = "----- Quản Lý Trẻ Em  -----"
         '
         'frmQuanLyTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(669, 418)
+        Me.ClientSize = New System.Drawing.Size(812, 500)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.dtpNgaySinh)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.txtDienThoai)
@@ -314,6 +326,7 @@ Partial Class frmQuanLyTreEm
         Me.Controls.Add(Me.btnTiepNhan)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvDanhSachTreEm)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmQuanLyTreEm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Quản lý trẻ em"
@@ -348,4 +361,5 @@ Partial Class frmQuanLyTreEm
     Friend WithEvents txtDienThoai As TextBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents dtpNgaySinh As DateTimePicker
+    Friend WithEvents Label12 As Label
 End Class

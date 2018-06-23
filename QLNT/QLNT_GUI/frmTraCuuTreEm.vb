@@ -60,7 +60,7 @@ Public Class frmTraCuuTreEm
         End If
     End Sub
 
-    Private Sub btnDong_Click(sender As Object, e As EventArgs)
+    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click
         Close()
     End Sub
 
@@ -76,5 +76,4 @@ Public Class frmTraCuuTreEm
         dgvDanhSachTreEm.Columns.Clear()
         dgvDanhSachTreEm.DataSource = Nothing
     End Sub
-
 End Class

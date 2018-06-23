@@ -48,7 +48,7 @@ Partial Class frmChuyenLop
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 60)
+        Me.Label3.Location = New System.Drawing.Point(430, 86)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 82
@@ -60,7 +60,7 @@ Partial Class frmChuyenLop
         Me.dgvListHS_FROM.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvListHS_FROM.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgvListHS_FROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvListHS_FROM.Location = New System.Drawing.Point(23, 145)
+        Me.dgvListHS_FROM.Location = New System.Drawing.Point(49, 170)
         Me.dgvListHS_FROM.MultiSelect = False
         Me.dgvListHS_FROM.Name = "dgvListHS_FROM"
         Me.dgvListHS_FROM.RowHeadersVisible = False
@@ -71,7 +71,7 @@ Partial Class frmChuyenLop
         'cbTuLop
         '
         Me.cbTuLop.FormattingEnabled = True
-        Me.cbTuLop.Location = New System.Drawing.Point(81, 109)
+        Me.cbTuLop.Location = New System.Drawing.Point(107, 134)
         Me.cbTuLop.Name = "cbTuLop"
         Me.cbTuLop.Size = New System.Drawing.Size(118, 21)
         Me.cbTuLop.TabIndex = 85
@@ -79,7 +79,7 @@ Partial Class frmChuyenLop
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(20, 114)
+        Me.Label2.Location = New System.Drawing.Point(46, 139)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 86
@@ -88,7 +88,7 @@ Partial Class frmChuyenLop
         'cbSangLop
         '
         Me.cbSangLop.FormattingEnabled = True
-        Me.cbSangLop.Location = New System.Drawing.Point(492, 109)
+        Me.cbSangLop.Location = New System.Drawing.Point(518, 134)
         Me.cbSangLop.Name = "cbSangLop"
         Me.cbSangLop.Size = New System.Drawing.Size(115, 21)
         Me.cbSangLop.TabIndex = 88
@@ -96,7 +96,7 @@ Partial Class frmChuyenLop
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(418, 114)
+        Me.Label4.Location = New System.Drawing.Point(444, 139)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(56, 13)
         Me.Label4.TabIndex = 89
@@ -104,7 +104,7 @@ Partial Class frmChuyenLop
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(646, 46)
+        Me.btnDong.Location = New System.Drawing.Point(681, 52)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(75, 23)
         Me.btnDong.TabIndex = 92
@@ -113,7 +113,7 @@ Partial Class frmChuyenLop
         '
         'btnToFROM
         '
-        Me.btnToFROM.Location = New System.Drawing.Point(350, 341)
+        Me.btnToFROM.Location = New System.Drawing.Point(376, 366)
         Me.btnToFROM.Name = "btnToFROM"
         Me.btnToFROM.Size = New System.Drawing.Size(52, 23)
         Me.btnToFROM.TabIndex = 91
@@ -122,7 +122,7 @@ Partial Class frmChuyenLop
         '
         'btnFROMTo
         '
-        Me.btnFROMTo.Location = New System.Drawing.Point(350, 275)
+        Me.btnFROMTo.Location = New System.Drawing.Point(376, 300)
         Me.btnFROMTo.Name = "btnFROMTo"
         Me.btnFROMTo.Size = New System.Drawing.Size(52, 23)
         Me.btnFROMTo.TabIndex = 90
@@ -135,7 +135,7 @@ Partial Class frmChuyenLop
         Me.dgvListHS_To.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvListHS_To.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgvListHS_To.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvListHS_To.Location = New System.Drawing.Point(421, 145)
+        Me.dgvListHS_To.Location = New System.Drawing.Point(447, 170)
         Me.dgvListHS_To.MultiSelect = False
         Me.dgvListHS_To.Name = "dgvListHS_To"
         Me.dgvListHS_To.ReadOnly = True
@@ -147,7 +147,7 @@ Partial Class frmChuyenLop
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(229, 112)
+        Me.Label1.Location = New System.Drawing.Point(255, 137)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 13)
         Me.Label1.TabIndex = 93
@@ -155,7 +155,7 @@ Partial Class frmChuyenLop
         '
         'txtSiSoLopTu
         '
-        Me.txtSiSoLopTu.Location = New System.Drawing.Point(265, 109)
+        Me.txtSiSoLopTu.Location = New System.Drawing.Point(291, 134)
         Me.txtSiSoLopTu.Name = "txtSiSoLopTu"
         Me.txtSiSoLopTu.ReadOnly = True
         Me.txtSiSoLopTu.Size = New System.Drawing.Size(30, 20)
@@ -164,7 +164,7 @@ Partial Class frmChuyenLop
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(643, 114)
+        Me.Label5.Location = New System.Drawing.Point(669, 139)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(30, 13)
         Me.Label5.TabIndex = 95
@@ -172,7 +172,7 @@ Partial Class frmChuyenLop
         '
         'txtSiSoLopSang
         '
-        Me.txtSiSoLopSang.Location = New System.Drawing.Point(679, 111)
+        Me.txtSiSoLopSang.Location = New System.Drawing.Point(705, 136)
         Me.txtSiSoLopSang.Name = "txtSiSoLopSang"
         Me.txtSiSoLopSang.ReadOnly = True
         Me.txtSiSoLopSang.Size = New System.Drawing.Size(30, 20)
@@ -180,15 +180,15 @@ Partial Class frmChuyenLop
         '
         'txtMaKhoi
         '
-        Me.txtMaKhoi.Location = New System.Drawing.Point(91, 57)
+        Me.txtMaKhoi.Location = New System.Drawing.Point(501, 83)
         Me.txtMaKhoi.Name = "txtMaKhoi"
         Me.txtMaKhoi.ReadOnly = True
-        Me.txtMaKhoi.Size = New System.Drawing.Size(100, 20)
+        Me.txtMaKhoi.Size = New System.Drawing.Size(39, 20)
         Me.txtMaKhoi.TabIndex = 97
         '
         'txtTenKhoi
         '
-        Me.txtTenKhoi.Location = New System.Drawing.Point(91, 19)
+        Me.txtTenKhoi.Location = New System.Drawing.Point(308, 84)
         Me.txtTenKhoi.Name = "txtTenKhoi"
         Me.txtTenKhoi.ReadOnly = True
         Me.txtTenKhoi.Size = New System.Drawing.Size(100, 20)
@@ -197,7 +197,7 @@ Partial Class frmChuyenLop
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(20, 22)
+        Me.Label6.Location = New System.Drawing.Point(237, 87)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 98
@@ -207,7 +207,7 @@ Partial Class frmChuyenLop
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(240, 48)
+        Me.Label7.Location = New System.Drawing.Point(253, 34)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(275, 25)
         Me.Label7.TabIndex = 100
@@ -217,7 +217,7 @@ Partial Class frmChuyenLop
         '
         Me.cbMaKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbMaKhoi.FormattingEnabled = True
-        Me.cbMaKhoi.Location = New System.Drawing.Point(91, 18)
+        Me.cbMaKhoi.Location = New System.Drawing.Point(308, 83)
         Me.cbMaKhoi.Name = "cbMaKhoi"
         Me.cbMaKhoi.Size = New System.Drawing.Size(100, 21)
         Me.cbMaKhoi.TabIndex = 101
@@ -227,7 +227,7 @@ Partial Class frmChuyenLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(754, 499)
+        Me.ClientSize = New System.Drawing.Size(810, 538)
         Me.Controls.Add(Me.cbMaKhoi)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtTenKhoi)
@@ -247,10 +247,11 @@ Partial Class frmChuyenLop
         Me.Controls.Add(Me.cbTuLop)
         Me.Controls.Add(Me.dgvListHS_FROM)
         Me.Controls.Add(Me.Label3)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmChuyenLop"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Chuyển lớp"
         CType(Me.dgvListHS_FROM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvListHS_To, System.ComponentModel.ISupportInitialize).EndInit()

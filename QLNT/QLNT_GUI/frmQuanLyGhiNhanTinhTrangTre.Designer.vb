@@ -45,6 +45,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbLop = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -52,7 +53,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(17, 97)
+        Me.Label2.Location = New System.Drawing.Point(49, 151)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 13)
@@ -62,7 +63,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(17, 220)
+        Me.Label3.Location = New System.Drawing.Point(49, 274)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 13)
@@ -72,7 +73,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 134)
+        Me.Label4.Location = New System.Drawing.Point(48, 188)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(73, 13)
@@ -82,7 +83,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(17, 56)
+        Me.Label5.Location = New System.Drawing.Point(49, 110)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 13)
@@ -91,7 +92,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtMaGhiNhan
         '
-        Me.txtMaGhiNhan.Location = New System.Drawing.Point(102, 53)
+        Me.txtMaGhiNhan.Location = New System.Drawing.Point(134, 107)
         Me.txtMaGhiNhan.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMaGhiNhan.Name = "txtMaGhiNhan"
         Me.txtMaGhiNhan.ReadOnly = True
@@ -102,7 +103,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(351, 9)
+        Me.Label7.Location = New System.Drawing.Point(383, 63)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(187, 18)
         Me.Label7.TabIndex = 35
@@ -113,7 +114,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(274, 53)
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(306, 107)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.RowHeadersVisible = False
         Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -124,7 +125,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(16, 21)
+        Me.Label8.Location = New System.Drawing.Point(48, 75)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(236, 18)
         Me.Label8.TabIndex = 39
@@ -132,7 +133,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtHoTenTre
         '
-        Me.txtHoTenTre.Location = New System.Drawing.Point(102, 94)
+        Me.txtHoTenTre.Location = New System.Drawing.Point(134, 148)
         Me.txtHoTenTre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTenTre.Name = "txtHoTenTre"
         Me.txtHoTenTre.ReadOnly = True
@@ -141,7 +142,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'btnThemGhiNhan
         '
-        Me.btnThemGhiNhan.Location = New System.Drawing.Point(21, 292)
+        Me.btnThemGhiNhan.Location = New System.Drawing.Point(53, 346)
         Me.btnThemGhiNhan.Name = "btnThemGhiNhan"
         Me.btnThemGhiNhan.Size = New System.Drawing.Size(97, 23)
         Me.btnThemGhiNhan.TabIndex = 42
@@ -150,7 +151,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'btnCapNhatGhiNhan
         '
-        Me.btnCapNhatGhiNhan.Location = New System.Drawing.Point(142, 292)
+        Me.btnCapNhatGhiNhan.Location = New System.Drawing.Point(174, 346)
         Me.btnCapNhatGhiNhan.Name = "btnCapNhatGhiNhan"
         Me.btnCapNhatGhiNhan.Size = New System.Drawing.Size(113, 23)
         Me.btnCapNhatGhiNhan.TabIndex = 43
@@ -161,7 +162,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(38, 258)
+        Me.Label9.Location = New System.Drawing.Point(70, 312)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(187, 18)
         Me.Label9.TabIndex = 45
@@ -169,7 +170,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'btnXoaGhiNhan
         '
-        Me.btnXoaGhiNhan.Location = New System.Drawing.Point(21, 331)
+        Me.btnXoaGhiNhan.Location = New System.Drawing.Point(53, 385)
         Me.btnXoaGhiNhan.Name = "btnXoaGhiNhan"
         Me.btnXoaGhiNhan.Size = New System.Drawing.Size(97, 23)
         Me.btnXoaGhiNhan.TabIndex = 46
@@ -178,7 +179,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'btnDong
         '
-        Me.btnDong.Location = New System.Drawing.Point(143, 331)
+        Me.btnDong.Location = New System.Drawing.Point(175, 385)
         Me.btnDong.Name = "btnDong"
         Me.btnDong.Size = New System.Drawing.Size(111, 23)
         Me.btnDong.TabIndex = 47
@@ -188,7 +189,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(16, 177)
+        Me.Label10.Location = New System.Drawing.Point(48, 231)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(49, 13)
@@ -197,7 +198,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtTenKhoi
         '
-        Me.txtTenKhoi.Location = New System.Drawing.Point(101, 174)
+        Me.txtTenKhoi.Location = New System.Drawing.Point(133, 228)
         Me.txtTenKhoi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTenKhoi.Name = "txtTenKhoi"
         Me.txtTenKhoi.ReadOnly = True
@@ -208,7 +209,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(331, 188)
+        Me.Label1.Location = New System.Drawing.Point(363, 242)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(235, 18)
         Me.Label1.TabIndex = 52
@@ -219,7 +220,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.dgvDanhSachGhiNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachGhiNhan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachGhiNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(274, 220)
+        Me.dgvDanhSachGhiNhan.Location = New System.Drawing.Point(306, 274)
         Me.dgvDanhSachGhiNhan.Name = "dgvDanhSachGhiNhan"
         Me.dgvDanhSachGhiNhan.RowHeadersVisible = False
         Me.dgvDanhSachGhiNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -228,17 +229,17 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'dtpNgayGhiNhan
         '
-        Me.dtpNgayGhiNhan.Location = New System.Drawing.Point(101, 214)
+        Me.dtpNgayGhiNhan.Location = New System.Drawing.Point(133, 268)
         Me.dtpNgayGhiNhan.Name = "dtpNgayGhiNhan"
         Me.dtpNgayGhiNhan.Size = New System.Drawing.Size(151, 20)
         Me.dtpNgayGhiNhan.TabIndex = 54
-        Me.dtpNgayGhiNhan.Value = New Date(2018, 6, 22, 9, 7, 51, 0)
+        Me.dtpNgayGhiNhan.Value = New Date(2018, 6, 23, 0, 0, 0, 0)
         '
         'cbTinhTrang
         '
         Me.cbTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbTinhTrang.FormattingEnabled = True
-        Me.cbTinhTrang.Location = New System.Drawing.Point(104, 131)
+        Me.cbTinhTrang.Location = New System.Drawing.Point(136, 185)
         Me.cbTinhTrang.Name = "cbTinhTrang"
         Me.cbTinhTrang.Size = New System.Drawing.Size(149, 21)
         Me.cbTinhTrang.TabIndex = 55
@@ -246,7 +247,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(311, 30)
+        Me.CheckBox1.Location = New System.Drawing.Point(343, 84)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(68, 17)
         Me.CheckBox1.TabIndex = 56
@@ -256,7 +257,7 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(445, 29)
+        Me.Label6.Location = New System.Drawing.Point(477, 83)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 57
@@ -267,17 +268,28 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         Me.cbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbLop.FormattingEnabled = True
-        Me.cbLop.Location = New System.Drawing.Point(500, 26)
+        Me.cbLop.Location = New System.Drawing.Point(532, 80)
         Me.cbLop.Name = "cbLop"
         Me.cbLop.Size = New System.Drawing.Size(95, 21)
         Me.cbLop.TabIndex = 58
         Me.cbLop.Visible = False
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(145, 21)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(425, 25)
+        Me.Label11.TabIndex = 101
+        Me.Label11.Text = "----- Quản Lý Ghi Nhận Tình Trạng Trẻ  -----"
+        '
         'frmQuanLyGhiNhanTinhTrangTre
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(641, 379)
+        Me.ClientSize = New System.Drawing.Size(696, 453)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cbLop)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.CheckBox1)
@@ -301,10 +313,11 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmQuanLyGhiNhanTinhTrangTre"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Quản lý ghi nhận tình trạng trẻ em"
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).EndInit()
@@ -335,4 +348,5 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents cbLop As ComboBox
+    Friend WithEvents Label11 As Label
 End Class
