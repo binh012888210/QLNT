@@ -58,7 +58,7 @@ Partial Class frmQuanLyTreEm
         Me.dgvDanhSachTreEm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDanhSachTreEm.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvDanhSachTreEm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(319, 144)
+        Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(334, 138)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.RowHeadersVisible = False
         Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -106,7 +106,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(452, 123)
+        Me.Label2.Location = New System.Drawing.Point(467, 117)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(183, 18)
         Me.Label2.TabIndex = 5
@@ -116,7 +116,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(382, 61)
+        Me.Label3.Location = New System.Drawing.Point(397, 55)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(327, 18)
         Me.Label3.TabIndex = 6
@@ -124,7 +124,7 @@ Partial Class frmQuanLyTreEm
         '
         'txtSearchName
         '
-        Me.txtSearchName.Location = New System.Drawing.Point(319, 92)
+        Me.txtSearchName.Location = New System.Drawing.Point(334, 86)
         Me.txtSearchName.Name = "txtSearchName"
         Me.txtSearchName.Size = New System.Drawing.Size(439, 20)
         Me.txtSearchName.TabIndex = 7
@@ -299,7 +299,7 @@ Partial Class frmQuanLyTreEm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(812, 500)
+        Me.ClientSize = New System.Drawing.Size(828, 500)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.dtpNgaySinh)
         Me.Controls.Add(Me.CheckBox1)
@@ -326,7 +326,7 @@ Partial Class frmQuanLyTreEm
         Me.Controls.Add(Me.btnTiepNhan)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvDanhSachTreEm)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmQuanLyTreEm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Quản lý trẻ em"

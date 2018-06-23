@@ -233,7 +233,7 @@ Partial Class frmThemTreEm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnDong)
         Me.Controls.Add(Me.btnNhap)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

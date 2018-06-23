@@ -247,7 +247,7 @@ Partial Class frmChuyenLop
         Me.Controls.Add(Me.cbTuLop)
         Me.Controls.Add(Me.dgvListHS_FROM)
         Me.Controls.Add(Me.Label3)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmChuyenLop"
