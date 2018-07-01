@@ -39,14 +39,18 @@ Public Class frmMain
     End Sub
 
     Private Sub TraCứuTrẻEmToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraCứuTrẻEmToolStripMenuItem1.Click
-        Dim frm As New frmTraCuuTreEm
-        If Application.OpenForms().OfType(Of frmTraCuuTreEm).Any Then
-            Application.OpenForms().Item("frmTraCuuTreEm").Activate()
-            MessageBox.Show("Form đã được mở ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Application.OpenForms().OfType(Of frmDangNhap).Any Then
+            MessageBox.Show("Đăng nhập để tiếp tục làm việc ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
-            frm.TopMost = True
-            frm.MdiParent = Me
-            frm.Show()
+            Dim frm As New frmTraCuuTreEm
+            If Application.OpenForms().OfType(Of frmTraCuuTreEm).Any Then
+                Application.OpenForms().Item("frmTraCuuTreEm").Activate()
+                MessageBox.Show("Form đã được mở ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                frm.TopMost = True
+                frm.MdiParent = Me
+                frm.Show()
+            End If
         End If
     End Sub
 

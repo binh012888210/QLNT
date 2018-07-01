@@ -1,4 +1,4 @@
-﻿Public Class ChiTietBaoCao
+﻿Public Class ChiTietBaoCaoDTO
     Private strMaChiTietBaoCao As String
     Private strMaPhieuGhiNhan As String
     Private strMaBaoCao As String
