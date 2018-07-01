@@ -178,7 +178,7 @@ Public Class frmQuanLyLop
         If (-1 < currentRowIndex And currentRowIndex < dgvTreEmChuaCoLop.RowCount) Then
             Try
                 Dim te = CType(dgvTreEmChuaCoLop.Rows(currentRowIndex).DataBoundItem, TreEmDTO)
-                txtMaLop1.Text = "Học sinh chưa được xếp lớp"
+                txtMaLop1.Text = "Trẻ em chưa được xếp lớp"
                 txtMaSoTreEm.Text = te.StrMaTreEm1
                 txtHoTen.Text = te.StrHoTenTreEm1
                 txtTuoi.Text = te.StrTuoi1
@@ -245,8 +245,6 @@ Public Class frmQuanLyLop
     End Sub
     Private Sub btnChuyenLop_Click(sender As Object, e As EventArgs) Handles btnChuyenLop.Click
         Dim frm As frmChuyenLop = New frmChuyenLop()
-        frm.txtMaKhoi.Text = txtMaKhoi.Text
-        frm.txtTenKhoi.Text = cbKhoi.Text
         frm.ShowDialog()
         loadListTreEmCoLop()
     End Sub
@@ -275,7 +273,50 @@ Public Class frmQuanLyLop
         loadListTreEmCoLop()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Close()
+    End Sub
+    Private Sub txtSearchName_TextChanged(sender As Object, e As EventArgs) Handles txtSearchName.TextChanged 'tim kiem theo ten tre em hoac ten phu huynh
+
+        Dim listTreEm = New List(Of TreEmDTO)
+        Dim result As Result
+        result = teBUS.searchByTextAndMaLopIsNull(txtSearchName.Text, listTreEm)
+        If (result.FlagResult = False) Then
+            MessageBox.Show("Lấy danh sách trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+            Return
+        End If
+        dgvTreEmChuaCoLop.Columns.Clear()
+        dgvTreEmChuaCoLop.DataSource = Nothing
+
+        dgvTreEmChuaCoLop.AutoGenerateColumns = False
+        dgvTreEmChuaCoLop.AllowUserToAddRows = False
+        dgvTreEmChuaCoLop.DataSource = listTreEm
+
+        Dim clMaTreEm = New DataGridViewTextBoxColumn()
+        clMaTreEm.Name = "MaTreEm"
+        clMaTreEm.HeaderText = "Mã Trẻ Em"
+        clMaTreEm.DataPropertyName = "StrMaTreEm1"
+        clMaTreEm.ReadOnly = True
+        dgvTreEmChuaCoLop.Columns.Add(clMaTreEm)
+
+        Dim clTenTreEm = New DataGridViewTextBoxColumn()
+        clTenTreEm.Name = "HoTenTreEm"
+        clTenTreEm.HeaderText = "Tên Trẻ Em"
+        clTenTreEm.DataPropertyName = "StrHoTenTreEm1"
+        clTenTreEm.ReadOnly = True
+        dgvTreEmChuaCoLop.Columns.Add(clTenTreEm)
+
+        Dim clTenPhuHuynh = New DataGridViewTextBoxColumn()
+        clTenPhuHuynh.Name = "TenPhuHuynh"
+        clTenPhuHuynh.HeaderText = "Tên Phụ Huynh"
+        clTenPhuHuynh.DataPropertyName = "StrHoTenPhuHuynh1" '
+        clTenPhuHuynh.ReadOnly = True
+        dgvTreEmChuaCoLop.Columns.Add(clTenPhuHuynh)
+
+
+        Dim myCurrencyManager As CurrencyManager = Me.BindingContext(dgvTreEmChuaCoLop.DataSource)
+        myCurrencyManager.Refresh()
+
     End Sub
 End Class

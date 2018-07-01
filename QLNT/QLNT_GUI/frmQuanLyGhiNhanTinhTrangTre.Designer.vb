@@ -31,22 +31,21 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.dgvDanhSachTreEm = New System.Windows.Forms.DataGridView()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtHoTenTre = New System.Windows.Forms.TextBox()
-        Me.btnThemGhiNhan = New System.Windows.Forms.Button()
-        Me.btnCapNhatGhiNhan = New System.Windows.Forms.Button()
+        Me.btnTaoMoi = New System.Windows.Forms.Button()
+        Me.btnCapNhat = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.btnXoaGhiNhan = New System.Windows.Forms.Button()
+        Me.btnXoa = New System.Windows.Forms.Button()
         Me.btnDong = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtTenKhoi = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvDanhSachGhiNhan = New System.Windows.Forms.DataGridView()
-        Me.dtpNgayGhiNhan = New System.Windows.Forms.DateTimePicker()
         Me.cbTinhTrang = New System.Windows.Forms.ComboBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cbLop = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.chkbxSortStudent = New System.Windows.Forms.CheckBox()
+        Me.txtNgayGhiNhan = New System.Windows.Forms.TextBox()
         CType(Me.dgvDanhSachTreEm, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDanhSachGhiNhan, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -93,22 +92,22 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtMaGhiNhan
         '
-        Me.txtMaGhiNhan.Location = New System.Drawing.Point(134, 107)
+        Me.txtMaGhiNhan.Location = New System.Drawing.Point(135, 107)
         Me.txtMaGhiNhan.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMaGhiNhan.Name = "txtMaGhiNhan"
         Me.txtMaGhiNhan.ReadOnly = True
-        Me.txtMaGhiNhan.Size = New System.Drawing.Size(151, 20)
+        Me.txtMaGhiNhan.Size = New System.Drawing.Size(150, 20)
         Me.txtMaGhiNhan.TabIndex = 28
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(383, 59)
+        Me.Label7.Location = New System.Drawing.Point(363, 59)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(187, 18)
+        Me.Label7.Size = New System.Drawing.Size(244, 18)
         Me.Label7.TabIndex = 35
-        Me.Label7.Text = "----- Danh sách trẻ em  -----"
+        Me.Label7.Text = "----- Danh sách trẻ em theo lớp  -----"
         '
         'dgvDanhSachTreEm
         '
@@ -134,30 +133,30 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtHoTenTre
         '
-        Me.txtHoTenTre.Location = New System.Drawing.Point(134, 148)
+        Me.txtHoTenTre.Location = New System.Drawing.Point(135, 148)
         Me.txtHoTenTre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtHoTenTre.Name = "txtHoTenTre"
         Me.txtHoTenTre.ReadOnly = True
-        Me.txtHoTenTre.Size = New System.Drawing.Size(151, 20)
+        Me.txtHoTenTre.Size = New System.Drawing.Size(150, 20)
         Me.txtHoTenTre.TabIndex = 40
         '
-        'btnThemGhiNhan
+        'btnTaoMoi
         '
-        Me.btnThemGhiNhan.Location = New System.Drawing.Point(53, 346)
-        Me.btnThemGhiNhan.Name = "btnThemGhiNhan"
-        Me.btnThemGhiNhan.Size = New System.Drawing.Size(97, 23)
-        Me.btnThemGhiNhan.TabIndex = 42
-        Me.btnThemGhiNhan.Text = "Thêm Ghi nhận"
-        Me.btnThemGhiNhan.UseVisualStyleBackColor = True
+        Me.btnTaoMoi.Location = New System.Drawing.Point(53, 346)
+        Me.btnTaoMoi.Name = "btnTaoMoi"
+        Me.btnTaoMoi.Size = New System.Drawing.Size(97, 23)
+        Me.btnTaoMoi.TabIndex = 42
+        Me.btnTaoMoi.Text = "Tạo mới"
+        Me.btnTaoMoi.UseVisualStyleBackColor = True
         '
-        'btnCapNhatGhiNhan
+        'btnCapNhat
         '
-        Me.btnCapNhatGhiNhan.Location = New System.Drawing.Point(174, 346)
-        Me.btnCapNhatGhiNhan.Name = "btnCapNhatGhiNhan"
-        Me.btnCapNhatGhiNhan.Size = New System.Drawing.Size(113, 23)
-        Me.btnCapNhatGhiNhan.TabIndex = 43
-        Me.btnCapNhatGhiNhan.Text = "Cập nhật ghi nhận"
-        Me.btnCapNhatGhiNhan.UseVisualStyleBackColor = True
+        Me.btnCapNhat.Location = New System.Drawing.Point(174, 346)
+        Me.btnCapNhat.Name = "btnCapNhat"
+        Me.btnCapNhat.Size = New System.Drawing.Size(113, 23)
+        Me.btnCapNhat.TabIndex = 43
+        Me.btnCapNhat.Text = "Cập nhật ghi nhận"
+        Me.btnCapNhat.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -169,14 +168,14 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label9.TabIndex = 45
         Me.Label9.Text = "---------- Chức năng ----------"
         '
-        'btnXoaGhiNhan
+        'btnXoa
         '
-        Me.btnXoaGhiNhan.Location = New System.Drawing.Point(53, 385)
-        Me.btnXoaGhiNhan.Name = "btnXoaGhiNhan"
-        Me.btnXoaGhiNhan.Size = New System.Drawing.Size(97, 23)
-        Me.btnXoaGhiNhan.TabIndex = 46
-        Me.btnXoaGhiNhan.Text = "Xoá Ghi nhận"
-        Me.btnXoaGhiNhan.UseVisualStyleBackColor = True
+        Me.btnXoa.Location = New System.Drawing.Point(53, 385)
+        Me.btnXoa.Name = "btnXoa"
+        Me.btnXoa.Size = New System.Drawing.Size(97, 23)
+        Me.btnXoa.TabIndex = 46
+        Me.btnXoa.Text = "Xoá Ghi nhận"
+        Me.btnXoa.UseVisualStyleBackColor = True
         '
         'btnDong
         '
@@ -199,11 +198,11 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         '
         'txtTenKhoi
         '
-        Me.txtTenKhoi.Location = New System.Drawing.Point(133, 228)
+        Me.txtTenKhoi.Location = New System.Drawing.Point(135, 228)
         Me.txtTenKhoi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTenKhoi.Name = "txtTenKhoi"
         Me.txtTenKhoi.ReadOnly = True
-        Me.txtTenKhoi.Size = New System.Drawing.Size(151, 20)
+        Me.txtTenKhoi.Size = New System.Drawing.Size(149, 20)
         Me.txtTenKhoi.TabIndex = 51
         '
         'Label1
@@ -228,32 +227,14 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.dgvDanhSachGhiNhan.Size = New System.Drawing.Size(339, 119)
         Me.dgvDanhSachGhiNhan.TabIndex = 53
         '
-        'dtpNgayGhiNhan
-        '
-        Me.dtpNgayGhiNhan.Location = New System.Drawing.Point(133, 268)
-        Me.dtpNgayGhiNhan.Name = "dtpNgayGhiNhan"
-        Me.dtpNgayGhiNhan.Size = New System.Drawing.Size(151, 20)
-        Me.dtpNgayGhiNhan.TabIndex = 54
-        Me.dtpNgayGhiNhan.Value = New Date(2018, 6, 23, 0, 0, 0, 0)
-        '
         'cbTinhTrang
         '
         Me.cbTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbTinhTrang.FormattingEnabled = True
-        Me.cbTinhTrang.Location = New System.Drawing.Point(136, 185)
+        Me.cbTinhTrang.Location = New System.Drawing.Point(135, 185)
         Me.cbTinhTrang.Name = "cbTinhTrang"
         Me.cbTinhTrang.Size = New System.Drawing.Size(149, 21)
         Me.cbTinhTrang.TabIndex = 55
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(343, 84)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(68, 17)
-        Me.CheckBox1.TabIndex = 56
-        Me.CheckBox1.Text = "Theo lớp"
-        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -263,7 +244,6 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label6.Size = New System.Drawing.Size(49, 13)
         Me.Label6.TabIndex = 57
         Me.Label6.Text = "Chọn lớp"
-        Me.Label6.Visible = False
         '
         'cbLop
         '
@@ -273,7 +253,6 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.cbLop.Name = "cbLop"
         Me.cbLop.Size = New System.Drawing.Size(95, 21)
         Me.cbLop.TabIndex = 58
-        Me.cbLop.Visible = False
         '
         'Label11
         '
@@ -285,37 +264,44 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
         Me.Label11.TabIndex = 101
         Me.Label11.Text = "----- Quản Lý Ghi Nhận Tình Trạng Trẻ  -----"
         '
-        'CheckBox2
+        'chkbxSortStudent
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(343, 263)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(277, 17)
-        Me.CheckBox2.TabIndex = 102
-        Me.CheckBox2.Text = "Lấy danh sách phiếu ghi nhận của trẻ em được chọn"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.chkbxSortStudent.AutoSize = True
+        Me.chkbxSortStudent.Location = New System.Drawing.Point(343, 263)
+        Me.chkbxSortStudent.Name = "chkbxSortStudent"
+        Me.chkbxSortStudent.Size = New System.Drawing.Size(277, 17)
+        Me.chkbxSortStudent.TabIndex = 102
+        Me.chkbxSortStudent.Text = "Lấy danh sách phiếu ghi nhận của trẻ em được chọn"
+        Me.chkbxSortStudent.UseVisualStyleBackColor = True
+        '
+        'txtNgayGhiNhan
+        '
+        Me.txtNgayGhiNhan.Location = New System.Drawing.Point(134, 271)
+        Me.txtNgayGhiNhan.Name = "txtNgayGhiNhan"
+        Me.txtNgayGhiNhan.ReadOnly = True
+        Me.txtNgayGhiNhan.Size = New System.Drawing.Size(150, 20)
+        Me.txtNgayGhiNhan.TabIndex = 103
         '
         'frmQuanLyGhiNhanTinhTrangTre
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(696, 453)
-        Me.Controls.Add(Me.CheckBox2)
+        Me.Controls.Add(Me.txtNgayGhiNhan)
+        Me.Controls.Add(Me.chkbxSortStudent)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cbLop)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.cbTinhTrang)
-        Me.Controls.Add(Me.dtpNgayGhiNhan)
         Me.Controls.Add(Me.dgvDanhSachGhiNhan)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtTenKhoi)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.btnDong)
-        Me.Controls.Add(Me.btnXoaGhiNhan)
+        Me.Controls.Add(Me.btnXoa)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.btnCapNhatGhiNhan)
-        Me.Controls.Add(Me.btnThemGhiNhan)
+        Me.Controls.Add(Me.btnCapNhat)
+        Me.Controls.Add(Me.btnTaoMoi)
         Me.Controls.Add(Me.txtHoTenTre)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -346,20 +332,19 @@ Partial Class frmQuanLyGhiNhanTinhTrangTre
     Friend WithEvents dgvDanhSachTreEm As DataGridView
     Friend WithEvents Label8 As Label
     Friend WithEvents txtHoTenTre As TextBox
-    Friend WithEvents btnThemGhiNhan As Button
-    Friend WithEvents btnCapNhatGhiNhan As Button
+    Friend WithEvents btnTaoMoi As Button
+    Friend WithEvents btnCapNhat As Button
     Friend WithEvents Label9 As Label
-    Friend WithEvents btnXoaGhiNhan As Button
+    Friend WithEvents btnXoa As Button
     Friend WithEvents btnDong As Button
     Friend WithEvents Label10 As Label
     Friend WithEvents txtTenKhoi As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents dgvDanhSachGhiNhan As DataGridView
-    Friend WithEvents dtpNgayGhiNhan As DateTimePicker
     Friend WithEvents cbTinhTrang As ComboBox
-    Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents cbLop As ComboBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents chkbxSortStudent As CheckBox
+    Friend WithEvents txtNgayGhiNhan As TextBox
 End Class

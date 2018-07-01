@@ -37,7 +37,6 @@ Partial Class frmChuyenLop
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtSiSoLopSang = New System.Windows.Forms.TextBox()
         Me.txtMaKhoi = New System.Windows.Forms.TextBox()
-        Me.txtTenKhoi = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cbMaKhoi = New System.Windows.Forms.ComboBox()
@@ -186,14 +185,6 @@ Partial Class frmChuyenLop
         Me.txtMaKhoi.Size = New System.Drawing.Size(39, 20)
         Me.txtMaKhoi.TabIndex = 97
         '
-        'txtTenKhoi
-        '
-        Me.txtTenKhoi.Location = New System.Drawing.Point(308, 84)
-        Me.txtTenKhoi.Name = "txtTenKhoi"
-        Me.txtTenKhoi.ReadOnly = True
-        Me.txtTenKhoi.Size = New System.Drawing.Size(100, 20)
-        Me.txtTenKhoi.TabIndex = 99
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -217,11 +208,10 @@ Partial Class frmChuyenLop
         '
         Me.cbMaKhoi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbMaKhoi.FormattingEnabled = True
-        Me.cbMaKhoi.Location = New System.Drawing.Point(308, 83)
+        Me.cbMaKhoi.Location = New System.Drawing.Point(312, 83)
         Me.cbMaKhoi.Name = "cbMaKhoi"
         Me.cbMaKhoi.Size = New System.Drawing.Size(100, 21)
         Me.cbMaKhoi.TabIndex = 101
-        Me.cbMaKhoi.Visible = False
         '
         'frmChuyenLop
         '
@@ -230,7 +220,6 @@ Partial Class frmChuyenLop
         Me.ClientSize = New System.Drawing.Size(810, 538)
         Me.Controls.Add(Me.cbMaKhoi)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtTenKhoi)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtMaKhoi)
         Me.Controls.Add(Me.txtSiSoLopSang)
@@ -274,7 +263,6 @@ Partial Class frmChuyenLop
     Friend WithEvents Label5 As Label
     Friend WithEvents txtSiSoLopSang As TextBox
     Friend WithEvents txtMaKhoi As TextBox
-    Friend WithEvents txtTenKhoi As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents cbMaKhoi As ComboBox

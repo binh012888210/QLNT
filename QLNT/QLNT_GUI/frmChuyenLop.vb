@@ -16,102 +16,64 @@ Public Class frmChuyenLop
         khBUS = New KhoiBUS
         listLopFROM = New List(Of LopDTO)
 
-        If (txtMaKhoi.Text = Nothing) Then 'Day la truong hop chuyen lop trong frmMainMenu
-            cbMaKhoi.Visible = True 'Hien cbKhoi de chon khoi do khi mo form nay trong main menu thi txtMaKhoi se khong co san
-            Dim listKhoi = New List(Of KhoiDTO)
-            Dim result1 As Result
-            result1 = khBUS.selectALL(listKhoi)
-            If (result1.FlagResult = False) Then
-                MessageBox.Show("Lấy danh sách khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                System.Console.WriteLine(result1.SystemMessage)
-                Me.Close()
-                Return
-            End If
-            cbMaKhoi.DataSource = New BindingSource(listKhoi, String.Empty)
-            cbMaKhoi.DisplayMember = "StrTenKhoi1"
-            cbMaKhoi.ValueMember = "StrMaKhoi1"
-            Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbMaKhoi.DataSource)
-            myCurrencyManager.Refresh()
-            If (listKhoi.Count > 0) Then
-                cbMaKhoi.SelectedIndex = 0
-            End If
+
+        cbMaKhoi.Visible = True 'Hien cbKhoi de chon khoi 
+        Dim listKhoi = New List(Of KhoiDTO)
+        Dim result1 As Result
+        result1 = khBUS.selectALL(listKhoi)
+        If (result1.FlagResult = False) Then
+            MessageBox.Show("Lấy danh sách khối không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result1.SystemMessage)
+            Me.Close()
             Return
         End If
+        cbMaKhoi.DataSource = New BindingSource(listKhoi, String.Empty)
+        cbMaKhoi.DisplayMember = "StrTenKhoi1"
+        cbMaKhoi.ValueMember = "StrMaKhoi1"
+        Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbMaKhoi.DataSource)
+        myCurrencyManager.Refresh()
+        If (listKhoi.Count > 0) Then
+            cbMaKhoi.SelectedIndex = 0
+        End If
 
-        Try
-            If (cbMaKhoi.Visible = False) Then 'Day la truong hop chuyen lop mo trong frmQuanLyLop
-                'Load danh sach lop hoc sinh chuyen tu
-                Dim Result = lpBUS.selectALL_ByKhoi(txtMaKhoi.Text, listLopFROM)
-                If (Result.FlagResult = False) Then
-                    MessageBox.Show("Lấy danh sách học sinh từ lớp không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    System.Console.WriteLine(Result.SystemMessage)
-                    Return
-                End If
-
-                cbTuLop.DataSource = New BindingSource(listLopFROM, String.Empty)
-                cbTuLop.DisplayMember = "StrTenLop1"
-                cbTuLop.ValueMember = "StrMaLop1"
-                Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbTuLop.DataSource)
-                myCurrencyManager.Refresh()
-                If (listLopFROM.Count > 0) Then
-                    cbTuLop.SelectedIndex = 0
-                End If
-                'Load danh sach lop hoc sinh chyen sang
-                Dim listLopTO = New List(Of LopDTO)
-                listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop hoc sinh chuyen tu)
-                cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
-                cbSangLop.DisplayMember = "StrTenLop1"
-                cbSangLop.ValueMember = "StrMaLop1"
-                Dim myCurrencyManager1 As CurrencyManager = Me.BindingContext(cbSangLop.DataSource)
-                myCurrencyManager1.Refresh()
-                If (listLopTO.Count > 0) Then
-                    cbSangLop.SelectedIndex = 0
-                End If
-            End If
-
-        Catch ex As Exception
-            System.Console.WriteLine(ex.StackTrace)
-        End Try
         loadListTreEmTuLop() 'load lai danh sach khi co thay doi
         loadListTreEmSangLop() 'load lai danh sach khi co thay doi
 
     End Sub
 
-    Private Sub cbMaKhoi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMaKhoi.SelectedIndexChanged 'Chuyen lop trong frmMainMenu
+    Private Sub cbMaKhoi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMaKhoi.SelectedIndexChanged
 
-        If (cbMaKhoi.Visible = True) Then
-            'Load danh sach lop hoc sinh chuyen tu
-            Dim khoi = CType(cbMaKhoi.SelectedItem, KhoiDTO)
-            Dim Result = lpBUS.selectALL_ByKhoi(khoi.StrMaKhoi1, listLopFROM)
-            If (Result.FlagResult = False) Then
-                MessageBox.Show("Lấy danh sách học sinh từ lớp không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                System.Console.WriteLine(Result.SystemMessage)
-                Return
-            End If
-
-            cbTuLop.DataSource = New BindingSource(listLopFROM, String.Empty)
-            cbTuLop.DisplayMember = "StrTenLop1"
-            cbTuLop.ValueMember = "StrMaLop1"
-            Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbTuLop.DataSource)
-            myCurrencyManager.Refresh()
-            If (listLopFROM.Count > 0) Then
-                cbTuLop.SelectedIndex = 0
-            End If
-
-            'Load danh sach lop hoc sinh chyen sang
-            Dim listLopTO = New List(Of LopDTO)
-            listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop chuyen tu)
-            cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
-            cbSangLop.DisplayMember = "StrTenLop1"
-            cbSangLop.ValueMember = "StrMaLop1"
-            Dim myCurrencyManager1 As CurrencyManager = Me.BindingContext(cbSangLop.DataSource)
-            myCurrencyManager1.Refresh()
-            If (listLopTO.Count > 0) Then
-
-                cbSangLop.SelectedIndex = 0
-            End If
-            txtMaKhoi.Text = khoi.StrMaKhoi1
+        'Load danh sach lop hoc sinh chuyen tu
+        Dim khoi = CType(cbMaKhoi.SelectedItem, KhoiDTO)
+        Dim Result = lpBUS.selectALL_ByKhoi(khoi.StrMaKhoi1, listLopFROM)
+        If (Result.FlagResult = False) Then
+            MessageBox.Show("Lấy danh sách học sinh từ lớp không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(Result.SystemMessage)
+            Return
         End If
+
+        cbTuLop.DataSource = New BindingSource(listLopFROM, String.Empty)
+        cbTuLop.DisplayMember = "StrTenLop1"
+        cbTuLop.ValueMember = "StrMaLop1"
+        Dim myCurrencyManager As CurrencyManager = Me.BindingContext(cbTuLop.DataSource)
+        myCurrencyManager.Refresh()
+        If (listLopFROM.Count > 0) Then
+            cbTuLop.SelectedIndex = 0
+        End If
+
+        'Load danh sach lop hoc sinh chyen sang
+        Dim listLopTO = New List(Of LopDTO)
+        listLopTO = buildListLopTo(listLopFROM) 'Tao danh sach lop khac voi (danh sach lop chuyen tu)
+        cbSangLop.DataSource = New BindingSource(listLopTO, String.Empty)
+        cbSangLop.DisplayMember = "StrTenLop1"
+        cbSangLop.ValueMember = "StrMaLop1"
+        Dim myCurrencyManager1 As CurrencyManager = Me.BindingContext(cbSangLop.DataSource)
+        myCurrencyManager1.Refresh()
+        If (listLopTO.Count > 0) Then
+
+            cbSangLop.SelectedIndex = 0
+        End If
+        txtMaKhoi.Text = khoi.StrMaKhoi1
 
     End Sub
 

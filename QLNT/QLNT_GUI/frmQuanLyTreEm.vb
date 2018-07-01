@@ -81,7 +81,7 @@ Public Class frmQuanLyTreEm
         End If
     End Sub
 
-    Private Sub btnTiepNhan_Click(sender As Object, e As EventArgs) Handles btnTiepNhan.Click 'Mo form tiep nhan
+    Private Sub btnTaoMoi_Click(sender As Object, e As EventArgs) Handles btnTaoMoi.Click 'Mo form tiep nhan
 
         newKid = True
 
@@ -91,6 +91,10 @@ Public Class frmQuanLyTreEm
         txtTenONha.Text = String.Empty
         txtDiaChi.Text = String.Empty
         txtDienThoai.Text = String.Empty
+        dtpNgaySinh.Value = DateTime.Now
+        If (chkbxDanTocMienNui.Checked = True) Then
+            chkbxDanTocMienNui.Checked = False
+        End If
 
         'tao tu dong ma so tre em
         Dim result As Result
@@ -103,8 +107,8 @@ Public Class frmQuanLyTreEm
             Return
         End If
         txtMaSoTreEm.Text = nextMste
-        If (CheckBox1.Checked = True) Then
-            CheckBox1.Checked = False
+        If (chkbxDanTocMienNui.Checked = True) Then
+            chkbxDanTocMienNui.Checked = False
         End If
 
     End Sub
@@ -131,7 +135,7 @@ Public Class frmQuanLyTreEm
             Return
         End If
         '2. Business nhap vao text box
-        If (CheckBox1.Checked = False) Then
+        If (chkbxDanTocMienNui.Checked = False) Then
                 If (teBUS.isValidName(treem.StrHoTenTreEm1) = False) Then
                     MessageBox.Show("Họ tên học sinh không đúng")
                     txtHoTen.Focus()
@@ -181,9 +185,16 @@ Public Class frmQuanLyTreEm
         End If
         If (dgvDanhSachTreEm.RowCount > 0) Then
             Dim result As Result
+
             result = gnBUS.deleteByMaTreEm(txtMaSoTreEm.Text) 'Xoa KHOA NGOAI THAM CHIEU TRUOC 
             If (result.FlagResult = False) Then
                 MessageBox.Show("Xoá ghi nhận của trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+            result = teBUS.moveToTemporaryTableByID(txtMaSoTreEm.Text)
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Lưu trẻ em vào bộ nhớ tạm không thành công .", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 System.Console.WriteLine(result.SystemMessage)
                 Return
             End If
@@ -201,9 +212,6 @@ Public Class frmQuanLyTreEm
             txtDiaChi.Text = String.Empty
             txtDienThoai.Text = String.Empty
             dtpNgaySinh.Text = String.Empty
-        Else
-            MessageBox.Show("Không còn trẻ em để xoá", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
         End If
     End Sub
 
@@ -252,9 +260,95 @@ Public Class frmQuanLyTreEm
     End Sub
 
 
-    Private Sub btnDong_Click(sender As Object, e As EventArgs) Handles btnDong.Click 'Dong form
+    Private Sub btnDong_Click(sender As Object, e As EventArgs)  'Dong form
         Close()
     End Sub
 
+    Private Sub btnPhucHoi_Click(sender As Object, e As EventArgs) Handles btnPhucHoi.Click
+        Dim result As Result
+        result = teBUS.restoreFromTemporaryTable()
+        If (result.FlagResult = False) Then
+            MessageBox.Show("Phục hồi dữ liệu trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+            Return
+        End If
+        result = teBUS.clearTemporaryTable()
+        If (result.FlagResult = False) Then
+            MessageBox.Show("Xoá dữ liệu tạm thời trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            System.Console.WriteLine(result.SystemMessage)
+            Return
+        End If
+        loadListTreEm()
+    End Sub
 
+    Private Sub btnXoaVinhVien_Click(sender As Object, e As EventArgs) Handles btnXoaVinhVien.Click
+        If (txtMaSoTreEm.Text = Nothing) Then
+            MessageBox.Show("Chọn trẻ em trong danh sách trẻ em trước khi xoá.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+        If (dgvDanhSachTreEm.RowCount > 0) Then
+            Dim result As Result
+
+            result = gnBUS.deleteByMaTreEm(txtMaSoTreEm.Text) 'Xoa KHOA NGOAI THAM CHIEU TRUOC 
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Xoá ghi nhận của trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+            result = teBUS.moveToTemporaryTableByID(txtMaSoTreEm.Text)
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Lưu trẻ em vào bộ nhớ tạm không thành công .", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+            result = teBUS.clearTemporaryTable()
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Xoá dữ liệu tạm thời trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+            result = teBUS.deleteByID(txtMaSoTreEm.Text)
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Xoá trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+            loadListTreEm()
+            txtMaSoTreEm.Text = String.Empty
+            txtHoTen.Text = String.Empty
+            txtHoTenPhuHuynh.Text = String.Empty
+            txtTenONha.Text = String.Empty
+            txtDiaChi.Text = String.Empty
+            txtDienThoai.Text = String.Empty
+            dtpNgaySinh.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub btnXoaFilePhucHoi_Click(sender As Object, e As EventArgs) Handles btnXoaFilePhucHoi.Click
+        Dim result1 As Integer = MessageBox.Show("Bạn sẽ không thể phục hồi khi xoá file phục hồi.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+        If result1 = DialogResult.OK Then
+            MessageBox.Show("File phục hồi đã bị xoá")
+            Dim result As Result
+            result = teBUS.clearTemporaryTable()
+            If (result.FlagResult = False) Then
+                MessageBox.Show("Xoá dữ liệu tạm thời trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                System.Console.WriteLine(result.SystemMessage)
+                Return
+            End If
+        ElseIf result1 = DialogResult.Cancel Then
+            MessageBox.Show("Tác vụ đã bị huỷ ")
+            Return
+        End If
+
+    End Sub
+
+    Private Sub chkbxXoaNangCao_CheckedChanged(sender As Object, e As EventArgs) Handles chkbxXoaNangCao.CheckedChanged
+        If (chkbxXoaNangCao.Checked = True) Then
+            btnXoaFilePhucHoi.Visible = True
+            btnXoaVinhVien.Visible = True
+        Else
+            btnXoaFilePhucHoi.Visible = False
+            btnXoaVinhVien.Visible = False
+        End If
+    End Sub
 End Class

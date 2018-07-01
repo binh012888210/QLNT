@@ -146,7 +146,7 @@ Public Class TreEmDAL
 
         Dim query As String = String.Empty
         query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi]"
-        query &= "FROM [tblTreEm]"
+        query &= "FROM [tblTreEm] WHERE [HoTenTreEm] is not null"
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
@@ -183,11 +183,11 @@ Public Class TreEmDAL
         If (bMaLopNull = True) Then
             query &= "SELECT [MaTreEm],[HoTenTreEm],[NgaySinh],[HoTenPhuHuynh],[TenONha],[DiaChi],[DienThoai],[Tuoi],[MaLop] "
             query &= "FROM [tblTreEm] "
-            query &= "WHERE [MaLop] is null"
+            query &= "WHERE [MaLop] is null AND [HoTenTreEm] is not null"
         Else
             query &= "SELECT [MaTreEm],[HoTenTreEm],[NgaySinh],[HoTenPhuHuynh],[TenONha],[DiaChi],[DienThoai],[Tuoi],[MaLop],[NgayNhapHoc],[GhiChu] "
             query &= "FROM [tblTreEm] "
-            query &= "WHERE [MaLop] = @malop "
+            query &= "WHERE [MaLop] = @malop AND [HoTenTreEm] is not null"
 
         End If
         Using conn As New SqlConnection(connectionString)
@@ -232,7 +232,7 @@ Public Class TreEmDAL
 
         query &= "SELECT * "
         query &= "FROM [tblTreEm] "
-        query &= "WHERE [MaLop] is not null"
+        query &= "WHERE [MaLop] is not null AND [HoTenTreEm] is not null"
 
 
         Using conn As New SqlConnection(connectionString)
@@ -268,7 +268,42 @@ Public Class TreEmDAL
 
         Dim searchText1 As String = searchText
         Dim query As String = String.Empty
-        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(MaTreEm,HoTenTreEm) like '%" + searchText1 + "%'"
+        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(MaTreEm,HoTenTreEm) like '%" + searchText1 + "%' AND [HoTenTreEm] is not null"
+
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                Try
+                    conn.Open()
+                    Dim reader As SqlDataReader
+                    reader = comm.ExecuteReader()
+                    listTreEm.Clear()
+                    If reader.HasRows = True Then
+                        While reader.Read()
+                            listTreEm.Add(New TreEmDTO(reader("MaTreEm"), reader("HoTenTreEm"), reader("NgaySinh"), reader("HoTenPhuHuynh"), reader("TenONha"), reader("DiaChi"), reader("DienThoai"), reader("Tuoi")))
+                        End While
+                    End If
+
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Lấy tất cả trẻ em không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
+
+    Public Function searchByTextAndMaLopIsNull(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+
+        Dim searchText1 As String = searchText
+        Dim query As String = String.Empty
+        query &= "SELECT * FROM [tblTreEm] WHERE CONCAT(MaTreEm,HoTenTreEm) like '%" + searchText1 + "%' AND [HoTenTreEm] is not null AND [MaLop] is null"
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
@@ -304,7 +339,7 @@ Public Class TreEmDAL
         Dim query As String = String.Empty
         query &= "SELECT * "
         query &= "FROM [tblTreEm],[tblLop],[tblKhoi] "
-        query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] "
+        query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] AND [HoTenTreEm] is not null "
         If (advSearch = True) Then
             query &= " AND [tblKhoi].[MaKhoi] = @makhoi "
         End If
@@ -380,7 +415,7 @@ Public Class TreEmDAL
         Dim query As String = String.Empty
         query &= "SELECT * "
         query &= "FROM [tblTreEm] "
-        query &= "WHERE [MaTreEm]=@matreem"
+        query &= "WHERE [MaTreEm]=@matreem AND [HoTenTreEm] is not null"
 
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
@@ -449,14 +484,15 @@ Public Class TreEmDAL
 
     Public Function deleteByID(strMaTreEm As String) As Result
         Dim query As String = String.Empty
-        query &= "DELETE From [tblTreEm] Where [MaTreEm] = @masotreem"
+        query &= "UPDATE [tblTreEm] SET [HoTenTreEm]=NULL, [NgaySinh]=NULL, [HoTenPhuHuynh]=NULL, [TenONha]=NULL, [DiaChi]=NULL, [DienThoai]=NULL, [Tuoi]=NULL, [MaLop]=NULL, [NgayNhapHoc]=NULL, [GhiChu]=NULL "
+        query &= "WHERE [MaTreEm]= @matreem "
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
                     .Connection = conn
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@masotreem", strMaTreEm)
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
                 End With
                 Try
                     conn.Open()
@@ -475,7 +511,7 @@ Public Class TreEmDAL
 
     Public Function deleteClassByID(strMaTreEm As String) As Result
         Dim query As String = String.Empty
-        query &= "UPDATE [tblTreEm] SET [MaLop] = NULL , [GhiChu]= NULL , [NgayNhapHoc]= NULL WHERE [MaTreEm] = @matreem"
+        query &= "UPDATE [tblTreEm] SET [MaLop] = NULL , [GhiChu]= NULL , [NgayNhapHoc]= NULL WHERE [MaTreEm] = @matreem AND [HoTenTreEm] is not null"
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
@@ -490,7 +526,7 @@ Public Class TreEmDAL
                 Catch ex As Exception
                     conn.Close()
                     System.Console.WriteLine(ex.StackTrace)
-                    Return New Result(False, "Cập nhật trẻ em không thành công", ex.StackTrace)
+                    Return New Result(False, "Xoá trẻ em không thành công", ex.StackTrace)
                 End Try
             End Using
         End Using
@@ -503,7 +539,7 @@ Public Class TreEmDAL
         query &= "SELECT * "
         query &= "FROM [tblTreEm],[tblLop],[tblKhoi] "
         query &= "WHERE [tblTreEm].[MaLop]=[tblLop].[MaLop] AND [tblLop].[MaKhoi]=[tblKhoi].[MaKhoi] "
-        query &= " AND [MaTreEm]=@matreem "
+        query &= " AND [MaTreEm]=@matreem AND [HoTenTreEm] is not null"
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
@@ -535,7 +571,7 @@ Public Class TreEmDAL
     Public Function chuyenLopTreEM(treEm As TreEmDTO, strMalop As String) As Result
 
         Dim query As String = String.Empty
-        query &= "UPDATE [tblTreEm] SET [MaLop] = @malop  WHERE [MaTreEm] = @matreem"
+        query &= "UPDATE [tblTreEm] SET [MaLop] = @malop  WHERE [MaTreEm] = @matreem AND [HoTenTreEm] is not null"
         Using conn As New SqlConnection(connectionString)
             Using comm As New SqlCommand()
                 With comm
@@ -559,8 +595,83 @@ Public Class TreEmDAL
 
     End Function
 
+    Public Function moveToTemporaryTableByID(strMaTreEm As String) As Result
+        Dim query As String = String.Empty
+        query &= "INSERT INTO [tblTreEmTemporary] ([MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi], [MaLop], [NgayNhapHoc], [GhiChu])"
+        query &= "SELECT [MaTreEm], [HoTenTreEm], [NgaySinh], [HoTenPhuHuynh], [TenONha], [DiaChi], [DienThoai], [Tuoi], [MaLop], [NgayNhapHoc], [GhiChu] FROM [tblTreEm] where [tblTreEm].[MaTreEm]= @matreem"
 
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@matreem", strMaTreEm)
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Chuyển thông tin trẻ em vào bộ nhớ tạm không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
 
+    End Function
 
+    Public Function restoreFromTemporaryTable() As Result
+        Dim query As String = String.Empty
+
+        query &= "UPDATE [tblTreEm] Set [tblTreEm].[HoTenTreEm]= [tblTreEmTemporary].[HoTenTreEm], [tblTreEm].[NgaySinh] = [tblTreEmTemporary].[NgaySinh], [tblTreEm].[HoTenPhuHuynh] = [tblTreEmTemporary].[HoTenPhuHuynh], "
+        query &= "[tblTreEm].[TenONha] = [tblTreEmTemporary].[TenONha], [tblTreEm].[DiaChi] = [tblTreEmTemporary].[DiaChi], [tblTreEm].[DienThoai] = [tblTreEmTemporary].[DienThoai], "
+        query &= "[tblTreEm].[Tuoi] = [tblTreEmTemporary].[Tuoi], [tblTreEm].[MaLop] = [tblTreEmTemporary].[MaLop], [tblTreEm].[NgayNhapHoc] = [tblTreEmTemporary].[NgayNhapHoc], [tblTreEm].[GhiChu] = [tblTreEmTemporary].[GhiChu]  "
+        query &= "From [tblTreEmTemporary] Where [tblTreEmTemporary].[MaTreEm] = [tblTreEm].[MaTreEm]"
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Chuyển thông tin trẻ em vào bộ nhớ tạm không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
+
+    Public Function clearTemporaryTable() As Result
+        Dim query As String = String.Empty
+        query &= "DELETE From [tblTreEmTemporary] Where [MaTreEm] is not null "
+        Using conn As New SqlConnection(connectionString)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = conn
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                End With
+                Try
+                    conn.Open()
+                    comm.ExecuteNonQuery()
+                Catch ex As Exception
+                    conn.Close()
+                    System.Console.WriteLine(ex.StackTrace)
+                    Return New Result(False, "Xoá trẻ em trong bộ nhớ tạm không thành công", ex.StackTrace)
+                End Try
+            End Using
+        End Using
+        Return New Result(True) ' thanh cong
+
+    End Function
 
 End Class

@@ -25,7 +25,7 @@ Public Class frmThemTreEm
 
     End Sub
 
-    Private Sub btnNhap_Click(sender As Object, e As EventArgs) Handles btnNhap.Click 'Thuc hien viec nhap thong tin vao sql
+    Private Sub btnThemTreEm_Click(sender As Object, e As EventArgs) Handles btnThemTreEm.Click 'Thuc hien viec nhap thong tin vao sql
 
         Dim treem As TreEmDTO
         treem = New TreEmDTO()

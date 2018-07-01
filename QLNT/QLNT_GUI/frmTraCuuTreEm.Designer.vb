@@ -44,7 +44,7 @@ Partial Class frmTraCuuTreEm
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.chkbxTraCuuNangCao = New System.Windows.Forms.CheckBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cbKhoi = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -60,6 +60,7 @@ Partial Class frmTraCuuTreEm
         Me.dgvDanhSachTreEm.Location = New System.Drawing.Point(518, 95)
         Me.dgvDanhSachTreEm.Name = "dgvDanhSachTreEm"
         Me.dgvDanhSachTreEm.RowHeadersVisible = False
+        Me.dgvDanhSachTreEm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvDanhSachTreEm.Size = New System.Drawing.Size(421, 303)
         Me.dgvDanhSachTreEm.TabIndex = 0
         '
@@ -254,15 +255,15 @@ Partial Class frmTraCuuTreEm
         Me.Label12.TabIndex = 65
         Me.Label12.Text = "Thông tin cơ bản"
         '
-        'CheckBox1
+        'chkbxTraCuuNangCao
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(38, 298)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(143, 17)
-        Me.CheckBox1.TabIndex = 66
-        Me.CheckBox1.Text = "Tra cứu trẻ em nâng cao"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.chkbxTraCuuNangCao.AutoSize = True
+        Me.chkbxTraCuuNangCao.Location = New System.Drawing.Point(38, 298)
+        Me.chkbxTraCuuNangCao.Name = "chkbxTraCuuNangCao"
+        Me.chkbxTraCuuNangCao.Size = New System.Drawing.Size(143, 17)
+        Me.chkbxTraCuuNangCao.TabIndex = 66
+        Me.chkbxTraCuuNangCao.Text = "Tra cứu trẻ em nâng cao"
+        Me.chkbxTraCuuNangCao.UseVisualStyleBackColor = True
         '
         'Label13
         '
@@ -312,7 +313,7 @@ Partial Class frmTraCuuTreEm
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cbKhoi)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.chkbxTraCuuNangCao)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtHoTen)
         Me.Controls.Add(Me.txtDienThoai)
@@ -370,7 +371,7 @@ Partial Class frmTraCuuTreEm
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents chkbxTraCuuNangCao As CheckBox
     Friend WithEvents Label13 As Label
     Friend WithEvents cbKhoi As ComboBox
     Friend WithEvents Label11 As Label

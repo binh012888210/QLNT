@@ -47,7 +47,7 @@ Public Class frmTraCuuTreEm
         Dim table As DataTable
         table = New DataTable
         table.Clear()
-        Result = teBUS.searchForm(CheckBox1.Checked, treem, cbKhoi.SelectedValue, table)
+        Result = teBUS.searchForm(chkbxTraCuuNangCao.Checked, treem, cbKhoi.SelectedValue, table)
         If (Result.FlagResult = False) Then
             MessageBox.Show("Tìm kiếm trẻ em không thành công.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
@@ -77,8 +77,8 @@ Public Class frmTraCuuTreEm
         dgvDanhSachTreEm.DataSource = Nothing
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If (CheckBox1.Checked = True) Then
+    Private Sub chkbxTraCuuNangCao_CheckedChanged(sender As Object, e As EventArgs) Handles chkbxTraCuuNangCao.CheckedChanged
+        If (chkbxTraCuuNangCao.Checked = True) Then
             cbKhoi.Enabled = True
         Else
             cbKhoi.Enabled = False

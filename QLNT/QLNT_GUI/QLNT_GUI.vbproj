@@ -73,6 +73,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmDangNhap.Designer.vb">
+      <DependentUpon>frmDangNhap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDangNhap.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanThemTreEm.Designer.vb">
+      <DependentUpon>frmHuongDanThemTreEm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanThemTreEm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCapNhatQuyDinh.Designer.vb">
       <DependentUpon>frmCapNhatQuyDinh.vb</DependentUpon>
     </Compile>
@@ -83,6 +101,42 @@
       <DependentUpon>frmChuyenLop.vb</DependentUpon>
     </Compile>
     <Compile Include="frmChuyenLop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyGhiNhanTinhTrang.Designer.vb">
+      <DependentUpon>frmHuongDanQuanLyGhiNhanTinhTrang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyGhiNhanTinhTrang.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyTreEm.Designer.vb">
+      <DependentUpon>frmHuongDanQuanLyTreEm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyTreEm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanSuDung.Designer.vb">
+      <DependentUpon>frmHuongDanSuDung.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanSuDung.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanChuyenLop.Designer.vb">
+      <DependentUpon>frmHuongDanChuyenLop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanChuyenLop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyLop.Designer.vb">
+      <DependentUpon>frmHuongDanQuanLyLop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanQuanLyLop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDanTraCuuTreEm.Designer.vb">
+      <DependentUpon>frmHuongDanTraCuuTreEm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDanTraCuuTreEm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmQuanLyGhiNhanTinhTrangTre.Designer.vb">
@@ -151,11 +205,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanQuanLyGhiNhanTinhTrang.resx">
+      <DependentUpon>frmHuongDanQuanLyGhiNhanTinhTrang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanThemTreEm.resx">
+      <DependentUpon>frmHuongDanThemTreEm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCapNhatQuyDinh.resx">
       <DependentUpon>frmCapNhatQuyDinh.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmChuyenLop.resx">
       <DependentUpon>frmChuyenLop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanQuanLyTreEm.resx">
+      <DependentUpon>frmHuongDanQuanLyTreEm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanSuDung.resx">
+      <DependentUpon>frmHuongDanSuDung.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanChuyenLop.resx">
+      <DependentUpon>frmHuongDanChuyenLop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanQuanLyLop.resx">
+      <DependentUpon>frmHuongDanQuanLyLop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDanTraCuuTreEm.resx">
+      <DependentUpon>frmHuongDanTraCuuTreEm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyGhiNhanTinhTrangTre.resx">
       <DependentUpon>frmQuanLyGhiNhanTinhTrangTre.vb</DependentUpon>

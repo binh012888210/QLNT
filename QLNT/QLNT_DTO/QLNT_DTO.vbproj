@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="BaoCaoDTO.vb" />
     <Compile Include="ChiTietBaoCao.vb" />
+    <Compile Include="DangNhapDTO.vb" />
     <Compile Include="GhiNhanTinhTrangDTO.vb" />
     <Compile Include="KhoiDTO.vb" />
     <Compile Include="LopDTO.vb" />

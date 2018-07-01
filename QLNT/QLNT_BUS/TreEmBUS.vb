@@ -99,6 +99,10 @@ Public Class TreEmBUS
         Return teDAL.searchByText(searchText, listTreEm)
     End Function
 
+    Public Function searchByTextAndMaLopIsNull(searchText As String, ByRef listTreEm As List(Of TreEmDTO)) As Result
+        Return teDAL.searchByTextAndMaLopIsNull(searchText, listTreEm)
+    End Function
+
     Public Function searchForm(advSearch As Boolean, seearchInfo As TreEmDTO, searchMaKhoi As String, ByRef table As DataTable) As Result
         Return teDAL.searchForm(advSearch, seearchInfo, searchMaKhoi, table)
     End Function
@@ -127,5 +131,14 @@ Public Class TreEmBUS
         Return teDAL.getKhoiByID(strMaTreEm, khoiInfo)
     End Function
 
+    Public Function moveToTemporaryTableByID(strMaTreEm As String) As Result
+        Return teDAL.moveToTemporaryTableByID(strMaTreEm)
+    End Function
 
+    Public Function restoreFromTemporaryTable() As Result
+        Return teDAL.restoreFromTemporaryTable()
+    End Function
+    Public Function clearTemporaryTable() As Result
+        Return teDAL.clearTemporaryTable()
+    End Function
 End Class
